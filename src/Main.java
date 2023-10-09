@@ -23,12 +23,12 @@ public class Main {
 
         JLabel userNameLabel = new JLabel("username: ");
         JTextField userName = new JTextField(20);
-        userNameLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-170,100,10);
+        userNameLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-170,100,20);
         userName.setBounds((screenWidth/2)-100,(screenHeight/2)-150,200,30);
 
 
         JLabel passwordLabel = new JLabel("password: ");
-        passwordLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-120,100,10);
+        passwordLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-120,100,20);
         JTextField password = new JPasswordField(20);
         password.setBounds((screenWidth/2)-100,(screenHeight/2)-100,200,30);
 
