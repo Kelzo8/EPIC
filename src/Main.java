@@ -12,11 +12,9 @@ public class Main {
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(null);//using no layout managers
         logIn(frame);
-
         frame.setResizable(false);
         frame.setVisible(true);//making the frame visible
     }
-
     public static boolean logIn(JFrame frame){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
         int screenWidth = (int) screenSize.getWidth();
@@ -35,6 +33,7 @@ public class Main {
 
 
         JButton submit = new JButton();
+        submit.setText("Submit");
         submit.setBounds((screenWidth/2)-100,(screenHeight/2)-50,200,30);
         frame.add(userName);frame.add(password);frame.add(submit);frame.add(userNameLabel);frame.add(passwordLabel);
 
@@ -42,7 +41,11 @@ public class Main {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // This code will be executed when the submit is clicked
-                JOptionPane.showMessageDialog(frame, "Button Clicked!");
+                String usernameFinal = userName.getText();
+                String passwordFinal = password.getText();
+                JOptionPane.showMessageDialog(frame, "Username: "+ usernameFinal+" Password: "+passwordFinal );
+                frame.getContentPane().removeAll();
+                frame.repaint();
             }
         });
         return true;
