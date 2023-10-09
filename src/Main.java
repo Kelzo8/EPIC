@@ -16,6 +16,7 @@ public class Main {
         frame.setResizable(false);
         frame.setVisible(true);//making the frame visible
     }
+
     public static boolean logIn(JFrame frame){
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
         int screenWidth = (int) screenSize.getWidth();
