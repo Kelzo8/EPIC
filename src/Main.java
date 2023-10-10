@@ -2,6 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -69,6 +73,29 @@ public class Main {
         });
     }
     public static boolean logIn(JFrame frame,Dimension screenSize){
+        // CSV READER & WRITER LEARNED FROM BRO CODE
+        String usernamesFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\usernames.csv";
+        String passwordsFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\passwords.csv";
+        BufferedReader reader = null;
+        String line = "";
+        ArrayList<String> users = new ArrayList<>();
+        ArrayList<String> pass = new ArrayList<>();
+        try {
+            reader = new BufferedReader(new FileReader(usernamesFile));
+            while ((line = reader.readLine())!=null) {
+                String[] row = line.split(",");
+                users.addAll(Arrays.asList(row));//WHAT DOES THIS ACTUALLY MEAN INTELLIJ AUTO CHANGED IT -- SAME AS FOR EACH I PRESUME
+            }
+            reader = new BufferedReader(new FileReader(passwordsFile));
+            while ((line = reader.readLine())!=null) {
+                String[] row = line.split(",");
+                pass.addAll(Arrays.asList(row));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
 
@@ -94,13 +121,24 @@ public class Main {
             public void actionPerformed(ActionEvent e) {
                 // This code will be executed when the submit is clicked
                 String usernameFinal = userName.getText();
+
                 String passwordFinal = password.getText();
-                //NEED TO DO PASSWORD AND USERNAME VALIDATION -- CONNECT TO TXT FILE
-                //JOptionPane.showMessageDialog(frame, "Username: "+ usernameFinal+" Password: "+passwordFinal );
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
-                selectionMenu(frame,screenSize);
+                for (int i=0;i< users.size();i++){//ERROR HERE FOR SOME REASON ITS PRINTING FALSE RATHER THAN TRUE EVEN THOUGH THEY EQUAL ONE ANOTHER // FIXED added ',' before the first item in both csv files
+                    if (users.get(i).equals(usernameFinal)){
+                        System.out.println("In 1");
+                        if (pass.get(i).equals(passwordFinal)){
+                            System.out.println("YOURE IN");
+                            frame.getContentPane().removeAll();
+                            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                            frame.repaint();
+                            selectionMenu(frame,screenSize);
+                        }
+                        else{
+                            System.out.println("WRONG PASSWORD");
+                        }
+                    }
+                }
+
             }
         });
         return true;
