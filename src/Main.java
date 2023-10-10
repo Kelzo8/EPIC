@@ -18,6 +18,7 @@ public class Main {
     public static int selectionMenu(JFrame frame,Dimension screenSize) {
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions
         int screenHeight = (int) screenSize.getHeight();
+
         JLabel typeOfQuiz = new JLabel("Please select the type of quiz you would like to do: ");
         typeOfQuiz.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton foundationsOfCompSci = new JButton(); // declaring a new button of the name foundationsOfCompSci
@@ -32,6 +33,41 @@ public class Main {
 
         compOrg.setText("Computer Organisation");
         frame.add(foundationsOfCompSci);frame.add(discreteMaths);frame.add(compOrg);frame.add(typeOfQuiz);
+
+        foundationsOfCompSci.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //JOptionPane.showMessageDialog(frame, "Foundations of Computer Science");
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+                ComputerScience computerScience = new ComputerScience();
+                ComputerScience.MainQuizGUI(frame,screenSize);
+            }
+        });
+        discreteMaths.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Discrete Maths");
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+
+
+                // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
+            }
+        });
+        compOrg.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(frame, "Computer Organisation");
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+
+                // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
+            }
+        });
         // return 1 for Foundations of computer science
         // return 2 for Discrete Mathematics
         // return 3 for Computer Organisation
@@ -65,7 +101,7 @@ public class Main {
                 String usernameFinal = userName.getText();
                 String passwordFinal = password.getText();
                 //NEED TO DO PASSWORD AND USERNAME VALIDATION -- CONNECT TO TXT FILE
-                JOptionPane.showMessageDialog(frame, "Username: "+ usernameFinal+" Password: "+passwordFinal );
+                //JOptionPane.showMessageDialog(frame, "Username: "+ usernameFinal+" Password: "+passwordFinal );
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
@@ -74,9 +110,7 @@ public class Main {
         });
         return true;
     }
-    public static void ComputerScience(JFrame f) {
-        // Niall
-    }
+
     public static void DiscreteMathematics() {
         // James
     }
