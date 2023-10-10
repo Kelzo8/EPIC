@@ -15,7 +15,7 @@ public class Main {
         frame.setResizable(false);
         frame.setVisible(true);//making the frame visible
     }
-    public static int selectionMenu(JFrame frame,Dimension screenSize) {
+    public static void selectionMenu(JFrame frame,Dimension screenSize) {
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions
         int screenHeight = (int) screenSize.getHeight();
 
@@ -41,8 +41,7 @@ public class Main {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                ComputerScience computerScience = new ComputerScience();
-                ComputerScience.MainQuizGUI(frame,screenSize);
+                ComputerScience.DifficultyMenu(frame,screenSize);
             }
         });
         discreteMaths.addActionListener(new ActionListener() {
@@ -68,10 +67,6 @@ public class Main {
                 // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
             }
         });
-        // return 1 for Foundations of computer science
-        // return 2 for Discrete Mathematics
-        // return 3 for Computer Organisation
-        return 0;
     }
     public static boolean logIn(JFrame frame,Dimension screenSize){
         int screenWidth = (int) screenSize.getWidth();
@@ -105,7 +100,7 @@ public class Main {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                int userQuizTypeChoice = selectionMenu(frame,screenSize);
+                selectionMenu(frame,screenSize);
             }
         });
         return true;
