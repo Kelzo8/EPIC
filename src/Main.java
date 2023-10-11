@@ -51,6 +51,7 @@ public class Main {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
+                DiscreteMaths.DifficultyMenu(frame, screenSize);
 
 
                 // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
@@ -106,9 +107,7 @@ public class Main {
         return true;
     }
 
-    public static void DiscreteMathematics() {
-        // James
-    }
+
     public static void ComputerOrganisation() {
         // Kelly
     }
