@@ -10,13 +10,15 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         // This is main do not create code here, create different functions(methods)
-        JFrame frame=new JFrame();//creating instance of JFrame
+        JFrame frame=new JFrame("QUIZ");//creating instance of JFrame
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         frame.setLayout(null);//using no layout managers
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame, source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
+        //ComputerScience.MainQuizGUI(frame,screenSize,1);// TEMPORARY
         logIn(frame,screenSize);
         frame.setResizable(false);
+        frame.setBackground(new Color(204,213,205));
         frame.setVisible(true);//making the frame visible
     }
     public static void selectionMenu(JFrame frame,Dimension screenSize) {
@@ -45,7 +47,7 @@ public class Main {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                ComputerScience.DifficultyMenu(frame,screenSize);
+                ComputerScience.typeOfQuiz(frame,screenSize);
             }
         });
         discreteMaths.addActionListener(new ActionListener() {
@@ -84,12 +86,12 @@ public class Main {
             reader = new BufferedReader(new FileReader(usernamesFile));
             while ((line = reader.readLine())!=null) {
                 String[] row = line.split(",");
-                users.addAll(Arrays.asList(row));//WHAT DOES THIS ACTUALLY MEAN INTELLIJ AUTO CHANGED IT -- SAME AS FOR EACH I PRESUME
+                users.addAll(Arrays.asList(row));
             }
             reader = new BufferedReader(new FileReader(passwordsFile));
             while ((line = reader.readLine())!=null) {
                 String[] row = line.split(",");
-                pass.addAll(Arrays.asList(row));
+                pass.addAll(Arrays.asList(row));//-> pass.addAll(Arrays.asList("123","432","HelloWorld")) adds all of these to the pass ArrayList rather than iterating through it using the for each method for(String pwd: row){append to arraylist}
             }
         }catch (Exception e) {
             e.printStackTrace();
@@ -99,6 +101,9 @@ public class Main {
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
 
+        JLabel title = new JLabel("<html>WELCOME TO THE QUIZ!</html>");
+        title.setBounds((screenWidth/2)-185,(screenHeight/2)-300,370,100);
+        title.setFont(new Font("Arial", Font.PLAIN, 30));
         JLabel userNameLabel = new JLabel("username: ");
         JTextField userName = new JTextField(20);
         userNameLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-170,100,20);
@@ -115,6 +120,7 @@ public class Main {
         submit.setText("Submit");
         submit.setBounds((screenWidth/2)-100,(screenHeight/2)-50,200,30);
         frame.add(userName);frame.add(password);frame.add(submit);frame.add(userNameLabel);frame.add(passwordLabel);
+        frame.add(title);
 
         submit.addActionListener(new ActionListener() {
             @Override
@@ -124,17 +130,14 @@ public class Main {
 
                 String passwordFinal = password.getText();
                 for (int i=0;i< users.size();i++){//ERROR HERE FOR SOME REASON ITS PRINTING FALSE RATHER THAN TRUE EVEN THOUGH THEY EQUAL ONE ANOTHER // FIXED added ',' before the first item in both csv files
-                    if (users.get(i).equals(usernameFinal)){
-                        System.out.println("In 1");
-                        if (pass.get(i).equals(passwordFinal)){
-                            System.out.println("YOURE IN");
+                    if (users.get(i).equals(usernameFinal)) {
+                        if (pass.get(i).equals(passwordFinal)) {
                             frame.getContentPane().removeAll();
                             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                             frame.repaint();
-                            selectionMenu(frame,screenSize);
-                        }
-                        else{
-                            System.out.println("WRONG PASSWORD");
+                            selectionMenu(frame, screenSize);
+                        } else {
+                            JOptionPane.showMessageDialog(frame, "Wrong password! try again");
                         }
                     }
                 }
