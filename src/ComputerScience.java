@@ -89,6 +89,12 @@ public class ComputerScience {
         option12.setBounds((screenWidth/4),(screenHeight/6)+50,300,50);
         option13.setBounds((screenWidth/4),(screenHeight/6)+100,300,50);
         option14.setBounds((screenWidth/4),(screenHeight/6)+150,300,50);
+
+        // setting background colour for radio buttons
+        option12.setBackground(new Color(204,213,205));
+        option11.setBackground(new Color(204,213,205));
+        option13.setBackground(new Color(204,213,205));
+        option14.setBackground(new Color(204,213,205));
         // adding the buttons to the button group under the name buttonGroup
         buttonGroup.add(option11);
         buttonGroup.add(option12);
@@ -159,6 +165,11 @@ public class ComputerScience {
         option12.setBounds((screenWidth/4),(screenHeight/6)+50,300,50);
         option13.setBounds((screenWidth/4),(screenHeight/6)+100,300,50);
         option14.setBounds((screenWidth/4),(screenHeight/6)+150,300,50);
+
+        option12.setBackground(new Color(204,213,205));
+        option11.setBackground(new Color(204,213,205));
+        option13.setBackground(new Color(204,213,205));
+        option14.setBackground(new Color(204,213,205));
         // adding the buttons to the button group under the name buttonGroup
         buttonGroup.add(option11);
         buttonGroup.add(option12);
@@ -172,6 +183,7 @@ public class ComputerScience {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 result[1] = "Incorrect";
+                showResults(frame,screenSize,result,0);
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -181,6 +193,7 @@ public class ComputerScience {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 result[1] = "Incorrect";
+                showResults(frame,screenSize,result,0);
             }
         });
         option13.addActionListener(new ActionListener() {
@@ -190,6 +203,7 @@ public class ComputerScience {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 result[1] = "Incorrect";
+                showResults(frame,screenSize,result,0);
             }
         });
         option14.addActionListener(new ActionListener() {
@@ -320,7 +334,7 @@ public class ComputerScience {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Correct";
+                result[1] = "Correct";
                 showResults(frame,screenSize,result,1);
             }
         });
@@ -330,7 +344,7 @@ public class ComputerScience {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Inorrect";
+                result[1] = "Inorrect";
                 showResults(frame,screenSize,result,1);
             }
         });
@@ -340,7 +354,7 @@ public class ComputerScience {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Incorrect";
+                result[1] = "Incorrect";
                 showResults(frame,screenSize,result,1);
             }
         });
@@ -350,24 +364,40 @@ public class ComputerScience {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Incorrect";
+                result[1] = "Incorrect";
                 showResults(frame,screenSize,result,1);
             }
         });
         frame.add(option21);frame.add(option22);frame.add(option23);frame.add(option24);frame.add(Question1);
     }
-    public static void showResults(JFrame frame, Dimension screenSize, String[] results, int qNumber) {//question number
+    public static void showResults(JFrame frame, Dimension screenSize, String[] results, int qNumber) {
+        //question number
         // Easy is 0
         // Intermediate is 1
         // Intense is 2
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
-        JLabel result1 = new JLabel("<html>Question 1: <br><br> What does the acronym B.N.F stand for?<br>Answer: Backus-naur form <br><br> You got this question: "+ results[0] +"<br><br>------------------------------------------------------<html>");
+        String Q11 = "<html>Question 1: <br><br> What does the acronym B.N.F stand for?<br>Answer: Backus-naur form <br><br> You got this question: "+ results[0] +"<br><br>-------------------------------------------<html>";
+        String Q12 = "<html>Question 2: <br><br>What denotes assignment/definiton in B.N.F grammar?<br>Answer: ::= <br><br> You got this question: "+ results[1] +"<html>";
+
+        String Q21 = "<html>Question 1: <br><br>Consider the set X={a,b,c,d,e} \" +\n" +
+                "under the partial ordering<br>" +
+                "R={(a,a),(a,b),(a,c),(a,d),(a,e),(b,b),(b,c),(b,e),(c,c),(c,e),(d,d),(d,e),(e,e)}<br>" +
+                "What is the minimum number of ordered pairs to make X a lattice?<br>Answer: (i) and (iv) <br><br> You got this question: "+ results[0] +"<br><br>-------------------------------------------<html>";
+        String Q22 = "<html>Question 2: <br><br>Consider the following lattices - Which ones are lattices?<br>Answer: (i) and (iv) <br><br> You got this question: "+ results[1] +"<html>";
+        JLabel result1 = new JLabel(Q11);
+        JLabel result2 = new JLabel(Q12);
+        if (qNumber == 0) {
+            result1 = new JLabel(Q11);
+            result2 = new JLabel(Q12);
+        } else if (qNumber == 1) {
+             result1 = new JLabel(Q21);
+             result2 = new JLabel(Q22);
+        }
         result1.setFont(new Font("Arial", Font.PLAIN, 24));
-        JLabel result2 = new JLabel("<html>Question 2: <br><br>What denotes assignment/definiton in B.N.F grammar?<br>Answer: ::= <br><br> You got this question: "+ results[1] +"<html>");
         result2.setFont(new Font("Arial", Font.PLAIN, 24));
-        result1.setBounds(screenWidth/3-250,(screenHeight/4)-100,600,300);
-        result2.setBounds(screenWidth/3-250,(screenHeight/4)+120,600,300);
+        result1.setBounds(screenWidth/3-250,(screenHeight/4)-100,1000,300);
+        result2.setBounds(screenWidth/3-250,(screenHeight/4)+120,1000,300);
         frame.add(result1);frame.add(result2);
     }
 
