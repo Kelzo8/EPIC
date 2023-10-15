@@ -2,8 +2,8 @@ package EPIC;
 
 
 
-import java.util.Timer;
-import java.util.TimerTask;
+import java.time.Instant;
+import java.time.Duration;
 import java.util.Random;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -117,17 +117,17 @@ public class computerOrganisation2 {
 				Random rand = new Random();
 				int rand_question = rand.nextInt(6+1);
 				if (rand_question ==1 ) {
-					easy1(frame, screenSize, q, a, q_op, mode, null);
+					easy1(frame, screenSize, q, a, q_op, mode, null, null);
 				} else if (rand_question == 2) {
-					easy2(frame, screenSize, q, a, q_op, null, mode, null);
+					easy2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}else if (rand_question == 3) {
-					Intermed1(frame, screenSize, q, a, q_op, null, mode, null);
+					Intermed1(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}else if (rand_question == 4) {
-					intermed2(frame, screenSize, q, a, q_op, null, mode, null);
+					intermed2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}else if (rand_question == 5) {
-					difficult1(frame, screenSize, q, a, q_op, null, mode, null);
+					difficult1(frame, screenSize, q, a, q_op, null, mode, null, null);
 				} else if (rand_question == 6) {
-					difficult2(frame, screenSize, q, a, q_op, null, mode, null);
+					difficult2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}
 
 			};
@@ -151,12 +151,12 @@ public class computerOrganisation2 {
 
 		});
 // quiz 3
-		JButton Countdown_mode = new JButton();
-		Countdown_mode.setFont(f2);
-		Countdown_mode.setBackground(Color.magenta);
-		Countdown_mode.setText("Countdown mode");
-		Countdown_mode.setBounds((screen_width / 2) - 150, (screen_height / 2) - 50, 300, 20);
-		Countdown_mode.addActionListener(new ActionListener() {
+		JButton Timed_mode = new JButton();
+		Timed_mode.setFont(f2);
+		Timed_mode.setBackground(Color.magenta);
+		Timed_mode.setText("Timed mode");
+		Timed_mode.setBounds((screen_width / 2) - 150, (screen_height / 2) - 50, 300, 20);
+		Timed_mode.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
 				frame.revalidate();// these remove all of the elements on screen so the others can be shown and not
@@ -171,7 +171,7 @@ public class computerOrganisation2 {
 		frame.add(Quiz_mode);
 		frame.add(Random);
 		frame.add(increasing_Difficulty);
-		frame.add(Countdown_mode);
+		frame.add(Timed_mode);
 
 	}
 	
@@ -181,7 +181,7 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		int mode = 3;
 		String[] all_six_results = new String[6];
-		JLabel ask_begin = new JLabel("You have 60 seconds to answer all 6 questions.\n Press 'Start' to begin ");
+		JLabel ask_begin = new JLabel("Try to complete 6 questions in as little time as possible.\n Press 'Start' to start the timer ");
 		ask_begin.setBounds((screen_width/2)-190,(screen_height/2)-180,600,50);
 		JButton begin = new JButton(); 
 		
@@ -198,17 +198,10 @@ public class computerOrganisation2 {
 					frame.revalidate();// these remove all of the elements on screen so the others can be shown and not
 										// overlap
 					frame.repaint();
-					Timer countdown = new Timer();
-					TimerTask  displayResults = new TimerTask() {
 
-						@Override
-						public void run() {
-						showresults_countdown(frame, screenSize, q, a, q_op, all_six_results);
-						}
-						
-					};
-					 countdown.schedule(displayResults, 60000);
-					 easy1(frame, screenSize, q, a, q_op, mode, all_six_results);
+					Instant startTime = Instant.now();
+					 easy1(frame, screenSize, q, a, q_op, mode, all_six_results, startTime);
+					
 
 				};
 
@@ -241,7 +234,7 @@ public class computerOrganisation2 {
 				frame.getContentPane().removeAll();
 				frame.revalidate();
 				frame.repaint();
-				easy1(frame, screenSize, q, a, q_op, mode, null);
+				easy1(frame, screenSize, q, a, q_op, mode, null, null);
 			};
 
 		});
@@ -250,7 +243,7 @@ public class computerOrganisation2 {
 				frame.getContentPane().removeAll();
 				frame.revalidate();
 				frame.repaint();
-				Intermed1(frame, screenSize, q, a, q_op, null, mode, null);
+				Intermed1(frame, screenSize, q, a, q_op, null, mode, null, null);
 			};
 
 		});
@@ -259,7 +252,7 @@ public class computerOrganisation2 {
 				frame.getContentPane().removeAll();
 				frame.revalidate();
 				frame.repaint();
-				difficult1(frame, screenSize, q, a, q_op, null, mode, null);
+				difficult1(frame, screenSize, q, a, q_op, null, mode, null, null);
 			};
 
 		});
@@ -280,7 +273,7 @@ public class computerOrganisation2 {
 	
 		
 	
-	public static void easy1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, int mode, String[] all_six_results) {
+	public static void easy1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 			String[] resulte = new String[2];
@@ -318,10 +311,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
 					} else if (mode == 2) {
 						resulte[0] = "correct";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, null);
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
 					} else if(mode == 3) {
 						all_six_results[0] = "correct"; 
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 
 				};
@@ -337,10 +330,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
 					} else if (mode == 2) {
 						resulte[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, null);
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
 					}else if (mode == 3) {
 						all_six_results[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -355,10 +348,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
 					} else if (mode == 2) { 
 						resulte[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, null);
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
 					} else if (mode == 3) {
 						all_six_results[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -373,10 +366,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
 					} else if (mode == 3) {
 						resulte[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, null);
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
 					}else if (mode == 3) {
 						all_six_results[0] = "incorrect";
-						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 
 				};
@@ -387,7 +380,7 @@ public class computerOrganisation2 {
 				
 
 					}
-	public static void easy2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte,  int mode, String[] all_six_results) {
+	public static void easy2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte,  int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		String[] single_result = new String[1];
@@ -423,7 +416,7 @@ public class computerOrganisation2 {
 						showresults_incrdiff(frame, screenSize, q, a, q_op, 1, resulte);
 					}else if (mode == 3) {
 						all_six_results[1] = "incorrect";
-						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -441,7 +434,7 @@ public class computerOrganisation2 {
 						showresults_incrdiff(frame, screenSize, q, a, q_op, 1, resulte);
 					} else if (mode == 3) {
 						all_six_results[1] = "correct";
-						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -459,7 +452,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 1, resulte);
 					} else if (mode == 3) {
 						all_six_results[1] = "correct";
-						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -477,13 +470,13 @@ public class computerOrganisation2 {
 						showresults_incrdiff(frame, screenSize, q, a, q_op,1, resulte);
 					}else if (mode == 3) {
 						all_six_results[1] = "correct";
-						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						Intermed1(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 
 				};
 
 			});
-	} public static void Intermed1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte, int mode, String[] all_six_results) {
+	} public static void Intermed1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 			String[] resulti = new String[2];
@@ -520,10 +513,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 3);
 					} else if (mode == 2) {
 					resulti[0] = "incorrect";
-					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null);
+					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null, null);
 					} else if (mode == 3) {
 						all_six_results[2] = "incorrect";
-						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -538,10 +531,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 3);
 					} else if (mode == 2){
 					resulti[0] = "correct";
-					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null);
+					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null, null);
 					} else if (mode == 3) {
 						all_six_results[2] = "correct";
-						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -556,10 +549,10 @@ public class computerOrganisation2 {
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 3);
 					} else if (mode == 2){
 					resulti[0] = "incorrect";
-					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null);
+					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null, null);
 					}else if (mode == 3) {
 						all_six_results[2] = "incorrect";
-						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -573,17 +566,17 @@ public class computerOrganisation2 {
 						single_result[0] = "incorrect";
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 3);
 					} else if (mode == 2) {
-					resulti[0] = "incorrect";
-					intermed2(frame, screenSize, q, a, q_op, resulti, mode, null);
+						resulti[0] = "incorrect";
+						intermed2(frame, screenSize, q, a, q_op, resulti, mode, null, null);
 					}else if (mode == 3) {
 						all_six_results[2] = "incorrect";
-						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results);	
+						intermed2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 
 				};
 
 			});
-	} public static void intermed2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results) {
+	} public static void intermed2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		String[] single_result = new String[1];
@@ -614,7 +607,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 2, resulti);
 					}else if (mode == 3) {
 						all_six_results[3] = "incorrect";
-						difficult1(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+						difficult1(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 					}
 				};
 
@@ -632,14 +625,14 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 2, resulti);
 					}else if (mode == 3) {
 						all_six_results[3] = "correct";
-						difficult1(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+						difficult1(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 					}
 				};
 
 			});
 
 
-} public static void difficult1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results) {
+} public static void difficult1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 		String[] resultd = new String[2];
@@ -677,10 +670,10 @@ public class computerOrganisation2 {
 					showresult_random(frame, screenSize, q, a, q_op, single_result, 5);
 				} else if (mode == 2) {
 				resultd[0] = "correct";
-				difficult2(frame, screenSize, q, a, q_op, resultd, mode, null);
+				difficult2(frame, screenSize, q, a, q_op, resultd, mode, null, null);
 				}else if (mode == 3) {
 					all_six_results[4] = "correct";
-					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 				}
 			};
 
@@ -695,10 +688,10 @@ public class computerOrganisation2 {
 					showresult_random(frame, screenSize, q, a, q_op, single_result, 5);
 				} else if (mode == 2){
 					resultd[0] = "incorrect";
-					difficult2(frame, screenSize, q, a, q_op, resultd, mode, null);
+					difficult2(frame, screenSize, q, a, q_op, resultd, mode, null, null);
 				}else if (mode == 3) {
 					all_six_results[4] = "incorrect";
-					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 				}
 			};
 
@@ -712,11 +705,11 @@ public class computerOrganisation2 {
 					single_result[0] = "incorrect";
 					showresult_random(frame, screenSize, q, a, q_op, single_result, 5);
 				} else if (mode == 2){
-				resultd[0] = "incorrect";
-				difficult2(frame, screenSize, q, a, q_op, resultd, mode, null);
+					resultd[0] = "incorrect";
+					difficult2(frame, screenSize, q, a, q_op, resultd, mode, null, null);
 				}else if (mode == 3) {
 					all_six_results[4] = "incorrect";
-					difficult1(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 				}
 			};
 
@@ -730,17 +723,17 @@ public class computerOrganisation2 {
 					single_result[0] = "incorrect";
 					showresult_random(frame, screenSize, q, a, q_op, single_result, 5);
 				} else if (mode == 2) {
-				resultd[0] = "incorrect";
-				difficult2(frame, screenSize, q, a, q_op, resultd, mode, null);
+					resultd[0] = "incorrect";
+					difficult2(frame, screenSize, q, a, q_op, resultd, mode, null, null);
 				}else if (mode == 3) {
 					all_six_results[4] = "incorrect";
-					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results);	
+					difficult2(frame, screenSize, q, a, q_op, resulti, mode, all_six_results, startTime);	
 				}
 
 			};
 
 		});
-} public static void difficult2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resultd,  int mode, String[] all_six_results) {
+} public static void difficult2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resultd,  int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	String[] single_result = new String[1];
@@ -776,7 +769,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				} else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results);
+					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -794,7 +787,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				}else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results);
+					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -812,7 +805,7 @@ public class computerOrganisation2 {
 				showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				} else if (mode == 3) {
 					all_six_results[5] = "correct";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results);
+					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -831,7 +824,7 @@ public class computerOrganisation2 {
 				
 				} else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results);
+					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -841,6 +834,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
+
 	
 	if (Selection == 1) {
 		JLabel easy_q1 = new JLabel();
@@ -1120,10 +1114,19 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 
 	});
 	
-} public static void showresults_countdown(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results) {
+} public static void showresults_countdown(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
+	
+	Instant endTime = Instant.now();
+	Duration timeElapsed = Duration.between(startTime, endTime);
+	
+	JLabel stopwatch = new JLabel();
+	stopwatch.setText("Time taken: " + formatDuration(timeElapsed));
+	stopwatch.setFont(f1);
+	stopwatch.setBounds((screen_width/2) -100, (screen_height/2) + 200, 300, 35);
+	frame.add(stopwatch);
 	
 	JLabel easy_q1 = new JLabel();
 	easy_q1.setText("Question 1: " +(String) q.get(0));
@@ -1141,7 +1144,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	if ((all_six_results[0].equals("correct")) || (all_six_results[0].equals( "incorrect"))) {
 		easy_user1.setText("Your answer was: " + all_six_results[0]);
 		
-	}else {
+	}else if( all_six_results[0] == null){
 		easy_user1.setText("Your answer was: You did not answer this question");
 	}
 	
@@ -1171,7 +1174,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	if ((all_six_results[1].equals("correct")) || (all_six_results[1].equals( "incorrect"))) {
 		easy_user2.setText("Your answer was: " + all_six_results[1]);
 		
-	}else {
+	}else if( all_six_results[1] == null) {
 		easy_user2.setText("Your answer was: You did not answer this question");
 	}
 	
@@ -1205,7 +1208,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			if ((all_six_results[2].equals("correct")) || (all_six_results[2].equals( "incorrect"))) {
 				Intermed_user1.setText("Your answer was: " + all_six_results[2]);
 				
-			}else {
+			}else if( all_six_results[2] == null) {
 				Intermed_user1.setText("Your answer was: You did not answer this question");
 			}
 			
@@ -1235,7 +1238,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			if ((all_six_results[3].equals("correct")) || (all_six_results[3].equals( "incorrect"))) {
 				Intermed_user2.setText("Your answer was: " + all_six_results[3]);
 				
-			}else {
+			}else if( all_six_results[3] == null) {
 				Intermed_user2.setText("Your answer was: You did not answer this question");
 			}
 			Intermed_user2.setFont(f1);
@@ -1268,7 +1271,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 					if ((all_six_results[4].equals("correct")) || (all_six_results[4].equals( "incorrect"))) {
 						difficult_user1.setText("Your answer was: " + all_six_results[4]);
 						
-					}else {
+					}else if( all_six_results[4] == null) {
 						difficult_user1.setText("Your answer was: You did not answer this question");
 					}
 					difficult_user1.setFont(f1);
@@ -1297,7 +1300,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 					if ((all_six_results[5].equals("correct")) || (all_six_results[5].equals( "incorrect"))) {
 						difficult_user2.setText("Your answer was: " + all_six_results[5]);
 						
-					}else {
+					}else if( all_six_results[5] == null) {
 						difficult_user2.setText("Your answer was: You did not answer this question");
 					}
 					difficult_user2.setFont(f1);
@@ -1329,6 +1332,13 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 
 	});
 	
+} public static String formatDuration(Duration duration) {
+    long hours = duration.toHours();
+    long minutes = duration.minusHours(hours).toMinutes();
+    long seconds = duration.minusHours(hours).minusMinutes(minutes).getSeconds();
+    long milliseconds = duration.minusHours(hours).minusMinutes(minutes).minusSeconds(seconds).toMillis();
+
+    return String.format("%d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds);
 }
 }
 	
