@@ -97,7 +97,7 @@ public class Main {
                 String usernameFinal = userName.getText();
                 String passwordFinal = password.getText();
                 //NEED TO DO PASSWORD AND USERNAME VALIDATION -- CONNECT TO TXT FILE
-                //JOptionPane.showMessageDialog(frame, "Username: "+ usernameFinal+" Password: "+passwordFinal );
+                //JOptionPane.showMessageDialog(frame, " username : "+ usernameFinal+" Password: "+passwordFinal );
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
