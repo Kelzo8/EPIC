@@ -16,6 +16,7 @@ public class DiscreteMaths {
         }
 
     }
+    
     public static void Easy(JFrame frame, Dimension screenSize) {
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>

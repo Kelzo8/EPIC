@@ -41,7 +41,7 @@ public class Main {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                ComputerScience.DifficultyMenu(frame,screenSize);
+                //ComputerScience.DifficultyMenu(frame,screenSize);
             }
         });
         discreteMaths.addActionListener(new ActionListener() {
