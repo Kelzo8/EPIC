@@ -19,7 +19,7 @@ public class computerOrganisation2 {
 		q.add("What is the name of the third level of the ‘Contemporary Multilevel Machine’?");
 		q.add("What does ALU stand for?");
 		q.add("Which three levels of the 'Contemporary Multilevel Machine' are numeric?");
-		q.add("True or False: 'Translation is when each line of code must be examined and decoded before being executed'");
+		q.add("True or False: 'Translation is when each line of code must\n be examined and decoded before being executed'");
 		q.add("What is the octal equivalent of the hexadecimal 3EC?");
 		q.add("What is the hexadecimal equivalent of the octal 56?");
 		
@@ -207,15 +207,25 @@ public class computerOrganisation2 {
 	public static void begin(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
+		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+		Font f2 = new Font(Font.DIALOG, Font.BOLD, 24);
+		
 		int mode = 3;
 		String[] all_six_results = new String[6];
 		JLabel ask_begin = new JLabel("Try to complete 6 questions in as little time as possible.\n Press 'Start' to start the timer ");
-		ask_begin.setBounds((screen_width/2)-190,(screen_height/2)-180,600,50);
-		JButton begin = new JButton(); 
+		ask_begin.setForeground(new Color(0x0000000 ));
+		ask_begin.setBackground(new Color(0x0f039b1));
+		ask_begin.setFont(f2);
+		ask_begin.setBounds((screen_width/2)-475,(screen_height/2)-180,1200,50);
 		
-		begin.setBackground(Color.magenta);
+		
+		JButton begin = new JButton(); 
 		begin.setText("START");
-		begin.setBounds((screen_width / 2) - 150, (screen_height / 2) - 100, 300, 20);
+		begin.setForeground(new Color(0x0FFFFFF) );
+		begin.setBackground(new Color(0x0f039b1));
+		begin.setFont(f2);
+		begin.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		begin.setBounds((screen_width/2)-100, (screen_height/2) - 80, 200, 35);
 		frame.add(begin);
 		frame.add(ask_begin);
 		
@@ -239,20 +249,38 @@ public class computerOrganisation2 {
 	public static void level_choice( JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
+		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+		
 		int mode = 2;
 		JButton easy = new JButton("easy");
+		easy.setForeground(new Color(0x0FFFFFF) );
+		easy.setBackground(new Color(0x0f039b1));
+		easy.setFont(f1);
+		easy.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		easy.setBounds((screen_width/2) -100, (screen_height/2) - 140, 200, 35);
 		frame.add(easy);
 		
 		JButton Intermediate = new JButton("intermediate");
+		Intermediate.setForeground(new Color(0x0FFFFFF) );
+		Intermediate.setBackground(new Color(0x0f039b1));
+		Intermediate.setFont(f1);
+		Intermediate.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		Intermediate.setBounds((screen_width/2)-100, (screen_height/2) - 80, 200, 35);
 		frame.add(Intermediate);
 		
 		JButton Difficult = new JButton("difficult");
+		Difficult.setForeground(new Color(0x0FFFFFF) );
+		Difficult.setBackground(new Color(0x0f039b1));
+		Difficult.setFont(f1);
+		Difficult.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		Difficult.setBounds((screen_width/2) -100, (screen_height/2) - 20, 200, 35);
 		frame.add(Difficult);
 		
 		JButton rtrn = new JButton("Return");
+		rtrn.setForeground(new Color(0x0FFFFFF) );
+		rtrn.setBackground(new Color(0x0f039b1));
+		rtrn.setFont(f1);
+		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		rtrn.setBounds((screen_width/2) - 100, (screen_height/2) + 40, 200, 35);
 		frame.add(rtrn);
 		
@@ -311,7 +339,7 @@ public class computerOrganisation2 {
 			
 			JLabel level = new JLabel();
 			level.setText("Level 1: Easy");
-			level.setBounds((screen_width/2)- 80, (screen_height/2) - 240, 800, 40);
+			level.setBounds((screen_width/2)- 130, (screen_height/2) - 240, 800, 40);
 			level.setFont(f1);
 			
 			frame.add(level);
@@ -327,22 +355,22 @@ public class computerOrganisation2 {
 				
 			ButtonGroup ans = new ButtonGroup();
 			JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(0));
-			first.setBounds((screen_width/2) - 350, (screen_height/2) - 120, 800, 35);
+			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			first.setFont(f1);
 			first.setForeground(new Color(0x0FFFFFF) );
 			first.setBackground(new Color(0x0f039b1));
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(1));
-			second.setBounds((screen_width/2) - 350, (screen_height/2) - 80, 800, 35);
+			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			second.setFont(f1);
 			second.setForeground(new Color(0x0FFFFFF) );
 			second.setBackground(new Color(0x0f039b1));
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(2));
-			third.setBounds((screen_width/2) - 350, (screen_height/2) - 40, 800, 35);
+			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			third.setFont(f1);
 			third.setForeground(new Color(0x0FFFFFF) );
 			third.setBackground(new Color(0x0f039b1));
 			JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(3));
-			fourth.setBounds((screen_width/2) - 350, (screen_height/2) , 800, 35);
+			fourth.setBounds((screen_width/2) - 400, (screen_height/2) -20 , 800, 35);
 			ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 			fourth.setFont(f1);
 			frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
@@ -445,22 +473,22 @@ public class computerOrganisation2 {
 				
 			ButtonGroup ans = new ButtonGroup();
 			JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(1)).get(0));
-			first.setBounds((screen_width/2) - 350, (screen_height/2) - 140, 800, 35);
+			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			first.setFont(f1);
 			first.setForeground(new Color(0x0FFFFFF) );
 			first.setBackground(new Color(0x0f039b1));
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(1)).get(1));
-			second.setBounds((screen_width/2) - 350, (screen_height/2) - 100, 800, 35);
+			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			second.setFont(f1);
 			second.setForeground(new Color(0x0FFFFFF) );
 			second.setBackground(new Color(0x0f039b1));
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(1)).get(2));
-			third.setBounds((screen_width/2) - 350, (screen_height/2) - 60, 800, 35);
+			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			third.setFont(f1);
 			third.setForeground(new Color(0x0FFFFFF) );
 			third.setBackground(new Color(0x0f039b1));
 			JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(1)).get(3));
-			fourth.setBounds((screen_width/2) - 350, (screen_height/2) - 20, 800, 35);
+			fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 			fourth.setFont(f1);
 			fourth.setForeground(new Color(0x0FFFFFF) );
 			fourth.setBackground(new Color(0x0f039b1));
@@ -543,27 +571,46 @@ public class computerOrganisation2 {
 	} public static void Intermed1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
+		
+		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 			String[] resulti = new String[2];
 			String[] single_result = new String[1];
-			JLabel q1 = new JLabel();
-			q1.setText("Question 3: " + q.get(2)); 
-			q1.setBounds((screen_width/2) - 250, (screen_height/2) - 180, 800, 35);
-			frame.add(q1);
+			
+			
+			JLabel q3 = new JLabel();
+			q3.setText("Question 3: " + q.get(2)); 
+			q3.setBounds((screen_width/2) - 400, (screen_height/2) - 180, 800, 35);
+			q3.setFont(f1);
+			frame.add(q3);
+			
 			JLabel level = new JLabel();
 			level.setText("Level 2: Intermediate");
-			level.setBounds((screen_width/2)- 60, (screen_height/2) - 200, 800, 10 );
+			level.setBounds((screen_width/2)- 110, (screen_height/2) - 400, 800, 350 );
+			level.setFont(f1);
 			frame.add(level);
 				
 				
 			ButtonGroup ans = new ButtonGroup();
 			JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(0));
-			first.setBounds((screen_width/2) - 300, (screen_height/2) - 140, 800, 35);
+			first.setForeground(new Color(0x0FFFFFF) );
+			first.setBackground(new Color(0x0f039b1));
+			first.setFont(f1);
+			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(1));
-			second.setBounds((screen_width/2) - 300, (screen_height/2) - 100, 800, 35);
+			second.setForeground(new Color(0x0FFFFFF) );
+			second.setBackground(new Color(0x0f039b1));
+			second.setFont(f1);
+			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(2));
-			third.setBounds((screen_width/2) - 300, (screen_height/2) - 60, 800, 35);
+			third.setForeground(new Color(0x0FFFFFF) );
+			third.setBackground(new Color(0x0f039b1));
+			third.setFont(f1);
+			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(3));
-			fourth.setBounds((screen_width/2) - 300, (screen_height/2) - 20, 800, 35);
+			fourth.setForeground(new Color(0x0FFFFFF) );
+			fourth.setBackground(new Color(0x0f039b1));
+			fourth.setFont(f1);
+			fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 			ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 			frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
 			
@@ -644,18 +691,29 @@ public class computerOrganisation2 {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		String[] single_result = new String[1];
-			JLabel q1 = new JLabel();
-			q1.setText("Question 4: " + q.get(3)); 
-			q1.setBounds((screen_width/2) - 250, (screen_height/2) - 180, 800, 35);
-			frame.add(q1);
+		
+		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
+		
+		
+			JLabel q4 = new JLabel();
+			q4.setText("Question 4: " + q.get(3)); 
+			q4.setBounds((screen_width/2) - 400, (screen_height/2) - 180, 1200, 35);
+			q4.setFont(f1);
+			frame.add(q4);
 			
 				
 				
 			ButtonGroup ans = new ButtonGroup();
 			JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(3)).get(0));
-			first.setBounds((screen_width/2) - 300, (screen_height/2) - 140, 800, 35);
+			first.setForeground(new Color(0x0FFFFFF) );
+			first.setBackground(new Color(0x0f039b1));
+			first.setFont(f1);
+			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(3)).get(1));
-			second.setBounds((screen_width/2) - 300, (screen_height/2) - 100, 800, 35);
+			second.setForeground(new Color(0x0FFFFFF) );
+			second.setBackground(new Color(0x0f039b1));
+			second.setFont(f1);
+			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			frame.add(first); frame.add(second);
 			
 			first.addActionListener(new ActionListener() {
@@ -699,28 +757,45 @@ public class computerOrganisation2 {
 } public static void difficult1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
+	
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
+	
 		String[] resultd = new String[2];
 		String[] single_result = new String[1];
 		
-		JLabel q1 = new JLabel();
-		q1.setText("Question 5: " + q.get(4)); 
-		q1.setBounds((screen_width/2) - 250, (screen_height/2) - 180, 800, 35);
-		frame.add(q1);
+		JLabel q5 = new JLabel();
+		q5.setText("Question 5: " + q.get(4)); 
+		q5.setBounds((screen_width/2) - 400, (screen_height/2) - 180, 800, 35);
+		q5.setFont(f1);
+		frame.add(q5);
 		JLabel level = new JLabel();
 		level.setText("Level 3: Difficult");
-		level.setBounds((screen_width/2)- 60, (screen_height/2) - 200, 800, 10 );
+		level.setFont(f1);
+		level.setBounds((screen_width/2)- 110, (screen_height/2) - 220, 800, 35 );
 		frame.add(level);
 			
 			
 		ButtonGroup ans = new ButtonGroup();
 		JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(0));
-		first.setBounds((screen_width/2) - 300, (screen_height/2) - 140, 800, 35);
+		first.setForeground(new Color(0x0FFFFFF) );
+		first.setBackground(new Color(0x0f039b1));
+		first.setFont(f1);
+		first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 		JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(1));
-		second.setBounds((screen_width/2) - 300, (screen_height/2) - 100, 800, 35);
+		second.setForeground(new Color(0x0FFFFFF) );
+		second.setBackground(new Color(0x0f039b1));
+		second.setFont(f1);
+		second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 		JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(2));
-		third.setBounds((screen_width/2) - 300, (screen_height/2) - 60, 800, 35);
+		third.setForeground(new Color(0x0FFFFFF) );
+		third.setBackground(new Color(0x0f039b1));
+		third.setFont(f1);
+		third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 		JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(3));
-		fourth.setBounds((screen_width/2) - 300, (screen_height/2) - 20, 800, 35);
+		fourth.setForeground(new Color(0x0FFFFFF) );
+		fourth.setBackground(new Color(0x0f039b1));
+		fourth.setFont(f1);
+		fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 		ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 		frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
 		
@@ -800,23 +875,37 @@ public class computerOrganisation2 {
 } public static void difficult2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resultd,  int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 	String[] single_result = new String[1];
-		JLabel q1 = new JLabel();
-		q1.setText("Question 6: " + q.get(5)); 
-		q1.setBounds((screen_width/2) - 250, (screen_height/2) - 180, 800, 35);
-		frame.add(q1);
+		JLabel q6 = new JLabel();
+		q6.setText("Question 6: " + q.get(5)); 
+		q6.setFont(f1);
+		q6.setBounds((screen_width/2) - 400, (screen_height/2) - 180, 800, 35);
+		frame.add(q6);
 		
 			
 			
 		ButtonGroup ans = new ButtonGroup();
 		JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(0));
-		first.setBounds((screen_width/2) - 300, (screen_height/2) - 140, 800, 35);
+		first.setForeground(new Color(0x0FFFFFF) );
+		first.setBackground(new Color(0x0f039b1));
+		first.setFont(f1);
+		first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 		JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(1));
-		second.setBounds((screen_width/2) - 300, (screen_height/2) - 100, 800, 35);
+		second.setForeground(new Color(0x0FFFFFF) );
+		second.setBackground(new Color(0x0f039b1));
+		second.setFont(f1);
+		second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 		JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(2));
-		third.setBounds((screen_width/2) - 300, (screen_height/2) - 60, 800, 35);
+		third.setForeground(new Color(0x0FFFFFF) );
+		third.setBackground(new Color(0x0f039b1));
+		third.setFont(f1);
+		third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 		JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(3));
-		fourth.setBounds((screen_width/2) - 300, (screen_height/2) - 20, 800, 35);
+		fourth.setForeground(new Color(0x0FFFFFF) );
+		fourth.setBackground(new Color(0x0f039b1));
+		fourth.setFont(f1);
+		fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 		ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 		frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
 		
@@ -898,18 +987,18 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
-
+	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 18);
 	
 	if (Selection == 1) {
 		JLabel easy_q1 = new JLabel();
 		easy_q1.setText("Question 1: " +(String) q.get(0));
-		easy_q1.setFont(f1);
+		easy_q1.setFont(f2);
 		easy_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
 		frame.add(easy_q1);
 		
 		JLabel easy_a1 = new JLabel();
 		easy_a1.setText("Answer: " + (String) q_op.get(0).get(0));
-		easy_a1.setFont(f1);
+		easy_a1.setFont(f2);
 		easy_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
 		frame.add(easy_a1);
 		
@@ -921,6 +1010,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		
 		JLabel divider = new JLabel();
 		divider.setText("---------------------------------------------------------------------------");
+		divider.setForeground(new Color(0X0e305ad));
 		divider.setFont(f1);
 		divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
 		frame.add(divider);
@@ -1032,8 +1122,17 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		}
 	
 		JButton rtrn = new JButton("Return");
+		rtrn.setForeground(new Color(0x0FFFFFF) );
+		rtrn.setBackground(new Color(0x0f039b1));
+		rtrn.setFont(f2);
+		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
 		frame.add(rtrn);
+        JLabel trophy = new JLabel();
+        trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
+        Dimension size = trophy.getPreferredSize();
+        trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
+        frame.add(trophy);
 		
 		rtrn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1042,7 +1141,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 				frame.repaint();
 				level_choice(frame, screenSize, q, a, q_op);
 				
-				
+
 
 			};
 
@@ -1050,7 +1149,13 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 } public static void showresult_random(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] single_result, int question) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
-	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+	
+    JLabel trophy = new JLabel();
+    trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
+    Dimension size = trophy.getPreferredSize();
+    trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
+    frame.add(trophy);
 	
 	if (question == 1) {
 		JLabel easy_q1 = new JLabel();
@@ -1162,7 +1267,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		frame.add(difficult_user2);
 	}
 	JButton rtrn = new JButton("Return");
-	rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
+	rtrn.setForeground(new Color(0x0FFFFFF) );
+	rtrn.setBackground(new Color(0x0f039b1));
+	rtrn.setFont(f1);
+	rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+	rtrn.setBounds((screen_width/2) - 700, (screen_height/2) -100, 200, 35);
 	frame.add(rtrn);
 	
 	rtrn.addActionListener(new ActionListener() {
@@ -1182,16 +1291,24 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
+	Font f2 = new Font(Font.SANS_SERIF,  Font.BOLD, 30);
 	
+    JLabel trophy = new JLabel();
+    trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
+    Dimension size = trophy.getPreferredSize();
+    trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
+    frame.add(trophy); 
+    
 	Instant endTime = Instant.now();
 	Duration timeElapsed = Duration.between(startTime, endTime);
 	
 	JLabel stopwatch = new JLabel();
 	stopwatch.setText("Time taken: " + formatDuration(timeElapsed));
-	stopwatch.setFont(f1);
-	stopwatch.setBounds((screen_width/2) -100, (screen_height/2) + 200, 225, 25);
-	stopwatch.setBackground(Color.magenta);
-	stopwatch.setBorder(BorderFactory.createLineBorder(Color.MAGENTA, 5));
+	stopwatch.setFont(f2);
+	stopwatch.setBounds((screen_width/2) + 50, (screen_height/2) - 100, 400, 50);
+	stopwatch.setBackground(new Color (0x0f039b1));
+	stopwatch.setForeground(new Color (0x0ffffff));
+	stopwatch.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 	frame.add(stopwatch);
 	
 	JLabel easy_q1 = new JLabel();
@@ -1249,7 +1366,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	frame.add(easy_user2);
 	
 	JButton next_page = new JButton("Go to next page");
-	next_page.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
+	next_page.setForeground(new Color(0x0FFFFFF) );
+	next_page.setBackground(new Color(0x0f039b1));
+	next_page.setFont(f2);
+	next_page.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+	next_page.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
 	frame.add(next_page);
 	
 	next_page.addActionListener(new ActionListener() {
@@ -1312,7 +1433,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			frame.add(Intermed_user2);
 			
 			JButton next_page2 = new JButton("Go to next Page");
-			next_page2.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
+			next_page2.setForeground(new Color(0x0FFFFFF) );
+			next_page2.setBackground(new Color(0x0f039b1));
+			next_page2.setFont(f2);
+			next_page2.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+			next_page2.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
 			frame.add(next_page2);
 			
 			next_page2.addActionListener(new ActionListener() {
@@ -1374,6 +1499,10 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 					frame.add(difficult_user2);
 					
 					JButton rtrn = new JButton("Return");
+					rtrn.setForeground(new Color(0x0FFFFFF) );
+					rtrn.setBackground(new Color(0x0f039b1));
+					rtrn.setFont(f2);
+					rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 					rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
 					frame.add(rtrn);
 					
