@@ -1305,7 +1305,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	JLabel stopwatch = new JLabel();
 	stopwatch.setText("Time taken: " + formatDuration(timeElapsed));
 	stopwatch.setFont(f2);
-	stopwatch.setBounds((screen_width/2) + 50, (screen_height/2) - 100, 400, 50);
+	stopwatch.setBounds((screen_width/2) + 50, (screen_height/2) - 150, 400, 50);
 	stopwatch.setBackground(new Color (0x0f039b1));
 	stopwatch.setForeground(new Color (0x0ffffff));
 	stopwatch.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
