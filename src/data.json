@@ -10,7 +10,7 @@
       },
       "QuestionxOffset": "-230",
       "QuestionyOffset": "-240",
-      "CorrectAnswer": "1"
+      "CorrectAnswer": "2"
     },
     "Q2":{
       "Q":"What denotes assignment/definiton in B.N.F grammar?",
@@ -65,7 +65,13 @@
         "2":"Backus-Naur Form",
         "3":"Basic Network Function",
         "4":"Boolean Naming Function"
-      }
+      },
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq2.png",
+      "QuestionxOffset": "-185",
+      "QuestionyOffset": "-250",
+      "ImagexOffset": "600",
+      "ImageyOffset": "-393",
+      "CorrectAnswer": "2"
     },
     "Q2":{
       "Q":"What denotes assignment/definiton in B.N.F grammar?",
@@ -75,7 +81,12 @@
         "3":"=::",
         "4":"::="
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png"
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png",
+      "QuestionxOffset": "-185",
+      "QuestionyOffset": "-250",
+      "ImagexOffset": "600",
+      "ImageyOffset": "-393",
+      "CorrectAnswer": "4"
     }
   }
 }

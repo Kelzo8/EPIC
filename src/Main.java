@@ -6,7 +6,7 @@ import java.awt.*;
 
 
 public class Main extends Thread{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Main thread = new Main();
         thread.start();
         // This is main do not create code here, create different functions(methods)
@@ -17,12 +17,13 @@ public class Main extends Thread{
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
         frame.setLayout(null);//using no layout managers
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame, source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
-        Login.Main(frame,screenSize);
-        frame.setResizable(false);
+        //Login.Main(frame,screenSize);
+        ComputerScience.randomGame(frame,screenSize);
+        //ComputerScience.showFrame(frame,screenSize,"Intense","Q1");
+        frame.setResizable(true);
         frame.setVisible(true);//making the frame visible
     }
     public void run() {
         MusicPlayer.playAudio("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\Puzzle-Dreams-3.wav");
-
     }
 }
