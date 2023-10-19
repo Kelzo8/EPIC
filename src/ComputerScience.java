@@ -112,7 +112,7 @@ public class ComputerScience {
 
     // type (of question) as in easy intermediate or insane, question will determine specifics i.e. Q1 or Q2, correctAnswer stores which option is correct
     public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
-        Object file = null;
+        Object file;
         try {
             file = new JSONParser().parse(new FileReader("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\src\\data.json"));
         } catch (IOException | ParseException e) {
@@ -200,9 +200,10 @@ public class ComputerScience {
                     }else {
                         results[1] = "Incorrect";
                     }
-                    showResults(frame,screenSize);
+                    showResults(frame,screenSize,1);
                 }
-            }else {
+            }
+            else {
                 if (type.equals("Easy")){
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("1")){
@@ -255,7 +256,7 @@ public class ComputerScience {
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("1")) {
+                    if (CorrectAnswer.equals("2")) {
                         results[0] = "Correct";
                     } else {
                         results[0] = "Incorrect";
@@ -268,9 +269,10 @@ public class ComputerScience {
                     }else {
                         results[1] = "Incorrect";
                     }
-                    showResults(frame,screenSize);
+                    showResults(frame,screenSize,1);
                 }
-            }else {
+            }
+            else {
                 if (type.equals("Easy")){
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("2")){
@@ -285,7 +287,8 @@ public class ComputerScience {
                             randomResults[0][1] = "Incorrect";
                         }
                     }
-                }else if (type.equals("Intermediate")){
+                }
+                else if (type.equals("Intermediate")){
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("2")){
                             randomResults[1][0] = "Correct";
@@ -299,7 +302,8 @@ public class ComputerScience {
                             randomResults[1][1] = "Incorrect";
                         }
                     }
-                }else {//INTENSE
+                }
+                else {//INTENSE
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("2")){
                             randomResults[2][0] = "Correct";
@@ -323,7 +327,7 @@ public class ComputerScience {
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("1")) {
+                    if (CorrectAnswer.equals("3")) {
                         results[0] = "Correct";
                     } else {
                         results[0] = "Incorrect";
@@ -331,14 +335,15 @@ public class ComputerScience {
                     showFrame(frame, screenSize, type, "Q2");
                 }
                 else if (question.equals("Q2")){
-                    if (CorrectAnswer.equals("2")){
+                    if (CorrectAnswer.equals("3")){
                         results[1] = "Correct";
                     }else {
                         results[1] = "Incorrect";
                     }
-                    showResults(frame,screenSize);
+                    showResults(frame,screenSize,1);
                 }
-            }else {
+            }
+            else {
                 if (type.equals("Easy")){
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("3")){
@@ -391,7 +396,7 @@ public class ComputerScience {
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("1")) {
+                    if (CorrectAnswer.equals("4")) {
                         results[0] = "Correct";
                     } else {
                         results[0] = "Incorrect";
@@ -399,14 +404,15 @@ public class ComputerScience {
                     showFrame(frame, screenSize, type, "Q2");
                 }
                 else if (question.equals("Q2")){
-                    if (CorrectAnswer.equals("2")){
+                    if (CorrectAnswer.equals("4")){
                         results[1] = "Correct";
                     }else {
                         results[1] = "Incorrect";
                     }
-                    showResults(frame,screenSize);
+                    showResults(frame,screenSize,1);
                 }
-            }else {
+            }
+            else {
                 if (type.equals("Easy")){
                     if (question.equals("Q1")){
                         if (CorrectAnswer.equals("4")){
@@ -520,11 +526,10 @@ public class ComputerScience {
         int ranDifficulty = (int)(Math.random()*3);
         int ranQuestion =((int) (Math.random() *2) + 1);
         boolean foundQuestion = false;
-        boolean finishedQuestions = false;
         boolean allTrue = true;
-        for (int i = 0; i < answered.length; i++) {// this will check if all the elements are true(have been answered)
-            for (int j = 0; j < answered[i].length; j++) {
-                if (!answered[i][j]) {
+        for (Boolean[] booleans : answered) {// this will check if all the elements are true(have been answered)
+            for (Boolean aBoolean : booleans) {
+                if (!aBoolean) {
                     allTrue = false; // Set the flag to false if any element is false
                     break; // Exit the inner loop when a false element is encountered
                 }
@@ -537,7 +542,7 @@ public class ComputerScience {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
-            showResults(frame, screenSize);
+            showResults(frame, screenSize,0);
         }else {
             while (!foundQuestion) {//while the program checks for a question or there is a question to ask
                 if (!answered[ranDifficulty][ranQuestion - 1]) {// if a question is equal to false -- meaning it hasn't been asked
@@ -553,43 +558,68 @@ public class ComputerScience {
 
     }
     public static void randomAnswersReset(){
-        for (int i=0; i<answered.length;i++){
-            for (int j=0; j<answered[i].length;j++){
-                answered[i][j] = false;
-            }
+        for (Boolean[] booleans : answered) {
+            Arrays.fill(booleans, false);
         }
     }
     public static int countResultForRand(){
         int count = 0;
-        for (int i=0; i<randomResults.length;i++){
-            for (int j=0; j<randomResults[i].length;j++){
-                if (randomResults[i][j].equals("Correct")){
-                    count ++;
+        for (String[] randomResult : randomResults) {
+            for (String s : randomResult) {
+                if (s.equals("Correct")) {
+                    count++;
                 }
             }
         }
         return count;
     }
-    public static void showResults(JFrame frame, Dimension screenSize) {
+    public static int countResultForLevel(){
+        int count = 0;
+        for (String result : results) {
+            if (result.equals("Correct")) {
+                count++;
+            }
+        }
+        return count;
+    }
+    public static void showResults(JFrame frame, Dimension screenSize,int type) {
+        // int type is for declaring whether the gamemode is Random, Levels or -----
+        // 0 for random, 1 for levels, 2 for -----
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();
         System.out.println(Arrays.deepToString(randomResults));
-        int correctAmount = countResultForRand();
+        int correctAmount;//what the user got correct
+        int outOfAmount;//for displaying what you got out of i.e. out of 6 for random and out of 2 for levels
+        if (type == 0) {
+            outOfAmount = 6;
+            System.out.println("RANDOM");
+            correctAmount = countResultForRand();
+        } else {
+            outOfAmount = 2;
+            System.out.println("NOT RANDOM");
+            correctAmount = countResultForLevel();
+            System.out.println(Arrays.toString(results));
+            System.out.println(correctAmount);
+        }
         //CURRENTLY ONLY WORKS FOR RANDOM
-        JLabel outOfText = new JLabel("OUT OF 6 CORRECT!");
-        outOfText.setFont(new Font("Arial", Font.BOLD, 48));
+        JLabel outOfText = new JLabel("OUT OF "+outOfAmount+" CORRECT!");
         JButton returnButton = new JButton("Go back");
-        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
+        JLabel youGotText = new JLabel("YOU GOT");
         JLabel trophy = new JLabel();
         JLabel correct = new JLabel(String.valueOf(correctAmount));// gets the amount of correct values from the random game and displays them
-        correct.setBounds((screenWidth/2)-15,(screenHeight/2)-65,100,100);
-        correct.setFont(new Font("Arial", Font.BOLD, 48));
-        JLabel youGotText = new JLabel("YOU GOT");
-        youGotText.setFont(new Font("Arial", Font.BOLD, 48));
-        youGotText.setBounds((screenWidth/2)-110,(screenHeight/2)-250,1000,200);
 
+
+        //setting the font for the labels
+        outOfText.setFont(new Font("Arial", Font.BOLD, 48));
+        correct.setFont(new Font("Arial", Font.BOLD, 48));
+        youGotText.setFont(new Font("Arial", Font.BOLD, 48));
+
+        //setting location for the labels and buttons
+        youGotText.setBounds((screenWidth/2)-110,(screenHeight/2)-250,1000,200);
+        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
+        correct.setBounds((screenWidth/2)-15,(screenHeight/2)-65,100,100);
         outOfText.setBounds((screenWidth/2)-225,(screenHeight/2)+50,1000,200);
-        if (correctAmount > 3){
+        if (correctAmount > outOfAmount/2){//deciding screenColor
             frame.getContentPane().setBackground(Color.GREEN);
         }else {
             frame.getContentPane().setBackground(Color.RED);

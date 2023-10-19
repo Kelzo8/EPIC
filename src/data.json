@@ -59,19 +59,19 @@
   },
   "Intense":{
     "Q1":{
-      "Q":"What does the acronym B.N.F stand for?",
+      "Q":"How many complements does 'e' have?",
       "A":{
-        "1":"Binary Notation Framework",
-        "2":"Backus-Naur Form",
-        "3":"Basic Network Function",
-        "4":"Boolean Naming Function"
+        "1":"2",
+        "2":"4",
+        "3":"3",
+        "4":"1"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq2.png",
-      "QuestionxOffset": "-185",
-      "QuestionyOffset": "-250",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png",
+      "QuestionxOffset": "-230",
+      "QuestionyOffset": "-225",
       "ImagexOffset": "600",
-      "ImageyOffset": "-393",
-      "CorrectAnswer": "2"
+      "ImageyOffset": "-150",
+      "CorrectAnswer": "3"
     },
     "Q2":{
       "Q":"What denotes assignment/definiton in B.N.F grammar?",
