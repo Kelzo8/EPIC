@@ -14,7 +14,7 @@ import java.awt.color.*;
 
 public class computerOrganisation2 {
 	public static void main(String[] args) {
-		// List of all possible 6 questions
+		// List of all possible 6 questions contained in an ArrayList
 		ArrayList<String> q = new ArrayList<String>(); 
 		q.add("What is the name of the third level of the ‘Contemporary Multilevel Machine’?");
 		q.add("What does ALU stand for?");
@@ -79,33 +79,40 @@ public class computerOrganisation2 {
 		
 		
 		// this block of code makes the screen
-		JFrame frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		frame.setLayout(null);// using no layout managers
+		JFrame frame = new JFrame(); // creates new JFrame
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame when x button is clicked
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // ensures frame fits screen
+		frame.setLayout(null);// no layout managers, manually chose size and position of components
 		frame.setForeground(new Color (0x0f29ad8));
 		frame.getContentPane().setBackground(new Color (0x0f29ad8) );
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets screen dimensions
+		// triggers first method
 		modes(frame, screenSize, q, a, q_op);
 		frame.setResizable(false); // frame size can't be changed
 		frame.setVisible(true); // makes us able to see the screen
 		
+	
+		
+
 		
 		 
 	}
 
 	public static void modes(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op) {
 // this is the first screen that appears once the button "computer organisation button is clicked
+// this first section is just for aesthetics
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 30); // the font that i have chose
 		
+		// adds title I designed to the frame
         JLabel screen_title = new JLabel();
         screen_title.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\screen_title.JPG"));
         Dimension size = screen_title.getPreferredSize();
         screen_title.setBounds((screen_width / 2) - 435, (screen_height / 2) - 300,size.width,size.height);
         frame.add(screen_title);
         
+        // adds an image of a pointer (for the aesthetic)
         JLabel pointer = new JLabel();
         pointer.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\output-onlinepngtools.png"));
         Dimension size1 = pointer.getPreferredSize();
@@ -116,27 +123,30 @@ public class computerOrganisation2 {
 
 
 		JLabel Quiz_mode = new JLabel("Please choose a Quiz mode");
-// quiz 1
+		
+// quiz 1 where user is given one random question to answer
 		JButton Random = new JButton();
 		Random.setFont(f2);
 		Random.setText("Random Question Mode");
-		Random.setForeground(new Color(0x0FFFFFF) );
-		Random.setBackground(new Color(0x0f039b1));
+		Random.setForeground(new Color(0x0FFFFFF) ); //sets text colour
+		Random.setBackground(new Color(0x0f039b1));// sets background colour
 		Random.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		Random.setBounds((screen_width / 2) - 210, (screen_height / 2) - 110, 400, 50);
 		
 		Random.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
-				frame.revalidate();// these remove all of the elements on screen so the others can be shown and not
-									// overlap
+				frame.revalidate();/* these remove all of the elements on screen so the others can be shown and not
+									overlap */
 				frame.repaint();
 				
-				int mode = 1;
+				int mode = 1; // used to identify what show results method to use
+				
 				Random rand = new Random();
-				int rand_question = rand.nextInt(6+1);
+				int rand_question = rand.nextInt(6)+1; /* generates a random integer between 1 and 6 and depending on the output, one of the six questions is selected*/
 				if (rand_question ==1 ) {
-					easy1(frame, screenSize, q, a, q_op, mode, null, null);
+					easy1(frame, screenSize, q, a, q_op, mode, null, null); /* imports the necessary variables, the nulls are stand ins for other variables that arent being used here but 
+					are being used in when the methods are called later on*/
 				} else if (rand_question == 2) {
 					easy2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}else if (rand_question == 3) {
@@ -145,14 +155,14 @@ public class computerOrganisation2 {
 					intermed2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}else if (rand_question == 5) {
 					difficult1(frame, screenSize, q, a, q_op, null, mode, null, null);
-				} else {
+				} else if (rand_question == 6) {
 					difficult2(frame, screenSize, q, a, q_op, null, mode, null, null);
 				}
 
 			};
 
 		});
-// quiz 2
+// quiz 2 where the user can choose the difficulty of the questions the want to answer
 		JButton increasing_Difficulty = new JButton();
 		increasing_Difficulty.setFont(f2);
 		increasing_Difficulty.setText("Increasing Difficulty");
@@ -163,15 +173,17 @@ public class computerOrganisation2 {
 		increasing_Difficulty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
-				frame.revalidate();// these remove all of the elements on screen so the others can be shown and not
+				frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
 				frame.repaint();
-
+				
+// moves the user to the screen where they choose the difficulty level
 				level_choice(frame, screenSize, q, a, q_op);
 
 			};
 
 		});
-// quiz 3
+// quiz 3 where the user is timed and can repeat to beat their highscore
+		
 		JButton Timed_mode = new JButton();
 		Timed_mode.setFont(f2);
 		Timed_mode.setText("Timed mode");
@@ -185,6 +197,8 @@ public class computerOrganisation2 {
 				frame.revalidate();// these remove all of the elements on screen so the others can be shown and not
 									// overlap
 				frame.repaint();
+				
+// moves user to a screen where they can click to start the stopwatch
 				begin(frame, screenSize, q, a, q_op);
 
 			};
@@ -199,18 +213,13 @@ public class computerOrganisation2 {
 	}
 	
 
-	private static void setContentPane(JLabel backgroundLabel) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public static void begin(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 24);
 		
-		int mode = 3;
+		int mode = 3; // Identifier for timed mode
 		String[] all_six_results = new String[6];
 		JLabel ask_begin = new JLabel("Try to complete 6 questions in as little time as possible.\n Press 'Start' to start the timer ");
 		ask_begin.setForeground(new Color(0x0000000 ));
@@ -237,8 +246,8 @@ public class computerOrganisation2 {
 										// overlap
 					frame.repaint();
 
-					Instant startTime = Instant.now();
-					 easy1(frame, screenSize, q, a, q_op, mode, all_six_results, startTime);
+					Instant startTime = Instant.now(); // starts stop watch
+					 easy1(frame, screenSize, q, a, q_op, mode, all_six_results, startTime); //startTime transfers the stopwatch between methods
 					
 
 				};
@@ -251,7 +260,7 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
-		int mode = 2;
+		int mode = 2; // Identifier increasing difficulty mode
 		JButton easy = new JButton("easy");
 		easy.setForeground(new Color(0x0FFFFFF) );
 		easy.setBackground(new Color(0x0f039b1));
@@ -259,31 +268,6 @@ public class computerOrganisation2 {
 		easy.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		easy.setBounds((screen_width/2) -100, (screen_height/2) - 140, 200, 35);
 		frame.add(easy);
-		
-		JButton Intermediate = new JButton("intermediate");
-		Intermediate.setForeground(new Color(0x0FFFFFF) );
-		Intermediate.setBackground(new Color(0x0f039b1));
-		Intermediate.setFont(f1);
-		Intermediate.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-		Intermediate.setBounds((screen_width/2)-100, (screen_height/2) - 80, 200, 35);
-		frame.add(Intermediate);
-		
-		JButton Difficult = new JButton("difficult");
-		Difficult.setForeground(new Color(0x0FFFFFF) );
-		Difficult.setBackground(new Color(0x0f039b1));
-		Difficult.setFont(f1);
-		Difficult.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-		Difficult.setBounds((screen_width/2) -100, (screen_height/2) - 20, 200, 35);
-		frame.add(Difficult);
-		
-		JButton rtrn = new JButton("Return");
-		rtrn.setForeground(new Color(0x0FFFFFF) );
-		rtrn.setBackground(new Color(0x0f039b1));
-		rtrn.setFont(f1);
-		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-		rtrn.setBounds((screen_width/2) - 100, (screen_height/2) + 40, 200, 35);
-		frame.add(rtrn);
-		
 		
 		easy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -294,6 +278,15 @@ public class computerOrganisation2 {
 			};
 
 		});
+		
+		JButton Intermediate = new JButton("intermediate");
+		Intermediate.setForeground(new Color(0x0FFFFFF) );
+		Intermediate.setBackground(new Color(0x0f039b1));
+		Intermediate.setFont(f1);
+		Intermediate.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		Intermediate.setBounds((screen_width/2)-100, (screen_height/2) - 80, 200, 35);
+		frame.add(Intermediate);
+		
 		Intermediate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
@@ -303,6 +296,15 @@ public class computerOrganisation2 {
 			};
 
 		});
+		
+		JButton Difficult = new JButton("difficult");
+		Difficult.setForeground(new Color(0x0FFFFFF) );
+		Difficult.setBackground(new Color(0x0f039b1));
+		Difficult.setFont(f1);
+		Difficult.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		Difficult.setBounds((screen_width/2) -100, (screen_height/2) - 20, 200, 35);
+		frame.add(Difficult);
+		
 		Difficult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
@@ -312,6 +314,15 @@ public class computerOrganisation2 {
 			};
 
 		});
+		JButton rtrn = new JButton("Return");
+		rtrn.setForeground(new Color(0x0FFFFFF) );
+		rtrn.setBackground(new Color(0x0f039b1));
+		rtrn.setFont(f1);
+		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		rtrn.setBounds((screen_width/2) - 100, (screen_height/2) + 40, 200, 35);
+		frame.add(rtrn);
+		
+
 		rtrn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.getContentPane().removeAll();
@@ -334,8 +345,8 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
-			String[] resulte = new String[2];
-			String[] single_result = new String[1];
+			String[] resulte = new String[2]; // holds results for increasing difficulty mode
+			String[] single_result = new String[1]; // holds results for random mode
 			
 			JLabel level = new JLabel();
 			level.setText("Level 1: Easy");
@@ -353,7 +364,7 @@ public class computerOrganisation2 {
 
 				
 				
-			ButtonGroup ans = new ButtonGroup();
+			ButtonGroup ans = new ButtonGroup(); // question answer options
 			JRadioButton first = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(0));
 			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			first.setFont(f1);
@@ -382,13 +393,14 @@ public class computerOrganisation2 {
 					frame.revalidate();
 					frame.repaint();
 					
-					if (mode == 1) {
+					if (mode == 1) { // for random mode
 						single_result[0] = "correct";
-						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
-					} else if (mode == 2) {
+						showresult_random(frame, screenSize, q, a, q_op, single_result, 1); /* the 1 represent the question number, necessary for the 
+						showing of results*/
+					} else if (mode == 2) { // for increasing difficulty mode
 						resulte[0] = "correct";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
-					} else if(mode == 3) {
+					} else if(mode == 3) { // for timed mode
 						all_six_results[0] = "correct"; 
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
@@ -401,13 +413,13 @@ public class computerOrganisation2 {
 					frame.getContentPane().removeAll();
 					frame.revalidate();
 					frame.repaint();
-					if (mode == 1) {
+					if (mode == 1) { // for random mode
 						single_result[0] = "incorrect";
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
-					} else if (mode == 2) {
+					} else if (mode == 2) { // for increasing difficulty mode
 						resulte[0] = "incorrect";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
-					}else if (mode == 3) {
+					}else if (mode == 3) { // for timed mode
 						all_six_results[0] = "incorrect";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
@@ -419,13 +431,13 @@ public class computerOrganisation2 {
 					frame.getContentPane().removeAll();
 					frame.revalidate();
 					frame.repaint();
-					if (mode == 1) {
+					if (mode == 1) { // for random mode
 						single_result[0] = "incorrect";
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
-					} else if (mode == 2) { 
+					} else if (mode == 2) { // for increasing difficulty mode
 						resulte[0] = "incorrect";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
-					} else if (mode == 3) {
+					} else if (mode == 3) { // for timed mode
 						all_six_results[0] = "incorrect";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
@@ -437,14 +449,14 @@ public class computerOrganisation2 {
 					frame.getContentPane().removeAll();
 					frame.revalidate();
 					frame.repaint();
-					if (mode == 1) {
+					if (mode == 1) { // for random mode
 						single_result[0] = "incorrect";
 						showresult_random(frame, screenSize, q, a, q_op, single_result, 1);
-					} else if (mode == 3) {
+					} else if (mode == 3) { // for increasing difficulty mode
 						resulte[0] = "incorrect";
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, null, null);
-					}else if (mode == 3) {
-						all_six_results[0] = "incorrect";
+					}else if (mode == 3) {// for timed mode
+						all_six_results[0] = "incorrect"; // stores result in first position
 						easy2(frame, screenSize, q, a, q_op, resulte, mode, all_six_results, startTime);	
 					}
 
@@ -984,12 +996,14 @@ public class computerOrganisation2 {
 		});
 } 
 public static void showresults_incrdiff(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, int Selection, String[] result) {
+// shows result for the increasing difficulty mode, mode 2
+	
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
 	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 18);
 	
-	if (Selection == 1) {
+	if (Selection == 1) { // selection 1 means user chose the easy questions
 		JLabel easy_q1 = new JLabel();
 		easy_q1.setText("Question 1: " +(String) q.get(0));
 		easy_q1.setFont(f2);
@@ -1034,7 +1048,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		frame.add(easy_user2);
 		
 		
-		} else if (Selection == 2) {
+		} else if (Selection == 2) { // selection 2 means user chose the intermediate questions
 			JLabel Intermed_q1 = new JLabel();
 			Intermed_q1.setText("Question 1: " +(String) q.get(2));
 			Intermed_q1.setFont(f1);
@@ -1077,7 +1091,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			Intermed_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
 			frame.add(Intermed_user2);
 			
-		} else if (Selection == 3) {
+		} else if (Selection == 3) { // selection 3 means user chose difficult questions
 			JLabel difficult_q1 = new JLabel();
 			difficult_q1.setText("Question 1: " +(String) q.get(4));
 			difficult_q1.setFont(f1);
@@ -1299,11 +1313,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
     trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
     frame.add(trophy); 
     
-	Instant endTime = Instant.now();
-	Duration timeElapsed = Duration.between(startTime, endTime);
+	Instant endTime = Instant.now(); // stops the stopwatch
+	Duration timeElapsed = Duration.between(startTime, endTime); // calculates the time taken
 	
 	JLabel stopwatch = new JLabel();
-	stopwatch.setText("Time taken: " + formatDuration(timeElapsed));
+	stopwatch.setText("Time taken: " + formatDuration(timeElapsed)); // holds the time taken value and formats it correctly
 	stopwatch.setFont(f2);
 	stopwatch.setBounds((screen_width/2) + 50, (screen_height/2) - 150, 400, 50);
 	stopwatch.setBackground(new Color (0x0f039b1));
@@ -1528,12 +1542,12 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	});
 	
 } public static String formatDuration(Duration duration) {
-    long hours = duration.toHours();
-    long minutes = duration.minusHours(hours).toMinutes();
-    long seconds = duration.minusHours(hours).minusMinutes(minutes).getSeconds();
-    long milliseconds = duration.minusHours(hours).minusMinutes(minutes).minusSeconds(seconds).toMillis();
+    long hours = duration.toHours(); // isolates hours
+    long minutes = duration.minusHours(hours).toMinutes(); // isolates minutes
+    long seconds = duration.minusHours(hours).minusMinutes(minutes).getSeconds(); // isolates seconds
+    long milliseconds = duration.minusHours(hours).minusMinutes(minutes).minusSeconds(seconds).toMillis(); // isolates milliseconds
 
-    return String.format("%d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds);
+    return String.format("%d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds); // formats how many decimal points wanted for each time measurement
 }
 }
 	
