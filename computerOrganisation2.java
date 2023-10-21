@@ -91,6 +91,8 @@ public class computerOrganisation2 {
 		frame.setResizable(false); // frame size can't be changed
 		frame.setVisible(true); // makes us able to see the screen
 		
+
+		
 	
 		
 
@@ -105,19 +107,12 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 30); // the font that i have chose
 		
-		// adds title I designed to the frame
-        JLabel screen_title = new JLabel();
-        screen_title.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\screen_title.JPG"));
-        Dimension size = screen_title.getPreferredSize();
-        screen_title.setBounds((screen_width / 2) - 435, (screen_height / 2) - 300,size.width,size.height);
-        frame.add(screen_title);
         
-        // adds an image of a pointer (for the aesthetic)
-        JLabel pointer = new JLabel();
-        pointer.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\output-onlinepngtools.png"));
-        Dimension size1 = pointer.getPreferredSize();
-        pointer.setBounds((screen_width / 2) - 675, (screen_height / 2) - 500,size1.width,size1.height);
-        frame.add(pointer);
+		//background image for design purposes
+		 JLabel first_background = new JLabel();
+		 first_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (5) (1).jpg"));
+	     Dimension size = first_background.getPreferredSize();
+	     first_background.setBounds(0,0,size.width,size.height);
 		
 		
 
@@ -209,6 +204,8 @@ public class computerOrganisation2 {
 		frame.add(Random);
 		frame.add(increasing_Difficulty);
 		frame.add(Timed_mode);
+		frame.add(first_background);
+		
 
 	}
 	
@@ -218,6 +215,11 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 24);
+		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
 		
 		int mode = 3; // Identifier for timed mode
 		String[] all_six_results = new String[6];
@@ -237,7 +239,7 @@ public class computerOrganisation2 {
 		begin.setBounds((screen_width/2)-100, (screen_height/2) - 80, 200, 35);
 		frame.add(begin);
 		frame.add(ask_begin);
-		
+		frame.add(general_background);
 
 			begin.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -259,6 +261,11 @@ public class computerOrganisation2 {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
 		
 		int mode = 2; // Identifier increasing difficulty mode
 		JButton easy = new JButton("easy");
@@ -335,6 +342,7 @@ public class computerOrganisation2 {
 			};
 
 		});
+		frame.add(general_background);
 	}
 	
 	
@@ -344,6 +352,11 @@ public class computerOrganisation2 {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
 		
 			String[] resulte = new String[2]; // holds results for increasing difficulty mode
 			String[] single_result = new String[1]; // holds results for random mode
@@ -384,7 +397,7 @@ public class computerOrganisation2 {
 			fourth.setBounds((screen_width/2) - 400, (screen_height/2) -20 , 800, 35);
 			ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 			fourth.setFont(f1);
-			frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
+			
 			fourth.setForeground(new Color(0x0FFFFFF) );
 			fourth.setBackground(new Color(0x0f039b1));
 			first.addActionListener(new ActionListener() {
@@ -463,7 +476,8 @@ public class computerOrganisation2 {
 				};
 
 			});
-				
+			frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
+			frame.add(general_background);
 
 				
 
@@ -474,7 +488,11 @@ public class computerOrganisation2 {
 		String[] single_result = new String[1];
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
-		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
+	     
 			JLabel q2 = new JLabel();
 			q2.setText("Question 2: " + q.get(1)); 
 			q2.setBounds((screen_width/2) - 350, (screen_height/2) - 180, 800, 35);
@@ -580,9 +598,17 @@ public class computerOrganisation2 {
 				};
 
 			});
+			
+			frame.add(general_background);
+			
 	} public static void Intermed1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulte, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
+		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
 		
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 			String[] resulti = new String[2];
@@ -699,11 +725,19 @@ public class computerOrganisation2 {
 				};
 
 			});
+			
+			frame.add(general_background);
+			
 	} public static void intermed2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results, Instant startTime) {
 		int screen_width = (int) screenSize.getWidth();
 		int screen_height = (int) screenSize.getHeight();
 		String[] single_result = new String[1];
 		
+		 JLabel general_background = new JLabel();
+		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	     Dimension size = general_background.getPreferredSize();
+	     general_background.setBounds(0,0,size.width,size.height);
+	     
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 		
 		
@@ -765,12 +799,18 @@ public class computerOrganisation2 {
 
 			});
 
-
+			frame.add(general_background);
+			
 } public static void difficult1(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resulti, int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
+	
+	 JLabel general_background = new JLabel();
+	 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+    Dimension size = general_background.getPreferredSize();
+    general_background.setBounds(0,0,size.width,size.height);
 	
 		String[] resultd = new String[2];
 		String[] single_result = new String[1];
@@ -884,10 +924,20 @@ public class computerOrganisation2 {
 			};
 
 		});
+		
+		frame.add(general_background);
+		
 } public static void difficult2(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] resultd,  int mode, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
+	
+	 JLabel general_background = new JLabel();
+	 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+    Dimension size = general_background.getPreferredSize();
+    general_background.setBounds(0,0,size.width,size.height);
+    
+    
 	String[] single_result = new String[1];
 		JLabel q6 = new JLabel();
 		q6.setText("Question 6: " + q.get(5)); 
@@ -994,6 +1044,8 @@ public class computerOrganisation2 {
 			};
 
 		});
+		
+		frame.add(general_background);
 } 
 public static void showresults_incrdiff(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, int Selection, String[] result) {
 // shows result for the increasing difficulty mode, mode 2
@@ -1002,6 +1054,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
 	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 18);
+	
+	 JLabel results_background = new JLabel();
+	 results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
+    Dimension size = results_background.getPreferredSize();
+    results_background.setBounds(0,0,size.width,size.height);
 	
 	if (Selection == 1) { // selection 1 means user chose the easy questions
 		JLabel easy_q1 = new JLabel();
@@ -1142,11 +1199,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
 		frame.add(rtrn);
-        JLabel trophy = new JLabel();
-        trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
-        Dimension size = trophy.getPreferredSize();
-        trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
-        frame.add(trophy);
+
 		
 		rtrn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -1160,16 +1213,18 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			};
 
 		});
+		frame.add(results_background);
+		
 } public static void showresult_random(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] single_result, int question) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 	
-    JLabel trophy = new JLabel();
-    trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
-    Dimension size = trophy.getPreferredSize();
-    trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
-    frame.add(trophy);
+	JLabel results_background = new JLabel();
+	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
+   Dimension size = results_background.getPreferredSize();
+   results_background.setBounds(0,0,size.width,size.height);
+	
 	
 	if (question == 1) {
 		JLabel easy_q1 = new JLabel();
@@ -1300,6 +1355,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		};
 
 	});
+	frame.add(results_background);
 	
 } public static void showresults_countdown(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
@@ -1307,12 +1363,11 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
 	Font f2 = new Font(Font.SANS_SERIF,  Font.BOLD, 30);
 	
-    JLabel trophy = new JLabel();
-    trophy.setIcon(new ImageIcon ("C:\\Users\\adeto\\Downloads\\Computer Organisation (2).png"));
-    Dimension size = trophy.getPreferredSize();
-    trophy.setBounds((screen_width / 2) - 700, (screen_height / 2) -400 ,size.width ,size.height);
-    frame.add(trophy); 
-    
+	 JLabel results_background = new JLabel();
+	 results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
+   Dimension size = results_background.getPreferredSize();
+   results_background.setBounds(0,0,size.width,size.height);
+
 	Instant endTime = Instant.now(); // stops the stopwatch
 	Duration timeElapsed = Duration.between(startTime, endTime); // calculates the time taken
 	
@@ -1379,6 +1434,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	easy_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
 	frame.add(easy_user2);
 	
+	
 	JButton next_page = new JButton("Go to next page");
 	next_page.setForeground(new Color(0x0FFFFFF) );
 	next_page.setBackground(new Color(0x0f039b1));
@@ -1386,6 +1442,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	next_page.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 	next_page.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
 	frame.add(next_page);
+	frame.add(results_background);
 	
 	next_page.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
@@ -1453,6 +1510,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 			next_page2.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 			next_page2.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
 			frame.add(next_page2);
+			frame.add(results_background);
 			
 			next_page2.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -1519,6 +1577,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 					rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
 					rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
 					frame.add(rtrn);
+					frame.add(results_background);
 					
 					rtrn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
@@ -1540,6 +1599,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		};
 
 	});
+	
 	
 } public static String formatDuration(Duration duration) {
     long hours = duration.toHours(); // isolates hours
