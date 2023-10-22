@@ -19,10 +19,11 @@ public class Main extends Thread{
         frame.setLayout(null);//using no layout managers
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame, source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
         Login.Main(frame,screenSize);
-        //ComputerScience.randomGame(frame,screenSize);
-        //ComputerScience.showFrame(frame,screenSize,"Intense","Q1");
+
+        //ComputerScience.timer(frame,screenSize);
+        //ComputerScience.typeOfQuiz(frame,screenSize);
         frame.setResizable(true);
-        frame.setVisible(true);//making the frame visible
+
     }
     public void run() {
         MusicPlayer.playAudio("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\Puzzle-Dreams-3.wav");

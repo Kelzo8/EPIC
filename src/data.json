@@ -74,19 +74,19 @@
       "CorrectAnswer": "3"
     },
     "Q2":{
-      "Q":"What denotes assignment/definiton in B.N.F grammar?",
+      "Q":"Which of these are valid registration numbers according to these BNF rules?",
       "A":{
-        "1":"=:",
-        "2":":=",
-        "3":"=::",
-        "4":"::="
+        "1":"AC 234",
+        "2":"AB 067",
+        "3":"AX 13",
+        "4":"BB 67390"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png",
-      "QuestionxOffset": "-185",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\bnfq1.png",
+      "QuestionxOffset": "-400",
       "QuestionyOffset": "-250",
-      "ImagexOffset": "600",
-      "ImageyOffset": "-393",
-      "CorrectAnswer": "4"
+      "ImagexOffset": "70",
+      "ImageyOffset": "70",
+      "CorrectAnswer": "1"
     }
   }
 }
