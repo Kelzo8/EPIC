@@ -19,7 +19,6 @@ public class Main extends Thread{
         frame.setLayout(null);//using no layout managers
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame, source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
         //Login.Main(frame,screenSize);
-
         //ComputerScience.timer(frame,screenSize);
         ComputerScience.typeOfQuiz(frame,screenSize);
         frame.setResizable(true);

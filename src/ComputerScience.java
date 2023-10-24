@@ -2,8 +2,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -11,6 +9,7 @@ import java.util.Date;
 
 public class ComputerScience extends Thread{
     static boolean isRandom = false;
+    static boolean resultsShown = false;
     static String[] difficulties = {"Easy","Intermediate","Intense"};// for random
     static Boolean[][] answered = {{false,false},{false,false},{false,false}};//answered[0][x] for easy,answered[1][x] for intermediate,answered[2][x] for intense
     static String[] results = new String[2];
@@ -196,7 +195,6 @@ public class ComputerScience extends Thread{
         option3.setBounds((screenWidth/2)-250,(screenHeight/2)-50,500,50);
         option4.setBounds((screenWidth/2)-250,(screenHeight/2),500,50);
 
-        Timer wait = new Timer(2000, e -> showFrame(frame, screenSize, type, "Q2"));
         option1.addActionListener(e -> {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -602,6 +600,7 @@ public class ComputerScience extends Thread{
         return count;
     }
     public static void timer(JFrame frame, Dimension screenSize){ // from https://stackoverflow.com/questions/12191029/running-two-independent-tasks-simultaneously-using-threads
+        resultsShown = false;
         randomGame(frame,screenSize);
         if (isTimed) {
             Thread randomThread = new Thread(() -> {
@@ -611,10 +610,12 @@ public class ComputerScience extends Thread{
                     elapsedTimeGlob = (int) (((new Date()).getTime() - startTime) / 1000);
                 }
                 System.out.println("FINISHED");
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
-                showResults(frame, screenSize);
+                if (!resultsShown) {
+                    frame.getContentPane().removeAll();
+                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                    frame.repaint();
+                    showResults(frame, screenSize);
+                }
             });
             randomThread.start();
         }
@@ -636,6 +637,7 @@ public class ComputerScience extends Thread{
     }
     public static void showResults(JFrame frame, Dimension screenSize) {
         JLabel background = new JLabel();
+        resultsShown = true;
         background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
@@ -648,14 +650,10 @@ public class ComputerScience extends Thread{
         int outOfAmount;//for displaying what you got out of i.e. out of 6 for random and out of 2 for levels
         if (isRandom) {
             outOfAmount = 6;
-            System.out.println("RANDOM");
             correctAmount = countResultForRand();
         } else {
             outOfAmount = 2;
-            System.out.println("NOT RANDOM");
             correctAmount = countResultForLevel();
-            System.out.println(Arrays.toString(results));
-            System.out.println(correctAmount);
         }
         JLabel timeTaken = new JLabel("You took: "+ elapsedTimeGlob + " seconds out of 30 seconds");
         //CURRENTLY ONLY WORKS FOR RANDOM

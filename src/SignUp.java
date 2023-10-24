@@ -5,7 +5,6 @@ import java.io.*;
 public class SignUp {
     public static void Main(JFrame frame, Dimension screenSize){
         // CSV READER & WRITER LEARNED FROM BRO CODE
-
         int screenWidth = (int) screenSize.getWidth();
         int screenHeight = (int) screenSize.getHeight();
         JLabel background = new JLabel();
@@ -117,5 +116,4 @@ public class SignUp {
         });
         frame.setVisible(true);//making the frame visible
     }
-
 }
