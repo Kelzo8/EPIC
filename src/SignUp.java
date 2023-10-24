@@ -38,23 +38,18 @@ public class SignUp {
         JLabel confirmPwdLabel = new JLabel("Confirm password:");
         confirmPwdLabel.setBounds((screenWidth/2)-100,(screenHeight/2)+10,150,20);
 
-        JButton submit = new JButton("Login");
         JButton signUp = new JButton("Sign Up");
-        submit.setBounds((screenWidth/2)-100,(screenHeight/2)+80,200,30);
-        submit.setBackground(Color.decode("#2a7608"));
-        signUp.setBounds((screenWidth/2)-100,(screenHeight/2)+120,200,30);
+        signUp.setBounds((screenWidth/2)-100,(screenHeight/2)+80,200,30);
         signUp.setBackground(Color.decode("#2a7608"));
 
-        frame.add(rqLogo);frame.add(signUp);frame.add(userName);frame.add(password);frame.add(submit);
+        JButton login = new JButton("Or login");
+        login.setBounds((screenWidth/2)-100,(screenHeight/2)+120,200,30);
+        login.setBackground(Color.decode("#2a7608"));
+
+        frame.add(rqLogo);frame.add(signUp);frame.add(login);frame.add(userName);frame.add(password);
         frame.add(userNameLabel);frame.add(confirmPwdLabel);frame.add(passwordLabel);frame.add(loginbg);
         frame.add(background);frame.add(confirmPassword);
 
-        submit.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
-            Login.Main(frame, screenSize);
-        });
         signUp.addActionListener(e -> {
             String userDataFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\logins.csv"; // this file contains the login details  of every password
             BufferedReader reader;
@@ -77,9 +72,9 @@ public class SignUp {
                 JOptionPane.showMessageDialog(frame, "Sorry that username already exists!");
             } else {
                 if (password.getText().equals(confirmPassword.getText())) {
-                    try{
+                    try{//source: https://www.youtube.com/watch?v=epDEG6YstSU
                         BufferedWriter writer = new BufferedWriter(new FileWriter(userDataFile,true));
-                        writer.write(usernameFinal + "," + password.getText().hashCode());
+                        writer.write("\n"+usernameFinal + "," + password.getText().hashCode()+",");
                         writer.close();
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
@@ -96,14 +91,11 @@ public class SignUp {
 
 
         });
-        submit.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                submit.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                submit.setBackground(Color.decode("#38b000"));
-            }
+        login.addActionListener((e)-> {
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
+            Login.Main(frame,screenSize);
         });
         signUp.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -112,6 +104,15 @@ public class SignUp {
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 signUp.setBackground(Color.decode("#38b000"));
+            }
+        });
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                login.setBackground(Color.decode("#40cb00"));
+            }
+
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                login.setBackground(Color.decode("#38b000"));
             }
         });
         frame.setVisible(true);//making the frame visible

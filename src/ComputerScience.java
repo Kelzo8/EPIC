@@ -2,6 +2,8 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
@@ -75,7 +77,6 @@ public class ComputerScience extends Thread{
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
             DifficultyMenu(frame,screenSize);
-
         });
         timer.addActionListener(e -> {
             frame.getContentPane().removeAll();
@@ -195,6 +196,7 @@ public class ComputerScience extends Thread{
         option3.setBounds((screenWidth/2)-250,(screenHeight/2)-50,500,50);
         option4.setBounds((screenWidth/2)-250,(screenHeight/2),500,50);
 
+        Timer wait = new Timer(2000, e -> showFrame(frame, screenSize, type, "Q2"));
         option1.addActionListener(e -> {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -203,10 +205,14 @@ public class ComputerScience extends Thread{
                 if (question.equals("Q1")) {
                     if (CorrectAnswer.equals("1")) {
                         results[0] = "Correct";
+                        //option1.setForeground(new Color(0,255,0));
+
+                        //wait.start();
                     } else {
                         results[0] = "Incorrect";
                     }
                     showFrame(frame, screenSize, type, "Q2");
+
                 }
                 else{
                     if (CorrectAnswer.equals("1")){
@@ -556,6 +562,7 @@ public class ComputerScience extends Thread{
             }
         }
         if (allTrue) {
+            System.out.println("Yeah...the error is here");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
@@ -573,7 +580,6 @@ public class ComputerScience extends Thread{
             showFrame(frame,screenSize,difficulties[ranDifficulty],"Q"+ranQuestion);
         }
         frame.setVisible(true);//making the frame visible
-
     }
     public static void randomAnswersReset(){
         for (Boolean[] booleans : answered) {
@@ -597,21 +603,21 @@ public class ComputerScience extends Thread{
     }
     public static void timer(JFrame frame, Dimension screenSize){ // from https://stackoverflow.com/questions/12191029/running-two-independent-tasks-simultaneously-using-threads
         randomGame(frame,screenSize);
-        Thread randomThread = new Thread(() -> {
-            System.out.println("here");
-            elapsedTimeGlob = 0;
-
-            long startTime = System.currentTimeMillis();
-            while (elapsedTimeGlob < 3) {
-                elapsedTimeGlob = (int) (((new Date()).getTime() - startTime)/1000);
-            }
-            System.out.println("FINISHED");
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
-            showResults(frame, screenSize);
-        });
-        randomThread.start();
+        if (isTimed) {
+            Thread randomThread = new Thread(() -> {
+                elapsedTimeGlob = 0;
+                long startTime = System.currentTimeMillis();
+                while (elapsedTimeGlob < 30) {
+                    elapsedTimeGlob = (int) (((new Date()).getTime() - startTime) / 1000);
+                }
+                System.out.println("FINISHED");
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+                showResults(frame, screenSize);
+            });
+            randomThread.start();
+        }
         //randomThread.start();
     }
     public static int countResultForLevel(){
@@ -622,13 +628,12 @@ public class ComputerScience extends Thread{
                     count++;
                 }
             }
-        } catch (NullPointerException e) {
-            System.out.println("None");
+        } catch (NullPointerException ignored) {
+
         }
 
         return count;
     }
-
     public static void showResults(JFrame frame, Dimension screenSize) {
         JLabel background = new JLabel();
         background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
@@ -639,7 +644,6 @@ public class ComputerScience extends Thread{
 
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();
-        System.out.println(Arrays.deepToString(randomResults));
         int correctAmount;//what the user got correct
         int outOfAmount;//for displaying what you got out of i.e. out of 6 for random and out of 2 for levels
         if (isRandom) {
@@ -653,6 +657,7 @@ public class ComputerScience extends Thread{
             System.out.println(Arrays.toString(results));
             System.out.println(correctAmount);
         }
+        JLabel timeTaken = new JLabel("You took: "+ elapsedTimeGlob + " seconds out of 30 seconds");
         //CURRENTLY ONLY WORKS FOR RANDOM
         JLabel outOfText = new JLabel("OUT OF "+outOfAmount+" CORRECT!");
         //JLabel outOfTime = new JLabel("Out of time!");
@@ -661,8 +666,8 @@ public class ComputerScience extends Thread{
         JLabel trophy = new JLabel();
         JLabel correct = new JLabel(String.valueOf(correctAmount));// gets the amount of correct values from the random game and displays them
 
-
         //setting the font for the labels
+        timeTaken.setFont(new Font("Arial", Font.BOLD, 48));
         outOfText.setFont(new Font("Arial", Font.BOLD, 48));
         correct.setFont(new Font("Arial", Font.BOLD, 48));
         youGotText.setFont(new Font("Arial", Font.BOLD, 48));
@@ -670,6 +675,7 @@ public class ComputerScience extends Thread{
 
         //setting location for the labels and buttons
         //outOfTime.setBounds((screenWidth/2)-135,(screenHeight/2)-300,1000,200);
+        timeTaken.setBounds((screenWidth/2)-400,(screenHeight/2)-320,1000,200);
         youGotText.setBounds((screenWidth/2)-110,(screenHeight/2)-250,1000,200);
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         correct.setBounds((screenWidth/2)-15,(screenHeight/2)-65,100,100);
@@ -679,13 +685,14 @@ public class ComputerScience extends Thread{
         }else {
             frame.getContentPane().setBackground(Color.RED);
         }
-
         trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\trophy.png"));
         Dimension size = trophy.getPreferredSize();
         trophy.setBounds((screenWidth/2)-333,(screenHeight/2)-192,size.width,size.height);
         frame.add(correct);frame.add(trophy);frame.add(youGotText);frame.add(outOfText);frame.add(returnButton);
+        if (isTimed) frame.add(timeTaken);
         //if (isTimed) frame.add(outOfTime);
         //RESULTS ARE IN ARRAY -- > JUST NEED TO BE DISPLAYED 18/10/2023 DO TOMORROW
+
         returnButton.addActionListener((e)-> {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
