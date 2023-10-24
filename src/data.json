@@ -10,7 +10,7 @@
       },
       "QuestionxOffset": "-230",
       "QuestionyOffset": "-240",
-      "CorrectAnswer": "1"
+      "CorrectAnswer": "2"
     },
     "Q2":{
       "Q":"What denotes assignment/definiton in B.N.F grammar?",
@@ -59,23 +59,34 @@
   },
   "Intense":{
     "Q1":{
-      "Q":"What does the acronym B.N.F stand for?",
+      "Q":"How many complements does 'e' have?",
       "A":{
-        "1":"Binary Notation Framework",
-        "2":"Backus-Naur Form",
-        "3":"Basic Network Function",
-        "4":"Boolean Naming Function"
-      }
+        "1":"2",
+        "2":"4",
+        "3":"3",
+        "4":"1"
+      },
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png",
+      "QuestionxOffset": "-230",
+      "QuestionyOffset": "-225",
+      "ImagexOffset": "600",
+      "ImageyOffset": "-150",
+      "CorrectAnswer": "3"
     },
     "Q2":{
-      "Q":"What denotes assignment/definiton in B.N.F grammar?",
+      "Q":"Which of these are valid registration numbers according to these BNF rules?",
       "A":{
-        "1":"=:",
-        "2":":=",
-        "3":"=::",
-        "4":"::="
+        "1":"AC 234",
+        "2":"AB 067",
+        "3":"AX 13",
+        "4":"BB 67390"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png"
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\bnfq1.png",
+      "QuestionxOffset": "-400",
+      "QuestionyOffset": "-250",
+      "ImagexOffset": "70",
+      "ImageyOffset": "70",
+      "CorrectAnswer": "1"
     }
   }
 }

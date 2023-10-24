@@ -13,58 +13,48 @@ public class selectionMenu {
         typeOfQuiz.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton foundationsOfCompSci = new JButton(); // declaring a new button of the name foundationsOfCompSci
         foundationsOfCompSci.setText("Foundations of Computer Science");
-        foundationsOfCompSci.setBounds((screenWidth/2)-150,(screenHeight/2)-150,300,20);// setting location for element on frame
+        foundationsOfCompSci.setBounds((screenWidth/2)-150,(screenHeight/2)-150,300,30);// setting location for element on frame
+        foundationsOfCompSci.setBackground(Color.decode("#38b000"));
         JButton discreteMaths = new JButton();
-        discreteMaths.setBounds((screenWidth/2)-150,(screenHeight/2)-100,300,20);
-
+        discreteMaths.setBounds((screenWidth/2)-150,(screenHeight/2)-100,300,30);
+        discreteMaths.setBackground(Color.decode("#168aad"));
         discreteMaths.setText("Discrete Mathematics");
         JButton compOrg = new JButton();
-        compOrg.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,20);
-
+        compOrg.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,30);
+        compOrg.setBackground(Color.decode("#f039b1"));
         compOrg.setText("Computer Organisation");
         frame.add(foundationsOfCompSci);frame.add(discreteMaths);frame.add(compOrg);frame.add(typeOfQuiz);frame.add(returnButton);
 
-        foundationsOfCompSci.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                //JOptionPane.showMessageDialog(frame, "Foundations of Computer Science");
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
-                ComputerScience.typeOfQuiz(frame,screenSize);
-            }
+        foundationsOfCompSci.addActionListener(e -> {
+            //JOptionPane.showMessageDialog(frame, "Foundations of Computer Science");
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
+            ComputerScience.typeOfQuiz(frame,screenSize);
         });
-        discreteMaths.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Discrete Maths");
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
+        discreteMaths.addActionListener(e -> {
+            JOptionPane.showMessageDialog(frame, "Discrete Maths");
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
 
 
-                // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
-            }
+            // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
         });
-        compOrg.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(frame, "Computer Organisation");
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
+        compOrg.addActionListener(e -> {
+            JOptionPane.showMessageDialog(frame, "Computer Organisation");
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
 
-                // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
-            }
+            // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
         });
-        returnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.getContentPane().removeAll();
-                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                frame.repaint();
-                Login.Main(frame,screenSize);
-            }
+        returnButton.addActionListener(e -> {
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
+            Login.Main(frame,screenSize);
         });
+        frame.setVisible(true);//making the frame visible
     }
 }
