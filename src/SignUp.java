@@ -10,16 +10,16 @@ public class SignUp {
         JLabel background = new JLabel();
         JLabel rqLogo = new JLabel();
 
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\loginbbg.png"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\login-signin\\loginbbg.png"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
 
-        rqLogo.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\loginrqLogo.jpg"));
+        rqLogo.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\login-signin\\loginrqLogo.jpg"));
         Dimension sizeLogo = rqLogo.getPreferredSize();
         rqLogo.setBounds((screenWidth/2)-129,(screenHeight/2)-176,sizeLogo.width,sizeLogo.height);
 
         JLabel loginbg = new JLabel();
-        loginbg.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\loginbg.png"));
+        loginbg.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\login-signin\\loginbg.png"));
         Dimension size = loginbg.getPreferredSize();
         loginbg.setBounds((screenWidth/2)-153,(screenHeight/2)-221,size.width,size.height);
         JLabel userNameLabel = new JLabel("Username:");
@@ -30,7 +30,7 @@ public class SignUp {
         passwordLabel.setBounds((screenWidth/2)-100,(screenHeight/2)-40,100,20);
 
         JTextField password = new JPasswordField(20);
-        JTextField confirmPassword = new JTextField(20);
+        JTextField confirmPassword = new JPasswordField(20);
 
         password.setBounds((screenWidth/2)-100,(screenHeight/2)-20,200,30);
         confirmPassword.setBounds((screenWidth/2)-100,(screenHeight/2)+30,200,30);

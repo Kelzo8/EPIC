@@ -34,7 +34,7 @@ public class ComputerScience extends Thread{
         // return 2 for intense
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // return 3 for random -- not accessible yet until basic modes are complete
@@ -43,7 +43,7 @@ public class ComputerScience extends Thread{
         JButton returnButton = new JButton("Return to selection menu");
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),200,50);
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -124,7 +124,7 @@ public class ComputerScience extends Thread{
     public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
         Object file;
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         try {
@@ -161,7 +161,7 @@ public class ComputerScience extends Thread{
             Dimension imageSize = image.getPreferredSize();
             image.setBounds((screenWidth / 4) + imageXOffset, (screenHeight / 2) + imageYOffset, imageSize.width, imageSize.height);
         }
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -638,7 +638,7 @@ public class ComputerScience extends Thread{
     public static void showResults(JFrame frame, Dimension screenSize) {
         JLabel background = new JLabel();
         resultsShown = true;
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // int type is for declaring whether the gamemode is Random, Levels or -----
@@ -683,7 +683,7 @@ public class ComputerScience extends Thread{
         }else {
             frame.getContentPane().setBackground(Color.RED);
         }
-        trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\trophy.png"));
+        trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\trophy.png"));
         Dimension size = trophy.getPreferredSize();
         trophy.setBounds((screenWidth/2)-333,(screenHeight/2)-192,size.width,size.height);
         frame.add(correct);frame.add(trophy);frame.add(youGotText);frame.add(outOfText);frame.add(returnButton);
@@ -708,14 +708,14 @@ public class ComputerScience extends Thread{
         //1 for intermediate
         // 2 for intense
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions to calculate item placements
         int screenHeight = (int) screenSize.getHeight();
 
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
