@@ -2,12 +2,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Date;
 
 public class ComputerScience extends Thread{
+
     static boolean isRandom = false;
     static boolean resultsShown = false;
     static String[] difficulties = {"Easy","Intermediate","Intense"};// for random
@@ -541,6 +541,31 @@ public class ComputerScience extends Thread{
         frame.setVisible(true);//making the frame visible
 
     }
+    public static void updateLeaderBoard(int score) {
+        String userDataFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\logins.csv"; // this file contains the login details of every password
+        String usernameFinal = Login.loggedin; // we don't need to convert this into a hashcode as it will allow us to search for users in the login file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(userDataFile));
+            StringBuilder fileContent = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                if (row[0].equals(usernameFinal)) {
+                    row[2] = String.valueOf(Integer.parseInt(row[2])+score);//row[3] for compOrg, row[4] for discrete Maths
+                }
+                fileContent.append(String.join(",", row)).append("\n");
+            }
+
+            reader.close();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(userDataFile));
+            writer.write(fileContent.toString());
+            writer.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     public static void randomGame(JFrame frame,Dimension screenSize){
         isRandom = true;
         System.out.println(Arrays.deepToString(answered));
@@ -636,6 +661,7 @@ public class ComputerScience extends Thread{
         return count;
     }
     public static void showResults(JFrame frame, Dimension screenSize) {
+        //gamemode should be 0 for comp sci, 1 for comp org, 2 for discrete maths
         JLabel background = new JLabel();
         resultsShown = true;
         background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
@@ -651,9 +677,11 @@ public class ComputerScience extends Thread{
         if (isRandom) {
             outOfAmount = 6;
             correctAmount = countResultForRand();
+            updateLeaderBoard(correctAmount);
         } else {
             outOfAmount = 2;
             correctAmount = countResultForLevel();
+            updateLeaderBoard(correctAmount);
         }
         JLabel timeTaken = new JLabel("You took: "+ elapsedTimeGlob + " seconds out of 30 seconds");
         //CURRENTLY ONLY WORKS FOR RANDOM

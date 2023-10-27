@@ -52,6 +52,7 @@ public class selectionMenu {
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
 
+
             // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
         });
         returnButton.addActionListener(e -> {

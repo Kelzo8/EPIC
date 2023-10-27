@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class Login {
+    public static String loggedin;
     public static void Main(JFrame frame, Dimension screenSize){
         // CSV READER & WRITER LEARNED FROM BRO CODE
 
@@ -65,6 +66,7 @@ public class Login {
                     String[] row = line.split(",");
                     if (row[0].equals(usernameFinal)){
                         if (Integer.parseInt(row[1]) == passwordFinal) {
+                            loggedin = usernameFinal;
                             frame.getContentPane().removeAll();
                             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                             frame.repaint();
