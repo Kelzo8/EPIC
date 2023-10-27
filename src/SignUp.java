@@ -73,7 +73,7 @@ public class SignUp {
                 if (password.getText().equals(confirmPassword.getText())) {
                     try{//source: https://www.youtube.com/watch?v=epDEG6YstSU
                         BufferedWriter writer = new BufferedWriter(new FileWriter(userDataFile,true));
-                        writer.write("\n"+usernameFinal + "," + password.getText().hashCode()+"," + "\t"+0+",");
+                        writer.write("\n"+usernameFinal + "," + password.getText().hashCode()+"," + "\t"+0+","+0+","+0+",");
                         writer.close();
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
