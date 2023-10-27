@@ -2,12 +2,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 import javax.swing.*;
 import java.awt.*;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.Arrays;
 import java.util.Date;
 
 public class ComputerScience extends Thread{
+
     static boolean isRandom = false;
     static boolean resultsShown = false;
     static String[] difficulties = {"Easy","Intermediate","Intense"};// for random
@@ -34,7 +34,7 @@ public class ComputerScience extends Thread{
         // return 2 for intense
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // return 3 for random -- not accessible yet until basic modes are complete
@@ -43,7 +43,7 @@ public class ComputerScience extends Thread{
         JButton returnButton = new JButton("Return to selection menu");
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),200,50);
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -124,7 +124,7 @@ public class ComputerScience extends Thread{
     public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
         Object file;
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         try {
@@ -161,7 +161,7 @@ public class ComputerScience extends Thread{
             Dimension imageSize = image.getPreferredSize();
             image.setBounds((screenWidth / 4) + imageXOffset, (screenHeight / 2) + imageYOffset, imageSize.width, imageSize.height);
         }
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -541,6 +541,31 @@ public class ComputerScience extends Thread{
         frame.setVisible(true);//making the frame visible
 
     }
+    public static void updateLeaderBoard(int score) {
+        String userDataFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\logins.csv"; // this file contains the login details of every password
+        String usernameFinal = Login.loggedin; // we don't need to convert this into a hashcode as it will allow us to search for users in the login file
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(userDataFile));
+            StringBuilder fileContent = new StringBuilder();
+            String line;
+
+            while ((line = reader.readLine()) != null) {
+                String[] row = line.split(",");
+                if (row[0].equals(usernameFinal)) {
+                    row[2] = String.valueOf(Integer.parseInt(row[2])+score);//row[3] for compOrg, row[4] for discrete Maths
+                }
+                fileContent.append(String.join(",", row)).append("\n");
+            }
+
+            reader.close();
+
+            BufferedWriter writer = new BufferedWriter(new FileWriter(userDataFile));
+            writer.write(fileContent.toString());
+            writer.close();
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
+    }
     public static void randomGame(JFrame frame,Dimension screenSize){
         isRandom = true;
         System.out.println(Arrays.deepToString(answered));
@@ -636,9 +661,10 @@ public class ComputerScience extends Thread{
         return count;
     }
     public static void showResults(JFrame frame, Dimension screenSize) {
+        //gamemode should be 0 for comp sci, 1 for comp org, 2 for discrete maths
         JLabel background = new JLabel();
         resultsShown = true;
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // int type is for declaring whether the gamemode is Random, Levels or -----
@@ -651,9 +677,11 @@ public class ComputerScience extends Thread{
         if (isRandom) {
             outOfAmount = 6;
             correctAmount = countResultForRand();
+            updateLeaderBoard(correctAmount);
         } else {
             outOfAmount = 2;
             correctAmount = countResultForLevel();
+            updateLeaderBoard(correctAmount);
         }
         JLabel timeTaken = new JLabel("You took: "+ elapsedTimeGlob + " seconds out of 30 seconds");
         //CURRENTLY ONLY WORKS FOR RANDOM
@@ -683,7 +711,7 @@ public class ComputerScience extends Thread{
         }else {
             frame.getContentPane().setBackground(Color.RED);
         }
-        trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\trophy.png"));
+        trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\trophy.png"));
         Dimension size = trophy.getPreferredSize();
         trophy.setBounds((screenWidth/2)-333,(screenHeight/2)-192,size.width,size.height);
         frame.add(correct);frame.add(trophy);frame.add(youGotText);frame.add(outOfText);frame.add(returnButton);
@@ -708,14 +736,14 @@ public class ComputerScience extends Thread{
         //1 for intermediate
         // 2 for intense
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\7.jpg"));
+        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions to calculate item placements
         int screenHeight = (int) screenSize.getHeight();
 
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 

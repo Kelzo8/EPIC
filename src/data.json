@@ -34,7 +34,7 @@
         "3":"2",
         "4":"3"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq1.png",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\questions\\latticeq1.png",
       "QuestionxOffset": "-350",
       "QuestionyOffset": "-255",
       "ImagexOffset": "600",
@@ -49,11 +49,11 @@
         "3":"(iii) only",
         "4":"(i),(ii) and (iv) only"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq2.png",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\questions\\latticeq2.png",
       "QuestionxOffset": "-185",
       "QuestionyOffset": "-250",
-      "ImagexOffset": "600",
-      "ImageyOffset": "-393",
+      "ImagexOffset": "70",
+      "ImageyOffset": "80",
       "CorrectAnswer": "1"
     }
   },
@@ -66,7 +66,7 @@
         "3":"3",
         "4":"1"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\latticeq3.png",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\questions\\latticeq3.png",
       "QuestionxOffset": "-230",
       "QuestionyOffset": "-225",
       "ImagexOffset": "600",
@@ -81,7 +81,7 @@
         "3":"AX 13",
         "4":"BB 67390"
       },
-      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\bnfq1.png",
+      "ImageLink":"C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\questions\\bnfq1.png",
       "QuestionxOffset": "-400",
       "QuestionyOffset": "-250",
       "ImagexOffset": "70",
