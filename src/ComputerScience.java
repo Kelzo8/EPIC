@@ -203,9 +203,6 @@ public class ComputerScience extends Thread{
                 if (question.equals("Q1")) {
                     if (CorrectAnswer.equals("1")) {
                         results[0] = "Correct";
-                        //option1.setForeground(new Color(0,255,0));
-
-                        //wait.start();
                     } else {
                         results[0] = "Incorrect";
                     }
@@ -568,7 +565,6 @@ public class ComputerScience extends Thread{
     }
     public static void randomGame(JFrame frame,Dimension screenSize){
         isRandom = true;
-        System.out.println(Arrays.deepToString(answered));
         int ranDifficulty = (int)(Math.random()*3);
         int ranQuestion =((int) (Math.random() *2) + 1);
         boolean foundQuestion = false;
@@ -585,7 +581,6 @@ public class ComputerScience extends Thread{
             }
         }
         if (allTrue) {
-            System.out.println("Yeah...the error is here");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
@@ -593,7 +588,7 @@ public class ComputerScience extends Thread{
         }else {
             while (!foundQuestion) {//while the program checks for a question or there is a question to ask
                 if (!answered[ranDifficulty][ranQuestion - 1]) {// if a question is equal to false -- meaning it hasn't been asked
-                    answered[ranDifficulty][ranQuestion - 1] = true;
+                    answered[ranDifficulty][ranQuestion - 1] = true;//-1 for OBOE
                     foundQuestion = true;
                 } else {
                     ranDifficulty = (int) (Math.random() * 3);// if a question has been asked it will do random again and try again
