@@ -268,7 +268,7 @@ public class computerOrganisation2 {
 	     general_background.setBounds(0,0,size.width,size.height);
 		
 		int mode = 2; // Identifier increasing difficulty mode
-		JButton easy = new JButton("easy");
+		JButton easy = new JButton("Easy");
 		easy.setForeground(new Color(0x0FFFFFF) );
 		easy.setBackground(new Color(0x0f039b1));
 		easy.setFont(f1);
@@ -286,7 +286,7 @@ public class computerOrganisation2 {
 
 		});
 		
-		JButton Intermediate = new JButton("intermediate");
+		JButton Intermediate = new JButton("Intermediate");
 		Intermediate.setForeground(new Color(0x0FFFFFF) );
 		Intermediate.setBackground(new Color(0x0f039b1));
 		Intermediate.setFont(f1);
@@ -304,7 +304,7 @@ public class computerOrganisation2 {
 
 		});
 		
-		JButton Difficult = new JButton("difficult");
+		JButton Difficult = new JButton("Difficult");
 		Difficult.setForeground(new Color(0x0FFFFFF) );
 		Difficult.setBackground(new Color(0x0f039b1));
 		Difficult.setFont(f1);
@@ -1052,152 +1052,51 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
-	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
-	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 18);
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 100);
+	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 40);
+	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
-	 JLabel results_background = new JLabel();
-	 results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
+	JLabel results_background = new JLabel();
+	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
+    
+    int totalQuestions = 2;
+    int correctQuestions = 0;
+    for (int i = 0; i < 2; i++) {
+    	if (result[i].equals("correct")) {
+    		correctQuestions ++;
+    	}
+    }
+	JLabel totalValue = new JLabel(); // prints the question
+	totalValue.setText("Out of " + totalQuestions + " questions correct!");
+	totalValue.setFont(f2);
+	totalValue.setForeground(new Color(0x000000));
+	totalValue.setBounds((screen_width / 2) - 250, (screen_height / 2) + 300, 800, 50);
+	frame.add(totalValue);
+    
+	JLabel correctAmount = new JLabel(); // prints the question
+	correctAmount.setText(Integer.toString(correctQuestions));
+	correctAmount.setFont(f1);
+	correctAmount.setForeground(new Color(0x000000));
+	correctAmount.setBounds((screen_width / 2) - 70, (screen_height / 2) - 70, 400, 90);
+	frame.add(correctAmount);
 	
-	if (Selection == 1) { // selection 1 means user chose the easy questions
-		JLabel easy_q1 = new JLabel();
-		easy_q1.setText("Question 1: " +(String) q.get(0));
-		easy_q1.setFont(f2);
-		easy_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(easy_q1);
-		
-		JLabel easy_a1 = new JLabel();
-		easy_a1.setText("Answer: " + (String) q_op.get(0).get(0));
-		easy_a1.setFont(f2);
-		easy_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(easy_a1);
-		
-		JLabel easy_user1 = new JLabel();
-		easy_user1.setText("Your answer was: " + result[0]);
-		easy_user1.setFont(f1);
-		easy_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(easy_user1);
-		
-		JLabel divider = new JLabel();
-		divider.setText("---------------------------------------------------------------------------");
-		divider.setForeground(new Color(0X0e305ad));
-		divider.setFont(f1);
-		divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-		frame.add(divider);
-		/////////////////////////////////////////////////////////////////////////////
-		JLabel easy_q2 = new JLabel();
-		easy_q2.setText("Question 2: " +(String) q.get(1));
-		easy_q2.setFont(f1);
-		easy_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 800, 35);
-		frame.add(easy_q2);
-		
-		JLabel easy_a2 = new JLabel();
-		easy_a2.setText("Answer: " + (String) q_op.get(1).get(1));
-		easy_a2.setFont(f1);
-		easy_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-		frame.add(easy_a2);
-		
-		JLabel easy_user2 = new JLabel();
-		easy_user2.setText("Your answer was: " + result[1]);
-		easy_user2.setFont(f1);
-		easy_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-		frame.add(easy_user2);
-		
-		
-		} else if (Selection == 2) { // selection 2 means user chose the intermediate questions
-			JLabel Intermed_q1 = new JLabel();
-			Intermed_q1.setText("Question 1: " +(String) q.get(2));
-			Intermed_q1.setFont(f1);
-			Intermed_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-			frame.add(Intermed_q1);
-			
-			JLabel Intermed_a1 = new JLabel();
-			Intermed_a1.setText("Answer: " + (String) q_op.get(2).get(1));
-			Intermed_a1.setFont(f1);
-			Intermed_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-			frame.add(Intermed_a1);
-			
-			JLabel Intermed_user1 = new JLabel();
-			Intermed_user1.setText("Your answer was: " + result[0]);
-			Intermed_user1.setFont(f1);
-			Intermed_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-			frame.add(Intermed_user1);
-			
-			JLabel divider = new JLabel();
-			divider.setText("---------------------------------------------------------------------------");
-			divider.setFont(f1);
-			divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-			frame.add(divider);
-			/////////////////////////////////////////////////////////////////////////////
-			JLabel Intermed_q2 = new JLabel();
-			Intermed_q2.setText("Question 2: " +(String) q.get(3));
-			Intermed_q2.setFont(f1);
-			Intermed_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 1100, 35);
-			frame.add(Intermed_q2);
-			
-			JLabel Intermed_a2 = new JLabel();
-			Intermed_a2.setText("Answer: " + (String) q_op.get(3).get(1));
-			Intermed_a2.setFont(f1);
-			Intermed_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-			frame.add(Intermed_a2);
-			
-			JLabel Intermed_user2 = new JLabel();
-			Intermed_user2.setText("Your answer was: " + result[1]);
-			Intermed_user2.setFont(f1);
-			Intermed_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-			frame.add(Intermed_user2);
-			
-		} else if (Selection == 3) { // selection 3 means user chose difficult questions
-			JLabel difficult_q1 = new JLabel();
-			difficult_q1.setText("Question 1: " +(String) q.get(4));
-			difficult_q1.setFont(f1);
-			difficult_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-			frame.add(difficult_q1);
-			
-			JLabel difficult_a1 = new JLabel();
-			difficult_a1.setText("Answer: " + (String) q_op.get(4).get(0));
-			difficult_a1.setFont(f1);
-			difficult_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-			frame.add(difficult_a1);
-			
-			JLabel difficult_user1 = new JLabel();
-			difficult_user1.setText("Your answer was: " + result[0]);
-			difficult_user1.setFont(f1);
-			difficult_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-			frame.add(difficult_user1);
-			
-			JLabel divider = new JLabel();
-			divider.setText("---------------------------------------------------------------------------");
-			divider.setFont(f1);
-			divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-			frame.add(divider);
-			/////////////////////////////////////////////////////////////////////////////
-			JLabel difficult_q2 = new JLabel();
-			difficult_q2.setText("Question 2: " +(String) q.get(5));
-			difficult_q2.setFont(f1);
-			difficult_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 1100, 35);
-			frame.add(difficult_q2);
-			
-			JLabel difficult_a2 = new JLabel();
-			difficult_a2.setText("Answer: " + (String) q_op.get(5).get(2));
-			difficult_a2.setFont(f1);
-			difficult_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-			frame.add(difficult_a2);
-			
-			JLabel difficult_user2 = new JLabel();
-			difficult_user2.setText("Your answer was: " + result[1]);
-			difficult_user2.setFont(f1);
-			difficult_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-			frame.add(difficult_user2);
-		}
+	JLabel result_statement = new JLabel(); // prints the question
+	result_statement.setText("You answered: ");
+	result_statement.setFont(f2);
+	result_statement.setForeground(new Color(0x000000));
+	result_statement.setBounds((screen_width / 2) - 200, (screen_height / 2) - 350, 800, 50);
+	frame.add(result_statement);
+    
+	
 	
 		JButton rtrn = new JButton("Return");
 		rtrn.setForeground(new Color(0x0FFFFFF) );
 		rtrn.setBackground(new Color(0x0f039b1));
-		rtrn.setFont(f2);
+		rtrn.setFont(f3);
 		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
+		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) - 25, 200, 60);
 		frame.add(rtrn);
 
 		
@@ -1216,390 +1115,139 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		frame.add(results_background);
 		
 } public static void showresult_random(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] single_result, int question) {
+	
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
-	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 100);
+	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 40);
+	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
-   Dimension size = results_background.getPreferredSize();
-   results_background.setBounds(0,0,size.width,size.height);
+	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
+    Dimension size = results_background.getPreferredSize();
+    results_background.setBounds(0,0,size.width,size.height);
+    
+    int totalQuestions = 1;
+    int correctQuestions = 0;{
+    if (single_result[0].equals("correct")) {
+    		correctQuestions ++;
+    	}
+  
+	JLabel totalValue = new JLabel(); // prints the question
+	totalValue.setText("Out of " + totalQuestions + " question correct!");
+	totalValue.setFont(f2);
+	totalValue.setForeground(new Color(0x000000));
+	totalValue.setBounds((screen_width / 2) - 250, (screen_height / 2) + 300, 800, 50);
+	frame.add(totalValue);
+    
+	JLabel correctAmount = new JLabel(); // prints the question
+	correctAmount.setText(Integer.toString(correctQuestions));
+	correctAmount.setFont(f1);
+	correctAmount.setForeground(new Color(0x000000));
+	correctAmount.setBounds((screen_width / 2) - 70, (screen_height / 2) - 70, 400, 90);
+	frame.add(correctAmount);
+	
+	JLabel result_statement = new JLabel(); // prints the question
+	result_statement.setText("You answered: ");
+	result_statement.setFont(f2);
+	result_statement.setForeground(new Color(0x000000));
+	result_statement.setBounds((screen_width / 2) - 200, (screen_height / 2) - 350, 800, 50);
+	frame.add(result_statement);
+    
 	
 	
-	if (question == 1) {
-		JLabel easy_q1 = new JLabel();
-		easy_q1.setText("Question 1: " +(String) q.get(0));
-		easy_q1.setFont(f1);
-		easy_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(easy_q1);
-		
-		JLabel easy_a1 = new JLabel();
-		easy_a1.setText("Answer: " + (String) q_op.get(0).get(0));
-		easy_a1.setFont(f1);
-		easy_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(easy_a1);
-		
-		JLabel easy_user1 = new JLabel();
-		easy_user1.setText("Your answer was: " + single_result[0]);
-		easy_user1.setFont(f1);
-		easy_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(easy_user1);
-	} else if (question == 2) {
-		JLabel easy_q2 = new JLabel();
-		easy_q2.setText("Question 2: " +(String) q.get(1));
-		easy_q2.setFont(f1);
-		easy_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(easy_q2);
-		
-		JLabel easy_a2 = new JLabel();
-		easy_a2.setText("Answer: " + (String) q_op.get(1).get(1));
-		easy_a2.setFont(f1);
-		easy_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(easy_a2);
-		
-		JLabel easy_user2 = new JLabel();
-		easy_user2.setText("Your answer was: " + single_result[0]);
-		easy_user2.setFont(f1);
-		easy_user2.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(easy_user2);
-	} else if (question == 3) {
-		JLabel Intermed_q1 = new JLabel();
-		Intermed_q1.setText("Question 1: " +(String) q.get(2));
-		Intermed_q1.setFont(f1);
-		Intermed_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(Intermed_q1);
-		
-		JLabel Intermed_a1 = new JLabel();
-		Intermed_a1.setText("Answer: " + (String) q_op.get(2).get(1));
-		Intermed_a1.setFont(f1);
-		Intermed_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(Intermed_a1);
-		
-		JLabel Intermed_user1 = new JLabel();
-		Intermed_user1.setText("Your answer was: " + single_result[0]);
-		Intermed_user1.setFont(f1);
-		Intermed_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(Intermed_user1);
-	} else if (question == 4) {
-		JLabel Intermed_q2 = new JLabel();
-		Intermed_q2.setText("Question 2: " +(String) q.get(3));
-		Intermed_q2.setFont(f1);
-		Intermed_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(Intermed_q2);
-		
-		JLabel Intermed_a2 = new JLabel();
-		Intermed_a2.setText("Answer: " + (String) q_op.get(3).get(1));
-		Intermed_a2.setFont(f1);
-		Intermed_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(Intermed_a2);
-		
-		JLabel Intermed_user2 = new JLabel();
-		Intermed_user2.setText("Your answer was: " + single_result[0]);
-		Intermed_user2.setFont(f1);
-		Intermed_user2.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(Intermed_user2);	
-	} else if (question == 5) {
-		JLabel difficult_q1 = new JLabel();
-		difficult_q1.setText("Question 1: " +(String) q.get(4));
-		difficult_q1.setFont(f1);
-		difficult_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(difficult_q1);
-		
-		JLabel difficult_a1 = new JLabel();
-		difficult_a1.setText("Answer: " + (String) q_op.get(4).get(0));
-		difficult_a1.setFont(f1);
-		difficult_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(difficult_a1);
-		
-		JLabel difficult_user1 = new JLabel();
-		difficult_user1.setText("Your answer was: " + single_result[0]);
-		difficult_user1.setFont(f1);
-		difficult_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(difficult_user1);
-	} else if (question == 6) {
-		JLabel difficult_q2 = new JLabel();
-		difficult_q2.setText("Question 2: " +(String) q.get(5));
-		difficult_q2.setFont(f1);
-		difficult_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-		frame.add(difficult_q2);
-		
-		JLabel difficult_a2 = new JLabel();
-		difficult_a2.setText("Answer: " + (String) q_op.get(5).get(2));
-		difficult_a2.setFont(f1);
-		difficult_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-		frame.add(difficult_a2);
-		
-		JLabel difficult_user2 = new JLabel();
-		difficult_user2.setText("Your answer was: " + single_result[0]);
-		difficult_user2.setFont(f1);
-		difficult_user2.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-		frame.add(difficult_user2);
-	}
-	JButton rtrn = new JButton("Return");
-	rtrn.setForeground(new Color(0x0FFFFFF) );
-	rtrn.setBackground(new Color(0x0f039b1));
-	rtrn.setFont(f1);
-	rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-	rtrn.setBounds((screen_width/2) - 700, (screen_height/2) -100, 200, 35);
-	frame.add(rtrn);
-	
-	rtrn.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-			frame.revalidate();
-			frame.repaint();
-			modes(frame, screenSize, q, a, q_op);
-			
-			
+		JButton rtrn = new JButton("Return");
+		rtrn.setForeground(new Color(0x0FFFFFF) );
+		rtrn.setBackground(new Color(0x0f039b1));
+		rtrn.setFont(f3);
+		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) - 25, 200, 60);
+		frame.add(rtrn);
 
-		};
+		
+		rtrn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().removeAll();
+				frame.revalidate();
+				frame.repaint();
+				modes(frame, screenSize, q, a, q_op);
+				
 
-	});
-	frame.add(results_background);
+
+			};
+
+		});
+		frame.add(results_background);}
 	
 } public static void showresults_countdown(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
-	Font f1 = new Font(Font.SANS_SERIF,  Font.BOLD, 18);
-	Font f2 = new Font(Font.SANS_SERIF,  Font.BOLD, 30);
+	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 100);
+	Font f2 = new Font(Font.DIALOG,  Font.BOLD, 40);
+	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
-	 JLabel results_background = new JLabel();
-	 results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (6) (1).jpg"));
-   Dimension size = results_background.getPreferredSize();
-   results_background.setBounds(0,0,size.width,size.height);
+	
+	JLabel results_background = new JLabel();
+	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
+    Dimension size = results_background.getPreferredSize();
+    results_background.setBounds(0,0,size.width,size.height);
 
 	Instant endTime = Instant.now(); // stops the stopwatch
 	Duration timeElapsed = Duration.between(startTime, endTime); // calculates the time taken
 	
-	JLabel stopwatch = new JLabel();
-	stopwatch.setText("Time taken: " + formatDuration(timeElapsed)); // holds the time taken value and formats it correctly
-	stopwatch.setFont(f2);
-	stopwatch.setBounds((screen_width/2) + 50, (screen_height/2) - 150, 400, 50);
-	stopwatch.setBackground(new Color (0x0f039b1));
-	stopwatch.setForeground(new Color (0x0ffffff));
-	stopwatch.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-	frame.add(stopwatch);
+    int totalQuestions = 6;
+    int correctQuestions = 0;
+    for (int i = 0; i < 6; i++){
+    if (all_six_results[i].equals("correct")) {
+    		correctQuestions ++;
+    	}
+    }
+  
+	JLabel totalValue = new JLabel(); // prints the question
+	totalValue.setText("Out of " + totalQuestions + " questions correct in " + formatDuration(timeElapsed)+ " ");
+	totalValue.setFont(f2);
+	totalValue.setForeground(new Color(0x000000));
+	totalValue.setBounds((screen_width / 2) - 400, (screen_height / 2) + 300, 800, 50);
+	frame.add(totalValue);
+    
+	JLabel correctAmount = new JLabel(); // prints the question
+	correctAmount.setText(Integer.toString(correctQuestions));
+	correctAmount.setFont(f1);
+	correctAmount.setForeground(new Color(0x000000));
+	correctAmount.setBounds((screen_width / 2) - 70, (screen_height / 2) - 70, 400, 90);
+	frame.add(correctAmount);
 	
-	JLabel easy_q1 = new JLabel();
-	easy_q1.setText("Question 1: " +(String) q.get(0));
-	easy_q1.setFont(f1);
-	easy_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-	frame.add(easy_q1);
+	JLabel result_statement = new JLabel(); // prints the question
+	result_statement.setText("You answered: ");
+	result_statement.setFont(f2);
+	result_statement.setForeground(new Color(0x000000));
+	result_statement.setBounds((screen_width / 2) - 200, (screen_height / 2) - 350, 800, 50);
+	frame.add(result_statement);
+    
 	
-	JLabel easy_a1 = new JLabel();
-	easy_a1.setText("Answer: " + (String) q_op.get(0).get(0));
-	easy_a1.setFont(f1);
-	easy_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-	frame.add(easy_a1);
 	
-	JLabel easy_user1 = new JLabel();
-	if ((all_six_results[0].equals("correct")) || (all_six_results[0].equals( "incorrect"))) {
-		easy_user1.setText("Your answer was: " + all_six_results[0]);
+		JButton rtrn = new JButton("Return");
+		rtrn.setForeground(new Color(0x0FFFFFF) );
+		rtrn.setBackground(new Color(0x0f039b1));
+		rtrn.setFont(f3);
+		rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		rtrn.setBounds((screen_width/2) - 700, (screen_height/2) - 25, 200, 60);
+		frame.add(rtrn);
+
 		
-	}else if( all_six_results[0] == null){
-		easy_user1.setText("Your answer was: You did not answer this question");
-	}
-	
-	easy_user1.setFont(f1);
-	easy_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-	frame.add(easy_user1);
-	
-	JLabel divider = new JLabel();
-	divider.setText("---------------------------------------------------------------------------");
-	divider.setFont(f1);
-	divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-	frame.add(divider);
-	/////////////////////////////////////////////////////////////////////////////
-	JLabel easy_q2 = new JLabel();
-	easy_q2.setText("Question 2: " +(String) q.get(1));
-	easy_q2.setFont(f1);
-	easy_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 800, 35);
-	frame.add(easy_q2);
-	
-	JLabel easy_a2 = new JLabel();
-	easy_a2.setText("Answer: " + (String) q_op.get(1).get(1));
-	easy_a2.setFont(f1);
-	easy_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-	frame.add(easy_a2);
-	
-	JLabel easy_user2 = new JLabel();
-	if ((all_six_results[1].equals("correct")) || (all_six_results[1].equals( "incorrect"))) {
-		easy_user2.setText("Your answer was: " + all_six_results[1]);
-		
-	}else if( all_six_results[1] == null) {
-		easy_user2.setText("Your answer was: You did not answer this question");
-	}
-	
-	easy_user2.setFont(f1);
-	easy_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-	frame.add(easy_user2);
-	
-	
-	JButton next_page = new JButton("Go to next page");
-	next_page.setForeground(new Color(0x0FFFFFF) );
-	next_page.setBackground(new Color(0x0f039b1));
-	next_page.setFont(f2);
-	next_page.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-	next_page.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
-	frame.add(next_page);
-	frame.add(results_background);
-	
-	next_page.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent e) {
-			frame.getContentPane().removeAll();
-			frame.revalidate();
-			frame.repaint();
-			
-			JLabel Intermed_q1 = new JLabel();
-			Intermed_q1.setText("Question 1: " +(String) q.get(2));
-			Intermed_q1.setFont(f1);
-			Intermed_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-			frame.add(Intermed_q1);
-			
-			JLabel Intermed_a1 = new JLabel();
-			Intermed_a1.setText("Answer: " + (String) q_op.get(2).get(1));
-			Intermed_a1.setFont(f1);
-			Intermed_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-			frame.add(Intermed_a1);
-			
-			JLabel Intermed_user1 = new JLabel();
-			if ((all_six_results[2].equals("correct")) || (all_six_results[2].equals( "incorrect"))) {
-				Intermed_user1.setText("Your answer was: " + all_six_results[2]);
+		rtrn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.getContentPane().removeAll();
+				frame.revalidate();
+				frame.repaint();
+				modes(frame, screenSize, q, a, q_op);
 				
-			}else if( all_six_results[2] == null) {
-				Intermed_user1.setText("Your answer was: You did not answer this question");
-			}
-			
-			Intermed_user1.setFont(f1);
-			Intermed_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-			frame.add(Intermed_user1);
-			
-			JLabel divider = new JLabel();
-			divider.setText("---------------------------------------------------------------------------");
-			divider.setFont(f1);
-			divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-			frame.add(divider);
-			/////////////////////////////////////////////////////////////////////////////
-			JLabel Intermed_q2 = new JLabel();
-			Intermed_q2.setText("Question 2: " +(String) q.get(3));
-			Intermed_q2.setFont(f1);
-			Intermed_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 1100, 35);
-			frame.add(Intermed_q2);
-			
-			JLabel Intermed_a2 = new JLabel();
-			Intermed_a2.setText("Answer: " + (String) q_op.get(3).get(1));
-			Intermed_a2.setFont(f1);
-			Intermed_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-			frame.add(Intermed_a2);
-			
-			JLabel Intermed_user2 = new JLabel();
-			if ((all_six_results[3].equals("correct")) || (all_six_results[3].equals( "incorrect"))) {
-				Intermed_user2.setText("Your answer was: " + all_six_results[3]);
-				
-			}else if( all_six_results[3] == null) {
-				Intermed_user2.setText("Your answer was: You did not answer this question");
-			}
-			Intermed_user2.setFont(f1);
-			Intermed_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-			frame.add(Intermed_user2);
-			
-			JButton next_page2 = new JButton("Go to next Page");
-			next_page2.setForeground(new Color(0x0FFFFFF) );
-			next_page2.setBackground(new Color(0x0f039b1));
-			next_page2.setFont(f2);
-			next_page2.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-			next_page2.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 300, 45);
-			frame.add(next_page2);
-			frame.add(results_background);
-			
-			next_page2.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					frame.getContentPane().removeAll();
-					frame.revalidate();
-					frame.repaint();
-					
-					JLabel difficult_q1 = new JLabel();
-					difficult_q1.setText("Question 1: " +(String) q.get(4));
-					difficult_q1.setFont(f1);
-					difficult_q1.setBounds((screen_width/2) - 700, (screen_height/2) - 325, 800, 35);
-					frame.add(difficult_q1);
-					
-					JLabel difficult_a1 = new JLabel();
-					difficult_a1.setText("Answer: " + (String) q_op.get(4).get(0));
-					difficult_a1.setFont(f1);
-					difficult_a1.setBounds((screen_width/2) - 700, (screen_height/2) - 275, 800, 35);
-					frame.add(difficult_a1);
-					
-					JLabel difficult_user1 = new JLabel();
-					if ((all_six_results[4].equals("correct")) || (all_six_results[4].equals( "incorrect"))) {
-						difficult_user1.setText("Your answer was: " + all_six_results[4]);
-						
-					}else if( all_six_results[4] == null) {
-						difficult_user1.setText("Your answer was: You did not answer this question");
-					}
-					difficult_user1.setFont(f1);
-					difficult_user1.setBounds((screen_width/2) - 700, (screen_height/2) - 200, 800, 35);
-					frame.add(difficult_user1);
-					
-					JLabel divider = new JLabel();
-					divider.setText("---------------------------------------------------------------------------");
-					divider.setFont(f1);
-					divider.setBounds((screen_width/2) - 700, (screen_height/2) - 150, 800, 35);
-					frame.add(divider);
-					/////////////////////////////////////////////////////////////////////////////
-					JLabel difficult_q2 = new JLabel();
-					difficult_q2.setText("Question 2: " +(String) q.get(5));
-					difficult_q2.setFont(f1);
-					difficult_q2.setBounds((screen_width/2) - 700, (screen_height/2) - 100, 1100, 35);
-					frame.add(difficult_q2);
-					
-					JLabel difficult_a2 = new JLabel();
-					difficult_a2.setText("Answer: " + (String) q_op.get(5).get(2));
-					difficult_a2.setFont(f1);
-					difficult_a2.setBounds((screen_width/2) - 700, (screen_height/2) - 50, 800, 35);
-					frame.add(difficult_a2);
-					
-					JLabel difficult_user2 = new JLabel();
-					if ((all_six_results[5].equals("correct")) || (all_six_results[5].equals( "incorrect"))) {
-						difficult_user2.setText("Your answer was: " + all_six_results[5]);
-						
-					}else if( all_six_results[5] == null) {
-						difficult_user2.setText("Your answer was: You did not answer this question");
-					}
-					difficult_user2.setFont(f1);
-					difficult_user2.setBounds((screen_width/2) - 700, (screen_height/2) + 25, 800, 35);
-					frame.add(difficult_user2);
-					
-					JButton rtrn = new JButton("Return");
-					rtrn.setForeground(new Color(0x0FFFFFF) );
-					rtrn.setBackground(new Color(0x0f039b1));
-					rtrn.setFont(f2);
-					rtrn.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
-					rtrn.setBounds((screen_width/2) - 700, (screen_height/2) + 100, 200, 35);
-					frame.add(rtrn);
-					frame.add(results_background);
-					
-					rtrn.addActionListener(new ActionListener() {
-						public void actionPerformed(ActionEvent e) {
-							frame.getContentPane().removeAll();
-							frame.revalidate();
-							frame.repaint();
-							modes(frame, screenSize, q, a, q_op);
-							
-							
 
-						};
 
-					});
+			};
 
-				};
-
-			});
-
-		};
-
-	});
-	
+		});
+		frame.add(results_background);
 	
 } public static String formatDuration(Duration duration) {
     long hours = duration.toHours(); // isolates hours
@@ -1610,4 +1258,3 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
     return String.format("%d:%02d:%02d.%03d", hours, minutes, seconds, milliseconds); // formats how many decimal points wanted for each time measurement
 }
 }
-	
