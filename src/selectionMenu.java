@@ -1,7 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class selectionMenu {
     public static void Main(JFrame frame, Dimension screenSize) {
@@ -35,7 +33,7 @@ public class selectionMenu {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
-            ComputerScience.typeOfQuiz(frame,screenSize);
+            ComputerScience.gameModeSelection(frame,screenSize);
         });
         discreteMaths.addActionListener(e -> {
             JOptionPane.showMessageDialog(frame, "Discrete Maths");
