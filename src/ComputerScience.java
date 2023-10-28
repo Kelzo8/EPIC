@@ -27,14 +27,14 @@ public class ComputerScience extends Thread{
         frame.setVisible(true);//making the frame visible
 
     }
-    public static void typeOfQuiz(JFrame frame, Dimension screenSize) {
+    public static void gameModeSelection(JFrame frame, Dimension screenSize) {
         //Essentially identical to the selection menu method
         // return 0 for easy
         //return 1 for intermediate
         // return 2 for intense
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // return 3 for random -- not accessible yet until basic modes are complete
@@ -43,7 +43,7 @@ public class ComputerScience extends Thread{
         JButton returnButton = new JButton("Return to selection menu");
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),200,50);
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -124,11 +124,11 @@ public class ComputerScience extends Thread{
     public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
         Object file;
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         try {
-            file = new JSONParser().parse(new FileReader("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\src\\data.json"));
+            file = new JSONParser().parse(new FileReader("src\\data.json"));
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
@@ -161,7 +161,7 @@ public class ComputerScience extends Thread{
             Dimension imageSize = image.getPreferredSize();
             image.setBounds((screenWidth / 4) + imageXOffset, (screenHeight / 2) + imageYOffset, imageSize.width, imageSize.height);
         }
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -539,7 +539,7 @@ public class ComputerScience extends Thread{
 
     }
     public static void updateLeaderBoard(int score) {
-        String userDataFile = "C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\logins.csv"; // this file contains the login details of every password
+        String userDataFile = "logins.csv"; // this file contains the login details of every password
         String usernameFinal = Login.loggedin; // we don't need to convert this into a hashcode as it will allow us to search for users in the login file
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userDataFile));
@@ -626,7 +626,7 @@ public class ComputerScience extends Thread{
             Thread randomThread = new Thread(() -> {
                 elapsedTimeGlob = 0;
                 long startTime = System.currentTimeMillis();
-                while (elapsedTimeGlob < 30) {
+                while (elapsedTimeGlob <= 30) {
                     elapsedTimeGlob = (int) (((new Date()).getTime() - startTime) / 1000);
                 }
                 System.out.println("FINISHED");
@@ -659,9 +659,9 @@ public class ComputerScience extends Thread{
         //gamemode should be 0 for comp sci, 1 for comp org, 2 for discrete maths
         JLabel background = new JLabel();
         resultsShown = true;
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("images\\compSci\\comp sci results background.jpg"));
         Dimension sizeBg = background.getPreferredSize();
-        background.setBounds(0,0,sizeBg.width,sizeBg.height);
+        background.setBounds(-130,0,sizeBg.width,sizeBg.height);
         // int type is for declaring whether the gamemode is Random, Levels or -----
         // 0 for random, 1 for levels, 2 for timed
 
@@ -680,7 +680,7 @@ public class ComputerScience extends Thread{
         }
         JLabel timeTaken = new JLabel("You took: "+ elapsedTimeGlob + " seconds out of 30 seconds");
         //CURRENTLY ONLY WORKS FOR RANDOM
-        JLabel outOfText = new JLabel("OUT OF "+outOfAmount+" CORRECT!");
+        JLabel outOfText = new JLabel("OUT OF                "+outOfAmount+" CORRECT!");
         //JLabel outOfTime = new JLabel("Out of time!");
         JButton returnButton = new JButton("Go back");
         JLabel youGotText = new JLabel("YOU GOT");
@@ -690,27 +690,20 @@ public class ComputerScience extends Thread{
         //setting the font for the labels
         timeTaken.setFont(new Font("Arial", Font.BOLD, 48));
         outOfText.setFont(new Font("Arial", Font.BOLD, 48));
-        correct.setFont(new Font("Arial", Font.BOLD, 48));
+        correct.setFont(new Font("Arial", Font.BOLD, 88));
         youGotText.setFont(new Font("Arial", Font.BOLD, 48));
         //outOfTime.setFont(new Font("Arial", Font.BOLD, 48));
 
         //setting location for the labels and buttons
         //outOfTime.setBounds((screenWidth/2)-135,(screenHeight/2)-300,1000,200);
-        timeTaken.setBounds((screenWidth/2)-400,(screenHeight/2)-320,1000,200);
-        youGotText.setBounds((screenWidth/2)-110,(screenHeight/2)-250,1000,200);
+        timeTaken.setBounds((screenWidth/2)-400,(screenHeight/2)-450,1000,200);
+        youGotText.setBounds((screenWidth/2)-110,(screenHeight/2)-350,1000,200);
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
-        correct.setBounds((screenWidth/2)-15,(screenHeight/2)-65,100,100);
-        outOfText.setBounds((screenWidth/2)-225,(screenHeight/2)+50,1000,200);
-        if (correctAmount > outOfAmount/2){//deciding screenColor
-            frame.getContentPane().setBackground(Color.GREEN);
-        }else {
-            frame.getContentPane().setBackground(Color.RED);
-        }
-        trophy.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\trophy.png"));
-        Dimension size = trophy.getPreferredSize();
-        trophy.setBounds((screenWidth/2)-333,(screenHeight/2)-192,size.width,size.height);
+        correct.setBounds((screenWidth/2)-25,(screenHeight/2)-65,100,100);
+        outOfText.setBounds((screenWidth/2)-290,(screenHeight/2)+50,1000,200);
+
         frame.add(correct);frame.add(trophy);frame.add(youGotText);frame.add(outOfText);frame.add(returnButton);
-        if (isTimed) frame.add(timeTaken);
+        if (isTimed) frame.add(timeTaken);frame.add(background);
         //if (isTimed) frame.add(outOfTime);
         //RESULTS ARE IN ARRAY -- > JUST NEED TO BE DISPLAYED 18/10/2023 DO TOMORROW
 
@@ -721,7 +714,7 @@ public class ComputerScience extends Thread{
             randomAnswersReset();
             isRandom = false;
             isTimed = false;
-            typeOfQuiz(frame, screenSize);
+            gameModeSelection(frame, screenSize);
         });
         frame.setVisible(true);//making the frame visible
     }
@@ -731,14 +724,14 @@ public class ComputerScience extends Thread{
         //1 for intermediate
         // 2 for intense
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions to calculate item placements
         int screenHeight = (int) screenSize.getHeight();
 
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("C:\\Users\\Niall\\OneDrive - University of Limerick\\Desktop\\EPIC\\images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -799,7 +792,7 @@ public class ComputerScience extends Thread{
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
-            typeOfQuiz(frame,screenSize);
+            gameModeSelection(frame,screenSize);
         });
         easy.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
