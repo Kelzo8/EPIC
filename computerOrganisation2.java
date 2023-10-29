@@ -83,8 +83,6 @@ public class computerOrganisation2 {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // closes frame when x button is clicked
 		frame.setExtendedState(JFrame.MAXIMIZED_BOTH); // ensures frame fits screen
 		frame.setLayout(null);// no layout managers, manually chose size and position of components
-		frame.setForeground(new Color (0x0f29ad8));
-		frame.getContentPane().setBackground(new Color (0x0f29ad8) );
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // gets screen dimensions
 		// triggers first method
 		modes(frame, screenSize, q, a, q_op);
@@ -110,7 +108,7 @@ public class computerOrganisation2 {
         
 		//background image for design purposes
 		 JLabel first_background = new JLabel();
-		 first_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (5) (1).jpg"));
+		 first_background.setIcon(new ImageIcon("src\\compOrg\\compOrgMainBg.jpg"));
 	     Dimension size = first_background.getPreferredSize();
 	     first_background.setBounds(0,0,size.width,size.height);
 		
@@ -199,11 +197,27 @@ public class computerOrganisation2 {
 			};
 
 		});
+		JButton Return = new JButton();
+		Return.setFont(f2);
+		Return.setText("Return");
+		Return.setForeground(new Color(0x0FFFFFF) );
+		Return.setBackground(new Color(0x0f039b1));
+		Return.setBorder(BorderFactory.createLineBorder(new Color (0x0e305ad), 5));
+		Return.setBounds((screen_width / 2) - 105, (screen_height / 2) + 100, 200, 50);
+		Return.addActionListener(new ActionListener () {
+			public void actionPerformed(ActionEvent e) {
+			frame.getContentPane().removeAll();
+			frame.revalidate();
+			frame.repaint();
+			selectionMenu.Main(frame, screenSize);
+		};
+	});
 
 		frame.add(Quiz_mode);
 		frame.add(Random);
 		frame.add(increasing_Difficulty);
 		frame.add(Timed_mode);
+		frame.add(Return);
 		frame.add(first_background);
 		
 
@@ -217,7 +231,7 @@ public class computerOrganisation2 {
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 24);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -263,7 +277,7 @@ public class computerOrganisation2 {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -354,7 +368,7 @@ public class computerOrganisation2 {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -387,7 +401,7 @@ public class computerOrganisation2 {
 			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			second.setFont(f1);
 			second.setForeground(new Color(0x0FFFFFF) );
-			second.setBackground(new Color(0x0f039b1));
+			second.setBackground(new Color(0xD43FAF));
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(0)).get(2));
 			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			third.setFont(f1);
@@ -399,7 +413,7 @@ public class computerOrganisation2 {
 			fourth.setFont(f1);
 			
 			fourth.setForeground(new Color(0x0FFFFFF) );
-			fourth.setBackground(new Color(0x0f039b1));
+			fourth.setBackground(new Color(0xD43FAF));
 			first.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					frame.getContentPane().removeAll();
@@ -489,7 +503,7 @@ public class computerOrganisation2 {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 	     
@@ -511,7 +525,7 @@ public class computerOrganisation2 {
 			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			second.setFont(f1);
 			second.setForeground(new Color(0x0FFFFFF) );
-			second.setBackground(new Color(0x0f039b1));
+			second.setBackground(new Color(0xD43FAF));
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(1)).get(2));
 			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			third.setFont(f1);
@@ -521,7 +535,7 @@ public class computerOrganisation2 {
 			fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 			fourth.setFont(f1);
 			fourth.setForeground(new Color(0x0FFFFFF) );
-			fourth.setBackground(new Color(0x0f039b1));
+			fourth.setBackground(new Color(0xD43FAF));
 			ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
 			frame.add(first);frame.add(second);frame.add(third);frame.add(fourth);
 			
@@ -606,7 +620,7 @@ public class computerOrganisation2 {
 		int screen_height = (int) screenSize.getHeight();
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -636,7 +650,7 @@ public class computerOrganisation2 {
 			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(1));
 			second.setForeground(new Color(0x0FFFFFF) );
-			second.setBackground(new Color(0x0f039b1));
+			second.setBackground(new Color(0xD43FAF));
 			second.setFont(f1);
 			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(2));
@@ -646,7 +660,7 @@ public class computerOrganisation2 {
 			third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 			JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(2)).get(3));
 			fourth.setForeground(new Color(0x0FFFFFF) );
-			fourth.setBackground(new Color(0x0f039b1));
+			fourth.setBackground(new Color(0xD43FAF));
 			fourth.setFont(f1);
 			fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 			ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
@@ -734,7 +748,7 @@ public class computerOrganisation2 {
 		String[] single_result = new String[1];
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 	     
@@ -757,7 +771,7 @@ public class computerOrganisation2 {
 			first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 			JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(3)).get(1));
 			second.setForeground(new Color(0x0FFFFFF) );
-			second.setBackground(new Color(0x0f039b1));
+			second.setBackground(new Color(0xD43FAF));
 			second.setFont(f1);
 			second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 			frame.add(first); frame.add(second);
@@ -808,7 +822,7 @@ public class computerOrganisation2 {
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 	
 	 JLabel general_background = new JLabel();
-	 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
     Dimension size = general_background.getPreferredSize();
     general_background.setBounds(0,0,size.width,size.height);
 	
@@ -835,7 +849,7 @@ public class computerOrganisation2 {
 		first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 		JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(1));
 		second.setForeground(new Color(0x0FFFFFF) );
-		second.setBackground(new Color(0x0f039b1));
+		second.setBackground(new Color(0xD43FAF));
 		second.setFont(f1);
 		second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 		JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(2));
@@ -845,7 +859,7 @@ public class computerOrganisation2 {
 		third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 		JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(4)).get(3));
 		fourth.setForeground(new Color(0x0FFFFFF) );
-		fourth.setBackground(new Color(0x0f039b1));
+		fourth.setBackground(new Color(0xD43FAF));
 		fourth.setFont(f1);
 		fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 		ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
@@ -933,7 +947,7 @@ public class computerOrganisation2 {
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 	
 	 JLabel general_background = new JLabel();
-	 general_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\Computer Organisation (7) (2).jpg"));
+	 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
     Dimension size = general_background.getPreferredSize();
     general_background.setBounds(0,0,size.width,size.height);
     
@@ -955,7 +969,7 @@ public class computerOrganisation2 {
 		first.setBounds((screen_width/2) - 400, (screen_height/2) - 140, 800, 35);
 		JRadioButton second = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(1));
 		second.setForeground(new Color(0x0FFFFFF) );
-		second.setBackground(new Color(0x0f039b1));
+		second.setBackground(new Color(0xD43FAF));
 		second.setFont(f1);
 		second.setBounds((screen_width/2) - 400, (screen_height/2) - 100, 800, 35);
 		JRadioButton third = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(2));
@@ -965,7 +979,7 @@ public class computerOrganisation2 {
 		third.setBounds((screen_width/2) - 400, (screen_height/2) - 60, 800, 35);
 		JRadioButton fourth = new JRadioButton(((ArrayList<String>) q_op.get(5)).get(3));
 		fourth.setForeground(new Color(0x0FFFFFF) );
-		fourth.setBackground(new Color(0x0f039b1));
+		fourth.setBackground(new Color(0xD43FAF));
 		fourth.setFont(f1);
 		fourth.setBounds((screen_width/2) - 400, (screen_height/2) - 20, 800, 35);
 		ans.add(first); ans.add(second); ans.add(third);ans.add(fourth);
@@ -984,7 +998,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				} else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
+					showresults_timer(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -1002,7 +1016,7 @@ public class computerOrganisation2 {
 					showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				}else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
+					showresults_timer(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -1020,7 +1034,7 @@ public class computerOrganisation2 {
 				showresults_incrdiff(frame, screenSize, q, a, q_op, 3, resultd);
 				} else if (mode == 3) {
 					all_six_results[5] = "correct";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
+					showresults_timer(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -1039,7 +1053,7 @@ public class computerOrganisation2 {
 				
 				} else if (mode == 3) {
 					all_six_results[5] = "incorrect";
-					showresults_countdown(frame, screenSize, q, a, q_op, all_six_results, startTime);
+					showresults_timer(frame, screenSize, q, a, q_op, all_six_results, startTime);
 				}
 			};
 
@@ -1057,7 +1071,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
+	results_background.setIcon(new ImageIcon("src\\CompOrg\\resultsbackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
     
@@ -1123,7 +1137,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
+	results_background.setIcon(new ImageIcon("src\\CompOrg\\resultsBackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
     
@@ -1179,7 +1193,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 		});
 		frame.add(results_background);}
 	
-} public static void showresults_countdown(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results, Instant startTime) {
+} public static void showresults_timer(JFrame frame, Dimension screenSize, ArrayList q, ArrayList a, ArrayList<ArrayList> q_op, String[] all_six_results, Instant startTime) {
 	int screen_width = (int) screenSize.getWidth();
 	int screen_height = (int) screenSize.getHeight();
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 100);
@@ -1188,7 +1202,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("C:\\Users\\adeto\\Downloads\\results background.jpg"));
+	results_background.setIcon(new ImageIcon("src\\CompOrg\\resultsBackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
 
