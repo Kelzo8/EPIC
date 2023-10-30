@@ -67,6 +67,7 @@ public class Main {
 
                 // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
             }
+        
         });
     }
     public static boolean logIn(JFrame frame,Dimension screenSize){

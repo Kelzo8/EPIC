@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class DataAnalysis extends JFrame {
+public class leaderboard extends JFrame {
 
     // ArrayLists to store scores for Niall, Kelly, and James
     private ArrayList<Integer> niallScores = new ArrayList<>();
@@ -14,7 +14,7 @@ public class DataAnalysis extends JFrame {
     private ArrayList<Integer> jamesScores = new ArrayList<>();
 
     // Constructor for the Leaderboard class
-    public DataAnalysis() {
+    public leaderboard() {
         super("Score Analyzer"); // Set the title of the JFrame
 
         // Read scores from the CSV file
@@ -146,6 +146,6 @@ public class DataAnalysis extends JFrame {
 
     // Main method to start the application
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(DataAnalysis::new); // Start the enhanced leaderboard application
+        SwingUtilities.invokeLater(leaderboard::new); // Start the enhanced leaderboard application
     }
 }
