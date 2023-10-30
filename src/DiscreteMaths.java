@@ -23,14 +23,18 @@ public class DiscreteMaths {
     private static String[] results = new String[2]; // Array to store user's answers and results
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                JFrame frame = new JFrame();
-                Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-                DifficultyMenu(frame, screenSize);
-            }
-        });
+        // Initialize the JFrame and set its properties
+        JFrame frame = new JFrame("Quiz App");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(800, 600);
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation((screenSize.width - frame.getWidth()) / 2, (screenSize.height - frame.getHeight()) / 2);
+
+        // Call the DifficultyMenu method to start the quiz
+        DifficultyMenu(frame, screenSize);
+
+        // Make the frame visible
+        frame.setVisible(true);
     }
     // Function to display easy level question and options
     public static void Easy(JFrame frame, Dimension screenSize) {
@@ -720,24 +724,9 @@ public class DiscreteMaths {
         messageLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2), 600, 50);
         frame.add(messageLabel);
         Arrays.fill(results, null);
-
-
-    
-       
-                // Determine the next question based on results[0]
-                int nextQuestion = Integer.parseInt(results[0]) + 1;
-                if (nextQuestion == 1) {
-                    Advanced1(frame, screenSize, results);
-                } else if (nextQuestion == 2) {
-                    Advanced2(frame, screenSize, results);
-                } else {
-                    // Handle the case when all questions are done
-                    // might want to show a completion message or go back to the main menu
-                }
-                frame.repaint();
             }
      
-    // Function to display the difficulty menu and handle user selection
+ // Function to display the difficulty menu and handle user selection
     public static int DifficultyMenu(JFrame frame, Dimension screenSize) {
         //Essentially identical to the selection menu method
         // return 0 for easy
@@ -760,18 +749,53 @@ public class DiscreteMaths {
         JLabel gameMode = new JLabel("Please select the quiz mode: ");
         gameMode.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton easy = new JButton(); // declaring a new button of the name easy
+      
+        
+        // Create timer button
+        JButton timerButton = new JButton("Timer");
+        timerButton.setBounds((screenWidth / 2) - 150, (screenHeight / 2) + 0, 300, 20);
+        frame.add(timerButton);
+
+        // Create random button
+        JButton randomButton = new JButton("Random");
+        randomButton.setBounds((screenWidth / 2) - 150, (screenHeight / 2) + 50, 300, 20);
+        frame.add(randomButton);
+
         easy.setText("Easy");
         easy.setBounds((screenWidth/2)-150,(screenHeight/2)-150,300,20);// setting location for element on frame
         JButton intermediate = new JButton();
         intermediate.setBounds((screenWidth/2)-150,(screenHeight/2)-100,300,20);
+        frame.add(easy);frame.add(intermediate);frame.add(easy);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);
 
         intermediate.setText("Intermediate");
         JButton intense = new JButton();
         intense.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,20);
+        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);
 
         intense.setText("Advanced");
-        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);
+        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);
+        
+        // ActionListener for timer button
+        timerButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show time taken by the user
+                int minutes = secondsPassed / 60;
+                int seconds = secondsPassed % 60;
+                String timeTaken = String.format("Time taken: %d minutes %d seconds", minutes, seconds);
+                JOptionPane.showMessageDialog(frame, timeTaken, "Timer", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
 
+        // ActionListener for random button
+        randomButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Show random questions (implement logic for random questions here)
+                JOptionPane.showMessageDialog(frame, "Displaying random questions.", "Random Questions",
+                        JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
         easy.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
