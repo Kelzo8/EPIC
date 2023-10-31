@@ -16,11 +16,11 @@ public class DiscreteMaths {
         	intermediate1(frame,screenSize);
         }
         if (difficulty == 2) {
-        	Advanced1(frame,screenSize, results);
+        	Advanced1(frame,screenSize);
         } 
 
     }
-    private static String[] results = new String[2]; // Array to store user's answers and results
+
 
     public static void main(String[] args) {
         // Initialize the JFrame and set its properties
@@ -57,7 +57,7 @@ public class DiscreteMaths {
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
         int[] question = {1,2};// compare question with result to show to the user at the end
-        int[] result = new int[2];
+        String[] result = new String[2];
         //creates a button group where only one radio button can be selected
         ButtonGroup buttonGroup = new ButtonGroup();
         //creates the radio button options
@@ -89,8 +89,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Correct";
-                Easy2(frame,screenSize, results);
+                result[0] = "Correct";
+                Easy2(frame,screenSize, result);
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -99,8 +99,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Easy2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Easy2(frame,screenSize, result);
             }
         });
         option13.addActionListener(new ActionListener() {
@@ -109,8 +109,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Easy2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Easy2(frame,screenSize, result);
             }
         });
         option14.addActionListener(new ActionListener() {
@@ -119,8 +119,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Easy2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Easy2(frame,screenSize, result);
             }
         });
      // ActionListener for return button, going back to the difficulty menu(listen's for click)
@@ -133,8 +133,7 @@ public class DiscreteMaths {
         // adding the buttons to the JFrame
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
     }
-      public static void Easy2(JFrame frame, Dimension screenSize,String[] results2) {
-        //Easy question no.2 also not effective but not sure of any other way to do it using Java Swing
+      public static void Easy2(JFrame frame, Dimension screenSize,String[] result) {
             int screenWidth = (int)screenSize.getWidth();
             int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
             JLabel Question1 = new JLabel("Which one means p and q?");
@@ -184,8 +183,8 @@ public class DiscreteMaths {
                     frame.getContentPane().removeAll();
                     frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                     frame.repaint();
-                    results[0] = "Incorrect";
-                    showResults(frame,screenSize, results);
+                    result[1] = "Incorrect";
+                    showResults(frame,screenSize, result);
                 }
             });
             option12.addActionListener(new ActionListener() {
@@ -194,8 +193,8 @@ public class DiscreteMaths {
                     frame.getContentPane().removeAll();
                     frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                     frame.repaint();
-                    results[0] = "Incorrect";
-                    showResults(frame,screenSize, results);
+                    result[1] = "Incorrect";
+                    showResults(frame,screenSize, result);
                 }
             });
             option13.addActionListener(new ActionListener() {
@@ -204,8 +203,8 @@ public class DiscreteMaths {
                     frame.getContentPane().removeAll();
                     frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                     frame.repaint();
-                    results[1] = "Correct";
-                    showResults(frame,screenSize, results);
+                    result[1] = "Correct";
+                    showResults(frame,screenSize, result);
                 }
             });
             option14.addActionListener(new ActionListener() {
@@ -214,8 +213,8 @@ public class DiscreteMaths {
                     frame.getContentPane().removeAll();
                     frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                     frame.repaint();
-                    results[0] = "Incorrect";
-                    showResults(frame,screenSize, results);
+                    result[1] = "Incorrect";
+                    showResults(frame,screenSize, result);
                 }
             });
             //goes back to previous page(listens for click and clears page)
@@ -277,7 +276,7 @@ public class DiscreteMaths {
             	frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[1] = "Incorrect";
+                result[0] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -287,7 +286,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[1] = "Incorrect";
+                result[0] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -297,7 +296,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[1] = "Correct";
+                result[0] = "Correct";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -307,7 +306,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[1] = "Incorrect";
+                result[0] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -418,7 +417,7 @@ public class DiscreteMaths {
     }
 
  // Function to display advanced level question and options
-    public static void Advanced1(JFrame frame, Dimension screenSize, String[] results) {
+    public static void Advanced1(JFrame frame, Dimension screenSize) {
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
         JLabel Question1 = new JLabel ("If a relation is both symmetric and antisymmetric,what can be said about the relation?");
@@ -469,8 +468,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Advanced2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Advanced2(frame,screenSize, result);
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -479,8 +478,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Correct";
-                Advanced2(frame,screenSize,results);
+                result[0] = "Correct";
+                Advanced2(frame,screenSize,result);
             }
         });
         option13.addActionListener(new ActionListener() {
@@ -489,8 +488,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Advanced2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Advanced2(frame,screenSize, result);
                 
             }
         });
@@ -500,8 +499,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                Advanced2(frame,screenSize, results);
+                result[0] = "Incorrect";
+                Advanced2(frame,screenSize, result);
               
              
             }
