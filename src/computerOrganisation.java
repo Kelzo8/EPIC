@@ -103,7 +103,7 @@ public class computerOrganisation {
         
 		//background image for design purposes
 		 JLabel first_background = new JLabel();
-		 first_background.setIcon(new ImageIcon("images\\compOrg\\compOrgMainBg.jpg"));
+		 first_background.setIcon(new ImageIcon("EPIC\\images\\compOrg\\compOrgMainBg.jpg"));
 	     Dimension size = first_background.getPreferredSize();
 	     first_background.setBounds(0,0,size.width,size.height);
 		
@@ -226,7 +226,7 @@ public class computerOrganisation {
 		Font f2 = new Font(Font.DIALOG, Font.BOLD, 24);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("src\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -272,7 +272,7 @@ public class computerOrganisation {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -363,7 +363,7 @@ public class computerOrganisation {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -498,7 +498,7 @@ public class computerOrganisation {
 		Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18);
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 	     
@@ -615,7 +615,7 @@ public class computerOrganisation {
 		int screen_height = (int) screenSize.getHeight();
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 		
@@ -743,7 +743,7 @@ public class computerOrganisation {
 		String[] single_result = new String[1];
 		
 		 JLabel general_background = new JLabel();
-		 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+		 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
 	     Dimension size = general_background.getPreferredSize();
 	     general_background.setBounds(0,0,size.width,size.height);
 	     
@@ -817,7 +817,7 @@ public class computerOrganisation {
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 	
 	 JLabel general_background = new JLabel();
-	 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+	 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
     Dimension size = general_background.getPreferredSize();
     general_background.setBounds(0,0,size.width,size.height);
 	
@@ -942,7 +942,7 @@ public class computerOrganisation {
 	Font f1 = new Font(Font.DIALOG,  Font.BOLD, 18); 
 	
 	 JLabel general_background = new JLabel();
-	 general_background.setIcon(new ImageIcon("images\\CompOrg\\CompOrgBg.jpg"));
+	 general_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\CompOrgBg.jpg"));
     Dimension size = general_background.getPreferredSize();
     general_background.setBounds(0,0,size.width,size.height);
     
@@ -1066,7 +1066,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("images\\CompOrg\\resultsbackground.jpg"));
+	results_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\resultsbackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
     
@@ -1132,7 +1132,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	Font f3 = new Font(Font.DIALOG,  Font.BOLD, 36);
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("images\\CompOrg\\resultsBackground.jpg"));
+	results_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\resultsBackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
     
@@ -1197,7 +1197,7 @@ public static void showresults_incrdiff(JFrame frame, Dimension screenSize, Arra
 	
 	
 	JLabel results_background = new JLabel();
-	results_background.setIcon(new ImageIcon("images\\CompOrg\\resultsBackground.jpg"));
+	results_background.setIcon(new ImageIcon("EPIC\\images\\CompOrg\\resultsBackground.jpg"));
     Dimension size = results_background.getPreferredSize();
     results_background.setBounds(0,0,size.width,size.height);
 

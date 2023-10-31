@@ -23,6 +23,6 @@ public class Main extends Thread{
 
     }
     public void run() {
-        MusicPlayer.playAudio("music\\Puzzle-Dreams-3.wav");
+        MusicPlayer.playAudio("EPIC\\music\\Puzzle-Dreams-3.wav");
     }
 }

@@ -36,7 +36,7 @@ public class ComputerScience extends Thread{
         // return 2 for intense
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         // return 3 for random -- not accessible yet until basic modes are complete
@@ -45,7 +45,7 @@ public class ComputerScience extends Thread{
         JButton returnButton = new JButton("Return to selection menu");
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),200,50);
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -126,11 +126,11 @@ public class ComputerScience extends Thread{
     public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
         Object file;
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         try {
-            file = new JSONParser().parse(new FileReader("src\\data.json"));
+            file = new JSONParser().parse(new FileReader("EPIC\\src\\data.json"));
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
         }
@@ -163,7 +163,7 @@ public class ComputerScience extends Thread{
             Dimension imageSize = image.getPreferredSize();
             image.setBounds((screenWidth / 4) + imageXOffset, (screenHeight / 2) + imageYOffset, imageSize.width, imageSize.height);
         }
-        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 
@@ -541,7 +541,7 @@ public class ComputerScience extends Thread{
 
     }
     public static void updateLeaderBoard(int score) {
-        String userDataFile = "logins.csv"; // this file contains the login details of every password
+        String userDataFile = "EPIC\\logins.csv"; // this file contains the login details of every password
         String usernameFinal = Login.loggedin; // we don't need to convert this into a hashcode as it will allow us to search for users in the login file
         try {
             BufferedReader reader = new BufferedReader(new FileReader(userDataFile));
@@ -661,7 +661,7 @@ public class ComputerScience extends Thread{
         //gamemode should be 0 for comp sci, 1 for comp org, 2 for discrete maths
         JLabel background = new JLabel();
         resultsShown = true;
-        background.setIcon(new ImageIcon("images\\compSci\\comp sci results background.jpg"));
+        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\comp sci results background.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(-130,0,sizeBg.width,sizeBg.height);
         // int type is for declaring whether the gamemode is Random, Levels or -----
@@ -726,14 +726,14 @@ public class ComputerScience extends Thread{
         //1 for intermediate
         // 2 for intense
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions to calculate item placements
         int screenHeight = (int) screenSize.getHeight();
 
         JLabel compSciTitle = new JLabel();
-        compSciTitle.setIcon(new ImageIcon("images\\compSci\\csf title.jpg"));
+        compSciTitle.setIcon(new ImageIcon("EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
 

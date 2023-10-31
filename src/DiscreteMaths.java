@@ -46,9 +46,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -142,9 +142,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -236,9 +236,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -329,9 +329,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -426,9 +426,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -533,9 +533,9 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
@@ -668,7 +668,7 @@ public class DiscreteMaths {
 
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\12.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\12.jpg"));
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
 
@@ -735,9 +735,9 @@ public class DiscreteMaths {
         int screenHeight = (int) screenSize.getHeight();
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("EPIC\\images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
         // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);

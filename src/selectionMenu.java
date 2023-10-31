@@ -9,7 +9,7 @@ public class selectionMenu {
         Font f2 = new Font(Font.DIALOG, Font.BOLD, 30); // the font kelly chose
 
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("images\\selectionBg.png"));
+        background.setIcon(new ImageIcon("EPIC\\images\\selectionBg.png"));
 
         Dimension size = background.getPreferredSize();
         background.setBounds(0,0,size.width,size.height);
@@ -63,7 +63,6 @@ public class selectionMenu {
             ComputerScience.gameModeSelection(frame,screenSize);
         });
         discreteMaths.addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Discrete Maths");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
@@ -72,7 +71,6 @@ public class selectionMenu {
             // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
         });
         compOrg.addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Computer Organisation");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
