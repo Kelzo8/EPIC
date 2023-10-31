@@ -17,8 +17,8 @@ public class Main extends Thread{
         frame.getContentPane().setBackground(new Color(204,213,205));
         frame.setLayout(null);//using no layout managers
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize(); // this gets the dimension of the current frame, source: https://stackoverflow.com/questions/6593322/why-does-the-jframe-setsize-method-not-set-the-size-correctly
-        //Login.Main(frame,screenSize);
-        selectionMenu.Main(frame,screenSize);
+        Login.Main(frame,screenSize);
+        //selectionMenu.Main(frame,screenSize);
         frame.setResizable(true);
 
     }

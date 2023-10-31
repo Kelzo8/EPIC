@@ -36,19 +36,19 @@ public class selectionMenu {
             ComputerScience.gameModeSelection(frame,screenSize);
         });
         discreteMaths.addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Discrete Maths");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
+            DiscreteMaths.DifficultyMenu(frame, screenSize);
 
 
             // JAMES ADD DISCRETE CODE FUNCTION CALL HERE
         });
         compOrg.addActionListener(e -> {
-            JOptionPane.showMessageDialog(frame, "Computer Organisation");
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
+            computerOrganisation.main(null);
 
 
             // KELLY ADD COMPUTER ORGANISATION FUNCTION CALL HERE
