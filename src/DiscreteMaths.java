@@ -54,7 +54,7 @@ public class DiscreteMaths {
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
         
-        Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
+        Question1.setFont(new Font("Arial", Font.PLAIN, 24));
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
         int[] question = {1,2};// compare question with result to show to the user at the end
         int[] result = new int[2];
@@ -89,8 +89,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[1] = "Correct";
-                showResults(frame,screenSize, results);
+                results[0] = "Correct";
+                Easy2(frame,screenSize, results);
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -100,7 +100,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Easy2(frame,screenSize, results);
             }
         });
         option13.addActionListener(new ActionListener() {
@@ -110,7 +110,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Easy2(frame,screenSize, results);
             }
         });
         option14.addActionListener(new ActionListener() {
@@ -120,7 +120,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Easy2(frame,screenSize, results);
             }
         });
      // ActionListener for return button, going back to the difficulty menu(listen's for click)
@@ -133,7 +133,8 @@ public class DiscreteMaths {
         // adding the buttons to the JFrame
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
     }
-      public static void Easy2(JFrame frame, Dimension screenSize,int[] result) {//Easy question no.2 also not effective but not sure of any other way to do it using Java Swing
+      public static void Easy2(JFrame frame, Dimension screenSize,String[] results2) {
+        //Easy question no.2 also not effective but not sure of any other way to do it using Java Swing
             int screenWidth = (int)screenSize.getWidth();
             int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
             JLabel Question1 = new JLabel("Which one means p and q?");
@@ -146,7 +147,7 @@ public class DiscreteMaths {
             JLabel Discretemaths = new JLabel();
             Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
             Dimension size = Discretemaths.getPreferredSize();
-         // Set bounds for Discretemathsbackground and Discretemaths JLabels
+         // Set bounds for Discretemathsbackground 
             Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
             Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
 
@@ -243,7 +244,7 @@ public class DiscreteMaths {
      // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
-        String[] result = new String [1];
+        String[] result = new String[2];
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
         //creates a button group where only one radio button can be selected
@@ -276,7 +277,7 @@ public class DiscreteMaths {
             	frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Incorrect";
+                result[1] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -286,7 +287,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Incorrect";
+                result[1] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -306,7 +307,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                result[0] = "Incorrect";
+                result[1] = "Incorrect";
                 intermediate2(frame,screenSize,result);
             }
         });
@@ -370,8 +371,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[1] = "Correct";
-                showResults(frame,screenSize, results);
+                result[1] = "Correct";
+                showResults(frame,screenSize, result);
              
             }
         });
@@ -381,8 +382,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
             }
         });
         option13.addActionListener(new ActionListener() {
@@ -391,8 +392,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
             }
         });
         option14.addActionListener(new ActionListener() {
@@ -401,8 +402,8 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
             }
         });
       //goes back to previous page(listens for click and clears page)
@@ -411,8 +412,6 @@ public class DiscreteMaths {
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
             frame.repaint();
             DifficultyMenu(frame, screenSize);
-            results[0] = "Incorrect";
-            showResults(frame,screenSize, results);
         });
         // adding the buttons to the JFrame frame
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
@@ -471,7 +470,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Advanced2(frame,screenSize, results);
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -480,7 +479,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[1] = "Correct";
+                results[0] = "Correct";
                 Advanced2(frame,screenSize,results);
             }
         });
@@ -491,7 +490,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Advanced2(frame,screenSize, results);
                 
             }
         });
@@ -502,7 +501,7 @@ public class DiscreteMaths {
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 results[0] = "Incorrect";
-                showResults(frame,screenSize, results);
+                Advanced2(frame,screenSize, results);
               
              
             }
@@ -585,7 +584,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
+                results[1] = "Incorrect";
                 showResults(frame,screenSize, results);
             }
         });
@@ -595,7 +594,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
+                results[1] = "Incorrect";
                 showResults(frame,screenSize, results);
             }
         });
@@ -605,7 +604,7 @@ public class DiscreteMaths {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                results[0] = "Incorrect";
+                results[1] = "Incorrect";
                 showResults(frame,screenSize, results);
              
             }
@@ -643,35 +642,30 @@ public class DiscreteMaths {
             }
         }
 
-        if (answeredQuestions < totalQuestions) {
-            // If not all questions are answered, display a message and return
-            JLabel messageLabel = new JLabel("Please answer all questions before viewing your score.");
-            messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            messageLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-            messageLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2) - 50, 600, 50);
-            frame.add(messageLabel);
-        } else {
+ 
             // If all questions are answered, calculate and display the final score
             frame.getContentPane().removeAll();
             frame.revalidate();
             frame.repaint();
 
             int correctCount = 0;
+            System.out.println(Arrays.toString(results));
             for (String result : results) {
                 if ("Correct".equals(result)) {
                     correctCount++;
+                    System.out.println("YEP");
                 }
             }
 
-            double percentage = ((double) correctCount / totalQuestions) * 100;
+            double percentage = ((double) correctCount / 2) * 100;
             String resultString = String.format("Your score: %.2f%%", percentage);
 
-            JLabel resultLabel = new JLabel(resultString);
+            JLabel resultLabel = new JLabel(String.valueOf(percentage));
             resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
             resultLabel.setFont(new Font("Arial", Font.BOLD, 20));
             resultLabel.setBounds((screenWidth / 2) - 200, (screenHeight / 2) - 100, 400, 100);
-            frame.add(resultLabel);
-        }
+   
+   
        
       //images
         JLabel Discretemathsbackground = new JLabel();
@@ -680,12 +674,16 @@ public class DiscreteMaths {
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
     
 
-        int correctCount = 0;
         for (String result : results) {
             if ("Correct".equals(result)) {
                 correctCount++;
                 // Stop the timer when showing results
-                timer.stop();
+                try {
+                	timer.stop();
+                }
+                catch(Exception e) {
+                	
+                }
 
                 // Calculate minutes and seconds from secondsPassed
                 int minutes = secondsPassed / 60;
@@ -693,21 +691,21 @@ public class DiscreteMaths {
                 // Display the time taken by the user
                 JLabel timeLabel = new JLabel("Time taken: " + minutes + " minutes " + seconds + " seconds");
                 timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
-                timeLabel.setFont(new Font("Arial", Font.PLAIN, 20));
-                timeLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2) + 40, 600, 50);
-                frame.add(timeLabel);frame.add(Discretemathsbackground);
+                timeLabel.setFont(new Font("Arial", Font.PLAIN, 18));
+                timeLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2) + -200, 600, 50);
+                frame.add(timeLabel);frame.add(resultLabel);frame.add(Discretemathsbackground);
 
             }
         }
 
-        double percentage = ((double) correctCount / results.length) * 100;
-        String resultString = String.format("Your score: %.2f%%", percentage);
-
-        JLabel resultLabel = new JLabel(resultString);
+         
+        percentage = ((double) correctCount / results.length) * 100;
+        resultString = String.format("Your score: %.2f%%", percentage);
+        System.out.println(percentage);
+        resultLabel = new JLabel(String.valueOf(percentage));
         resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
         resultLabel.setFont(new Font("Arial", Font.BOLD, 24));
         resultLabel.setBounds((screenWidth / 2) - 200, (screenHeight / 2) - 100, 400, 100);
-        frame.add(resultLabel);
 
         String completionMessage = "";
         if (percentage == 100) {
@@ -722,7 +720,7 @@ public class DiscreteMaths {
         messageLabel.setHorizontalAlignment(SwingConstants.CENTER);
         messageLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         messageLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2), 600, 50);
-        frame.add(messageLabel);
+        frame.add(messageLabel);frame.add(resultLabel);
         Arrays.fill(results, null);
             }
      
@@ -750,6 +748,9 @@ public class DiscreteMaths {
         gameMode.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton easy = new JButton(); // declaring a new button of the name easy
       
+        //return button
+        JButton returnButton = new JButton("Return");
+        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         
         // Create timer button
         JButton timerButton = new JButton("Timer");
@@ -765,15 +766,15 @@ public class DiscreteMaths {
         easy.setBounds((screenWidth/2)-150,(screenHeight/2)-150,300,20);// setting location for element on frame
         JButton intermediate = new JButton();
         intermediate.setBounds((screenWidth/2)-150,(screenHeight/2)-100,300,20);
-        frame.add(easy);frame.add(intermediate);frame.add(easy);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);
+        frame.add(easy);frame.add(intermediate);frame.add(easy);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(returnButton);
 
         intermediate.setText("Intermediate");
         JButton intense = new JButton();
         intense.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,20);
-        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);
+        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);frame.add(returnButton);
 
         intense.setText("Advanced");
-        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);
+        frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);frame.add(returnButton);
         
         // ActionListener for timer button
         timerButton.addActionListener(new ActionListener() {
@@ -784,6 +785,13 @@ public class DiscreteMaths {
                 int seconds = secondsPassed % 60;
                 String timeTaken = String.format("Time taken: %d minutes %d seconds", minutes, seconds);
                 JOptionPane.showMessageDialog(frame, timeTaken, "Timer", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+        returnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //selectionMenu.Main(frame,screenSize);
+            	//MISSING
             }
         });
 
