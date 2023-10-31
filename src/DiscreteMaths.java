@@ -5,19 +5,19 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 public class DiscreteMaths {
-	private static Timer timer;
+    private static Timer timer;
     private static int secondsPassed = 0;
-	// Main function to start the quiz based on the chosen difficulty level
+    // Main function to start the quiz based on the chosen difficulty level
     public static void MainQuizGUI(JFrame frame, Dimension screenSize,int difficulty) {
         if (difficulty == 0){
             Easy(frame,screenSize);
         }
         if (difficulty == 1) {
-        	intermediate1(frame,screenSize);
+            intermediate1(frame,screenSize);
         }
         if (difficulty == 2) {
-        	Advanced1(frame,screenSize);
-        } 
+            Advanced1(frame,screenSize);
+        }
 
     }
 
@@ -46,14 +46,14 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
-        
+
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
         int[] question = {1,2};// compare question with result to show to the user at the end
@@ -82,7 +82,7 @@ public class DiscreteMaths {
         buttonGroup.add(option13);
         buttonGroup.add(option14);
 
-     // ActionListener for option buttons, updating the result array
+        // ActionListener for option buttons, updating the result array
         option11.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,7 +123,7 @@ public class DiscreteMaths {
                 Easy2(frame,screenSize, result);
             }
         });
-     // ActionListener for return button, going back to the difficulty menu(listen's for click)
+        // ActionListener for return button, going back to the difficulty menu(listen's for click)
         returnButton.addActionListener((e)->{
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -133,99 +133,99 @@ public class DiscreteMaths {
         // adding the buttons to the JFrame
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
     }
-      public static void Easy2(JFrame frame, Dimension screenSize,String[] result) {
-            int screenWidth = (int)screenSize.getWidth();
-            int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
-            JLabel Question1 = new JLabel("Which one means p and q?");
-            //return button
-            JButton returnButton = new JButton("Return");
-            returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
-            //images
-            JLabel Discretemathsbackground = new JLabel();
-            Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
-            JLabel Discretemaths = new JLabel();
-            Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
-            Dimension size = Discretemaths.getPreferredSize();
-         // Set bounds for Discretemathsbackground 
-            Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
-            Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
+    public static void Easy2(JFrame frame, Dimension screenSize,String[] result) {
+        int screenWidth = (int)screenSize.getWidth();
+        int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
+        JLabel Question1 = new JLabel("Which one means p and q?");
+        //return button
+        JButton returnButton = new JButton("Return");
+        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
+        //images
+        JLabel Discretemathsbackground = new JLabel();
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
+        JLabel Discretemaths = new JLabel();
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
+        Dimension size = Discretemaths.getPreferredSize();
+        // Set bounds for Discretemathsbackground
+        Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
+        Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
 
-            Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
-            Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
-            
-            //creates a button group where only one radio button can be selected
-            ButtonGroup buttonGroup = new ButtonGroup();
-            //creates the radio button options
-            // VARIABLE NAMING CONVENTION first digit notates the question 2nd digit notates the option
-            JRadioButton option11 = new JRadioButton("p↔q");
-            JRadioButton option12 = new JRadioButton("p∨q");
-            JRadioButton option13 = new JRadioButton("p∧q");
-            JRadioButton option14 = new JRadioButton("q→p");
-            //setting the button location
-            option11.setBounds((screenWidth/4),(screenHeight/6)+150,300,50);
-            option12.setBounds((screenWidth/4),(screenHeight/6)+200,300,50);
-            option13.setBounds((screenWidth/4),(screenHeight/6)+250,300,50);
-            option14.setBounds((screenWidth/4),(screenHeight/6)+300,300,50);
-            //adds colour
-            option11.setBackground(new Color(51,153,225));
-            option12.setBackground(new Color(51,204,225));//https://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
-            option13.setBackground(new Color(51,153,225));
-            option14.setBackground(new Color(51,204,225));
-            // adding the buttons to the button group under the name buttonGroup
-            buttonGroup.add(option11);
-            buttonGroup.add(option12);
-            buttonGroup.add(option13);
-            buttonGroup.add(option14);
+        Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
+        Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
 
-            option11.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    frame.getContentPane().removeAll();
-                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                    frame.repaint();
-                    result[1] = "Incorrect";
-                    showResults(frame,screenSize, result);
-                }
-            });
-            option12.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    frame.getContentPane().removeAll();
-                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                    frame.repaint();
-                    result[1] = "Incorrect";
-                    showResults(frame,screenSize, result);
-                }
-            });
-            option13.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    frame.getContentPane().removeAll();
-                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                    frame.repaint();
-                    result[1] = "Correct";
-                    showResults(frame,screenSize, result);
-                }
-            });
-            option14.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    frame.getContentPane().removeAll();
-                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                    frame.repaint();
-                    result[1] = "Incorrect";
-                    showResults(frame,screenSize, result);
-                }
-            });
-            //goes back to previous page(listens for click and clears page)
-            returnButton.addActionListener((e)->{
+        //creates a button group where only one radio button can be selected
+        ButtonGroup buttonGroup = new ButtonGroup();
+        //creates the radio button options
+        // VARIABLE NAMING CONVENTION first digit notates the question 2nd digit notates the option
+        JRadioButton option11 = new JRadioButton("p↔q");
+        JRadioButton option12 = new JRadioButton("p∨q");
+        JRadioButton option13 = new JRadioButton("p∧q");
+        JRadioButton option14 = new JRadioButton("q→p");
+        //setting the button location
+        option11.setBounds((screenWidth/4),(screenHeight/6)+150,300,50);
+        option12.setBounds((screenWidth/4),(screenHeight/6)+200,300,50);
+        option13.setBounds((screenWidth/4),(screenHeight/6)+250,300,50);
+        option14.setBounds((screenWidth/4),(screenHeight/6)+300,300,50);
+        //adds colour
+        option11.setBackground(new Color(51,153,225));
+        option12.setBackground(new Color(51,204,225));//https://teaching.csse.uwa.edu.au/units/CITS1001/colorinfo.html
+        option13.setBackground(new Color(51,153,225));
+        option14.setBackground(new Color(51,204,225));
+        // adding the buttons to the button group under the name buttonGroup
+        buttonGroup.add(option11);
+        buttonGroup.add(option12);
+        buttonGroup.add(option13);
+        buttonGroup.add(option14);
+
+        option11.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
-                DifficultyMenu(frame, screenSize);
-            });
-            // adding the buttons to the JFrame frame
-            frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
+            }
+        });
+        option12.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
+            }
+        });
+        option13.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+                result[1] = "Correct";
+                showResults(frame,screenSize, result);
+            }
+        });
+        option14.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
+                frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+                frame.repaint();
+                result[1] = "Incorrect";
+                showResults(frame,screenSize, result);
+            }
+        });
+        //goes back to previous page(listens for click and clears page)
+        returnButton.addActionListener((e)->{
+            frame.getContentPane().removeAll();
+            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+            frame.repaint();
+            DifficultyMenu(frame, screenSize);
+        });
+        // adding the buttons to the JFrame frame
+        frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
         // Function to display intermediate level question and options
     }public static void intermediate1(JFrame frame, Dimension screenSize) {
         int screenWidth = (int)screenSize.getWidth();
@@ -236,11 +236,11 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
         String[] result = new String[2];
@@ -272,8 +272,8 @@ public class DiscreteMaths {
 
         option11.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {               
-            	frame.getContentPane().removeAll();
+            public void actionPerformed(ActionEvent e) {
+                frame.getContentPane().removeAll();
                 frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
                 frame.repaint();
                 result[0] = "Incorrect";
@@ -310,7 +310,7 @@ public class DiscreteMaths {
                 intermediate2(frame,screenSize,result);
             }
         });
-      //goes back to previous page(listens for click and clears page)
+        //goes back to previous page(listens for click and clears page)
         returnButton.addActionListener((e)->{
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -329,15 +329,15 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
-        
-   
+
+
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1000,50);
         //creates a button group where only one radio button can be selected
@@ -372,7 +372,7 @@ public class DiscreteMaths {
                 frame.repaint();
                 result[1] = "Correct";
                 showResults(frame,screenSize, result);
-             
+
             }
         });
         option12.addActionListener(new ActionListener() {
@@ -405,7 +405,7 @@ public class DiscreteMaths {
                 showResults(frame,screenSize, result);
             }
         });
-      //goes back to previous page(listens for click and clears page)
+        //goes back to previous page(listens for click and clears page)
         returnButton.addActionListener((e)->{
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -416,7 +416,7 @@ public class DiscreteMaths {
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
     }
 
- // Function to display advanced level question and options
+    // Function to display advanced level question and options
     public static void Advanced1(JFrame frame, Dimension screenSize) {
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();//<html>Consider the grammar:<br> f ::= true | false | x | ¬ f | f ∩ f | f ∪ f | f → f | f ↔ f </html>
@@ -426,14 +426,14 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
-        
+
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,900,50);
         int[] question = {1,2};
@@ -490,7 +490,7 @@ public class DiscreteMaths {
                 frame.repaint();
                 result[0] = "Incorrect";
                 Advanced2(frame,screenSize, result);
-                
+
             }
         });
         option14.addActionListener(new ActionListener() {
@@ -501,8 +501,8 @@ public class DiscreteMaths {
                 frame.repaint();
                 result[0] = "Incorrect";
                 Advanced2(frame,screenSize, result);
-              
-             
+
+
             }
         });
         returnButton.addActionListener((e)->{
@@ -513,7 +513,7 @@ public class DiscreteMaths {
         });
         // adding the buttons to the JFrame frame
         frame.add(option11);frame.add(option12);frame.add(option13);frame.add(option14);frame.add(Question1);frame.add(Discretemaths);frame.add(returnButton);frame.add(Discretemathsbackground);
-     // Create a timer that fires an event every second
+        // Create a timer that fires an event every second
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -533,14 +533,14 @@ public class DiscreteMaths {
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
-     
+
         Question1.setFont(new Font("Arial", Font.PLAIN, 24));//www.sarthaks.com/3503147/how-do-i-set-the-font-size-of-a-jlabel-in-java
         Question1.setBounds(screenWidth/4,(screenHeight/6)+100,1100,50);
         //creates a button group where only one radio button can be selected
@@ -605,7 +605,7 @@ public class DiscreteMaths {
                 frame.repaint();
                 results[1] = "Incorrect";
                 showResults(frame,screenSize, results);
-             
+
             }
         });
         //goes back to previous page(listens for click and clears page)
@@ -641,47 +641,47 @@ public class DiscreteMaths {
             }
         }
 
- 
-            // If all questions are answered, calculate and display the final score
-            frame.getContentPane().removeAll();
-            frame.revalidate();
-            frame.repaint();
 
-            int correctCount = 0;
-            System.out.println(Arrays.toString(results));
-            for (String result : results) {
-                if ("Correct".equals(result)) {
-                    correctCount++;
-                    System.out.println("YEP");
-                }
+        // If all questions are answered, calculate and display the final score
+        frame.getContentPane().removeAll();
+        frame.revalidate();
+        frame.repaint();
+
+        int correctCount = 0;
+        System.out.println(Arrays.toString(results));
+        for (String result : results) {
+            if ("Correct".equals(result)) {
+                correctCount++;
+                System.out.println("YEP");
             }
+        }
 
-            double percentage = ((double) correctCount / 2) * 100;
-            String resultString = String.format("Your score: %.2f%%", percentage);
+        double percentage = ((double) correctCount / 2) * 100;
+        String resultString = String.format("Your score: %.2f%%", percentage);
 
-            JLabel resultLabel = new JLabel(String.valueOf(percentage));
-            resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
-            resultLabel.setFont(new Font("Arial", Font.BOLD, 20));
-            resultLabel.setBounds((screenWidth / 2) - 200, (screenHeight / 2) - 100, 400, 100);
-   
-   
-       
-      //images
+        JLabel resultLabel = new JLabel(String.valueOf(percentage));
+        resultLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        resultLabel.setFont(new Font("Arial", Font.BOLD, 20));
+        resultLabel.setBounds((screenWidth / 2) - 200, (screenHeight / 2) - 100, 400, 100);
+
+
+
+        //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\12.jpg"));
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\12.jpg"));
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
-    
+
 
         for (String result : results) {
             if ("Correct".equals(result)) {
                 correctCount++;
                 // Stop the timer when showing results
                 try {
-                	timer.stop();
+                    timer.stop();
                 }
                 catch(Exception e) {
-                	
+
                 }
 
                 // Calculate minutes and seconds from secondsPassed
@@ -697,7 +697,7 @@ public class DiscreteMaths {
             }
         }
 
-         
+
         percentage = ((double) correctCount / results.length) * 100;
         resultString = String.format("Your score: %.2f%%", percentage);
         System.out.println(percentage);
@@ -721,36 +721,36 @@ public class DiscreteMaths {
         messageLabel.setBounds((screenWidth / 2) - 300, (screenHeight / 2), 600, 50);
         frame.add(messageLabel);frame.add(resultLabel);
         Arrays.fill(results, null);
-            }
-     
- // Function to display the difficulty menu and handle user selection
+    }
+
+    // Function to display the difficulty menu and handle user selection
     public static int DifficultyMenu(JFrame frame, Dimension screenSize) {
         //Essentially identical to the selection menu method
         // return 0 for easy
         //return 1 for intermediate
         // return 2 for intense
         // return 3 for random -- not accessible yet until basic modes are complete
-    	frame.getContentPane().setBackground(Color.decode("#A2DDE4"));
+        frame.getContentPane().setBackground(Color.decode("#A2DDE4"));
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions
         int screenHeight = (int) screenSize.getHeight();
         //images
         JLabel Discretemathsbackground = new JLabel();
-        Discretemathsbackground.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\9.jpg"));
+        Discretemathsbackground.setIcon(new ImageIcon("images\\discreteMaths\\9.jpg"));
         JLabel Discretemaths = new JLabel();
-        Discretemaths.setIcon(new ImageIcon("C:\\Users\\User\\OneDrive - University of Limerick\\eclipse-workspace\\discretemathslogo.jpg"));
+        Discretemaths.setIcon(new ImageIcon("images\\discreteMaths\\discretemathslogo.jpg"));
         Dimension size = Discretemaths.getPreferredSize();
-     // Set bounds for Discretemathsbackground and Discretemaths JLabels
+        // Set bounds for Discretemathsbackground and Discretemaths JLabels
         Discretemathsbackground.setBounds(0, 0, screenWidth, screenHeight);
         Discretemaths.setBounds((screenWidth / 2) - (size.width / 2), (screenHeight / 2) - 350, size.width, size.height);
 
         JLabel gameMode = new JLabel("Please select the quiz mode: ");
         gameMode.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton easy = new JButton(); // declaring a new button of the name easy
-      
+
         //return button
         JButton returnButton = new JButton("Return");
         returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);
-        
+
         // Create timer button
         JButton timerButton = new JButton("Timer");
         timerButton.setBounds((screenWidth / 2) - 150, (screenHeight / 2) + 0, 300, 20);
@@ -774,7 +774,7 @@ public class DiscreteMaths {
 
         intense.setText("Advanced");
         frame.add(easy);frame.add(intermediate);frame.add(intense);frame.add(gameMode);frame.add(Discretemaths);frame.add(Discretemathsbackground);frame.add(timerButton);frame.add(returnButton);
-        
+
         // ActionListener for timer button
         timerButton.addActionListener(new ActionListener() {
             @Override
@@ -790,7 +790,7 @@ public class DiscreteMaths {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //selectionMenu.Main(frame,screenSize);
-            	//MISSING
+                //MISSING
             }
         });
 
@@ -824,14 +824,14 @@ public class DiscreteMaths {
         });
         intense.addActionListener(new ActionListener() {
             private static int screen_width;
-			@Override
+            @Override
             public void actionPerformed(ActionEvent e) {
                 frame.getContentPane().removeAll();
                 frame.revalidate();
                 frame.repaint();
                 MainQuizGUI(frame,screenSize,2);
             }
-			 
+
         });
         // return 1 for Foundations of computer science
         // return 2 for Discrete Mathematics
@@ -840,4 +840,3 @@ public class DiscreteMaths {
     }
 
 }
-
