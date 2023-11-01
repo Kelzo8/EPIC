@@ -24,8 +24,7 @@ public class MusicPlayer {
 
             clip.close();
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException e) {
-            e.printStackTrace();
+        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException | InterruptedException ignored) {
         }
     }
 
