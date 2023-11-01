@@ -43,7 +43,12 @@ public class ComputerScience extends Thread{
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions
         int screenHeight = (int) screenSize.getHeight();
         JButton returnButton = new JButton("Return to selection menu");
-        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),200,50);
+        Font f2 = new Font(Font.DIALOG, Font.BOLD, 30);
+        returnButton.setFont(f2);
+        returnButton.setForeground(new Color (0x0ffffff));
+        returnButton.setBackground(new Color (0x2A7608));
+        returnButton.setBorder(BorderFactory.createLineBorder(new Color (0x005D02), 5));
+        returnButton.setBounds((screenWidth/8) - 90,screenHeight-(screenHeight/5),400,50);
         JLabel compSciTitle = new JLabel();
         compSciTitle.setIcon(new ImageIcon("EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
@@ -60,7 +65,9 @@ public class ComputerScience extends Thread{
         levels.setText("Levels");
         JButton timer = new JButton("Timed");
         timer.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,30);
-
+        random.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
+        levels.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
+        timer.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
         frame.add(random);frame.add(levels);frame.add(timer);
         frame.add(gameMode);frame.add(returnButton);frame.add(compSciTitle);
         frame.add(background);
@@ -137,7 +144,13 @@ public class ComputerScience extends Thread{
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();
         JButton returnButton = new JButton("Go back");
-        returnButton.setBounds((screenWidth/8),screenHeight-(screenHeight/5),150,50);// this will return the user to difficulty menu
+        // this will return the user to difficulty menu
+        Font f2 = new Font(Font.DIALOG, Font.BOLD, 30);
+        returnButton.setFont(f2);
+        returnButton.setForeground(new Color (0x0ffffff));
+        returnButton.setBackground(new Color (0x2A7608));
+        returnButton.setBorder(BorderFactory.createLineBorder(new Color (0x005D02), 5));
+        returnButton.setBounds((screenWidth/8) - 90,screenHeight-(screenHeight/5),400,50);
 
         ButtonGroup buttonGroup = new ButtonGroup();
         JLabel compSciTitle = new JLabel();
@@ -708,7 +721,12 @@ public class ComputerScience extends Thread{
         if (isTimed) frame.add(timeTaken);frame.add(background);
         //if (isTimed) frame.add(outOfTime);
         //RESULTS ARE IN ARRAY -- > JUST NEED TO BE DISPLAYED 18/10/2023 DO TOMORROW
-
+        Font f2 = new Font(Font.DIALOG, Font.BOLD, 30);
+        returnButton.setFont(f2);
+        returnButton.setForeground(new Color (0x0ffffff));
+        returnButton.setBackground(new Color (0x2A7608));
+        returnButton.setBorder(BorderFactory.createLineBorder(new Color (0x005D02), 5));
+        returnButton.setBounds((screenWidth/8) - 90,screenHeight-(screenHeight/5),400,50);
         returnButton.addActionListener((e)-> {
             frame.getContentPane().removeAll();
             frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
@@ -751,6 +769,13 @@ public class ComputerScience extends Thread{
         intermediate.setText("Intermediate");
         JButton intense = new JButton();
         intense.setBounds((screenWidth/2)-150,(screenHeight/2)-50,300,30);
+        Font f2 = new Font(Font.DIALOG, Font.BOLD, 30);
+
+        returnButton.setFont(f2);
+        returnButton.setForeground(new Color (0x0ffffff));
+        returnButton.setBackground(new Color (0x2A7608));
+        returnButton.setBorder(BorderFactory.createLineBorder(new Color (0x005D02), 5));
+        returnButton.setBounds((screenWidth/8) - 90,screenHeight-(screenHeight/5),500,50);
 
         intense.setText("INTENSE");
         intermediate.setBackground(Color.decode("#38b000"));
@@ -759,6 +784,9 @@ public class ComputerScience extends Thread{
         frame.add(easy);frame.add(intermediate);frame.add(intense);
         frame.add(gameMode);frame.add(returnButton);frame.add(compSciTitle);
         frame.add(background);
+        easy.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
+        intermediate.setBorder(BorderFactory.createLineBorder(new Color (1,127,2), 5));
+        intense.setBorder(BorderFactory.createLineBorder(new Color (1,127,2), 5));
         // ACTION LISTENERS LOOK FOR BUTTON CLICKS
         easy.addActionListener(e -> {
             frame.getContentPane().removeAll();
