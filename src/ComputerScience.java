@@ -7,6 +7,7 @@ import java.awt.*;
 import java.io.*;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.ListIterator;
 
 public class ComputerScience extends Thread{
 
@@ -19,26 +20,25 @@ public class ComputerScience extends Thread{
     static int elapsedTimeGlob = 0;
     static boolean isTimed = false;
     public static void MainQuizGUI(JFrame frame, Dimension screenSize, int difficulty) {
-        if (difficulty == 0){
-            showFrame(frame,screenSize,"Easy","Q1");
-        } else if (difficulty == 1) {
-            showFrame(frame,screenSize,"Intermediate","Q1");
-        } else if (difficulty == 2) {
-            showFrame(frame,screenSize,"Intense","Q1");
+        switch (difficulty){ // 0 is easy, 1 is intermediate, 2 is intense
+            case 0 -> showFrame(frame,screenSize,"Easy","Q1");
+            case 1 -> showFrame(frame,screenSize,"Intermediate","Q1");
+            case 2 -> showFrame(frame,screenSize,"Intense","Q1");
         }
         frame.setVisible(true);//making the frame visible
-
     }
+    public static void clearFrame(JFrame frame){
+        frame.getContentPane().removeAll();
+        frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
+        frame.repaint();
+    } // NEW
     public static void gameModeSelection(JFrame frame, Dimension screenSize) {
         //Essentially identical to the selection menu method
         // return 0 for easy
         //return 1 for intermediate
         // return 2 for intense
         //frame.getContentPane().setBackground(Color.decode("#A0E63F"));
-        JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
-        Dimension sizeBg = background.getPreferredSize();
-        background.setBounds(0,0,sizeBg.width,sizeBg.height);
+        JLabel background = setBackground("EPIC\\images\\compSci\\compSciBg.jpg");
         // return 3 for random -- not accessible yet until basic modes are complete
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions
         int screenHeight = (int) screenSize.getHeight();
@@ -53,7 +53,6 @@ public class ComputerScience extends Thread{
         compSciTitle.setIcon(new ImageIcon("EPIC\\images\\compSci\\csf title.jpg"));
         Dimension size = compSciTitle.getPreferredSize();
         compSciTitle.setBounds( (screenWidth / 2)-(size.width/2), (screenHeight / 2)-350,size.width,size.height);
-
         JLabel gameMode = new JLabel("Please select a gameMode: ");
         gameMode.setBounds((screenWidth/2)-150,(screenHeight/2)-180,300,20);
         JButton random = new JButton(); // declaring a new button of the name easy
@@ -68,74 +67,64 @@ public class ComputerScience extends Thread{
         random.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
         levels.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
         timer.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
-        frame.add(random);frame.add(levels);frame.add(timer);
-        frame.add(gameMode);frame.add(returnButton);frame.add(compSciTitle);
-        frame.add(background);
-        random.setBackground(Color.decode("#38b000"));
-        levels.setBackground(Color.decode("#38b000"));
-        timer.setBackground(Color.decode("#38b000"));
+
+        drawComponentsOnFrame(frame,new JRadioButton[]{}, new JLabel[]{compSciTitle,gameMode,background}, returnButton,new JButton[]{random,levels,timer});
+        for (JButton button: new JButton[]{random,levels,timer}) {
+            button.setBackground(Color.decode("#38b000"));
+            mouseListener(button, "#38b000","#40cb00",new JRadioButton());
+        }
         random.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             randomGame(frame, screenSize);
         });
         levels.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             DifficultyMenu(frame,screenSize);
         });
         timer.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();
-            frame.repaint();
+            clearFrame(frame);
             isTimed = true;
             timer(frame,screenSize);
         });
         returnButton.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             frame.getContentPane().setBackground(new Color(204,213,205));
             selectionMenu.Main(frame,screenSize);
         });
-        random.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                random.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                random.setBackground(Color.decode("#38b000"));
-            }
-        });
-        levels.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                levels.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                levels.setBackground(Color.decode("#38b000"));
-            }
-        });
-        timer.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                timer.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                timer.setBackground(Color.decode("#38b000"));
-            }
-        });
         frame.setVisible(true);//making the frame visible
     }
+    public static void mouseListener(JButton button, String beforeColor, String afterColor, JRadioButton radioButton){
+            button.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    button.setBackground(Color.decode(beforeColor));
+                }
+
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    button.setBackground(Color.decode(afterColor));
+                }
+            });
+            radioButton.addMouseListener(new java.awt.event.MouseAdapter() {
+                public void mouseExited(java.awt.event.MouseEvent evt) {
+                    button.setBackground(Color.decode(beforeColor));
+                }
+
+                public void mouseEntered(java.awt.event.MouseEvent evt) {
+                    button.setBackground(Color.decode(afterColor));
+                }
+            });
+
+    }// NEW
     // type (of question) as in easy intermediate or insane, question will determine specifics i.e. Q1 or Q2, correctAnswer stores which option is correct
-    public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
-        Object file;
+    public static JLabel setBackground(String url){
         JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
+        background.setIcon(new ImageIcon(url));
         Dimension sizeBg = background.getPreferredSize();
         background.setBounds(0,0,sizeBg.width,sizeBg.height);
+        return background;
+    }
+    public static void showFrame(JFrame frame,Dimension screenSize,String type,String question){
+        Object file;
+        JLabel background = setBackground("EPIC\\images\\compSci\\compSciBg.jpg");
         try {
             file = new JSONParser().parse(new FileReader("EPIC\\src\\data.json"));
         } catch (IOException | ParseException e) {
@@ -189,21 +178,12 @@ public class ComputerScience extends Thread{
         JRadioButton option3 = new JRadioButton((String) Answers.get("3"));
         JRadioButton option4 = new JRadioButton((String) Answers.get("4"));
 
-        // setting background colour
-        option2.setBackground(Color.decode("#38b000"));
-        option1.setBackground(Color.decode("#38b000"));
-        option3.setBackground(Color.decode("#38b000"));
-        option4.setBackground(Color.decode("#38b000"));
-        // setting the font to be bold and stand out
-        option1.setFont(new Font("Arial", Font.BOLD, 24));
-        option2.setFont(new Font("Arial", Font.BOLD, 24));
-        option3.setFont(new Font("Arial", Font.BOLD, 24));
-        option4.setFont(new Font("Arial", Font.BOLD, 24));
-        // adding the buttons to the button group under the name buttonGroup so only 1 can be selected at a time
-        buttonGroup.add(option1);
-        buttonGroup.add(option2);
-        buttonGroup.add(option3);
-        buttonGroup.add(option4);
+        for (JRadioButton button: new JRadioButton[]{option1,option2,option3,option4}){
+            button.setBackground(Color.decode("#38b000"));
+            button.setFont(new Font("Arial", Font.BOLD, 24));
+            buttonGroup.add(button);
+        }
+
         //setting the button location
         option1.setBounds((screenWidth/2)-250,(screenHeight/2)-150,500,50);
         option2.setBounds((screenWidth/2)-250,(screenHeight/2)-100,500,50);
@@ -216,137 +196,48 @@ public class ComputerScience extends Thread{
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("1")) {
-                        results[0] = "Correct";
-                    } else {
-                        results[0] = "Incorrect";
-                    }
+                    nonRandomConditionals("1",0);
                     showFrame(frame, screenSize, type, "Q2");
-
                 }
                 else{
-                    if (CorrectAnswer.equals("1")){
-                        results[1] = "Correct";
-                    }else {
-                        results[1] = "Incorrect";
-                    }
+                    nonRandomConditionals("1",1);
                     showResults(frame,screenSize);
                 }
             }
             else {
                 if (type.equals("Easy")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[0][0] = "Correct";
-                        }else {
-                            randomResults[0][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[0][1] = "Correct";
-                        }else {
-                            randomResults[0][1] = "Incorrect";
-                        }
-                    }
-                }else if (type.equals("Intermediate")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[1][0] = "Correct";
-                        }else {
-                            randomResults[1][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[1][1] = "Correct";
-                        }else {
-                            randomResults[1][1] = "Incorrect";
-                        }
-                    }
-                }else {//INTENSE
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[2][0] = "Correct";
-                        }else {
-                            randomResults[2][0] = "Incorrect";
-                        }
-                    }else{
-                        if (CorrectAnswer.equals("1")){
-                            randomResults[2][1] = "Correct";
-                        }else {
-                            randomResults[2][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,0,CorrectAnswer,"1");
+                }
+                else if (type.equals("Intermediate")){
+                    randomConditionals(type,question,1,CorrectAnswer,"1");
+                }
+                else {//INTENSE
+                    randomConditionals(type,question,2,CorrectAnswer,"1");
                 }
                 randomGame(frame,screenSize);
             }
         });
         option2.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("2")) {
-                        results[0] = "Correct";
-                    } else {
-                        results[0] = "Incorrect";
-                    }
+                    nonRandomConditionals("2",0);
                     showFrame(frame, screenSize, type, "Q2");
                 }
                 else if (question.equals("Q2")){
-                    if (CorrectAnswer.equals("2")){
-                        results[1] = "Correct";
-                    }else {
-                        results[1] = "Incorrect";
-                    }
+                    nonRandomConditionals("2",1);
                     showResults(frame,screenSize);
                 }
             }
             else {
                 if (type.equals("Easy")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[0][0] = "Correct";
-                        }else {
-                            randomResults[0][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[0][1] = "Correct";
-                        }else {
-                            randomResults[0][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,0,CorrectAnswer,"2");
                 }
                 else if (type.equals("Intermediate")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[1][0] = "Correct";
-                        }else {
-                            randomResults[1][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[1][1] = "Correct";
-                        }else {
-                            randomResults[1][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,1,CorrectAnswer,"2");
                 }
                 else {//INTENSE
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[2][0] = "Correct";
-                        }else {
-                            randomResults[2][0] = "Incorrect";
-                        }
-                    }else{
-                        if (CorrectAnswer.equals("2")){
-                            randomResults[2][1] = "Correct";
-                        }else {
-                            randomResults[2][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,2,CorrectAnswer,"2");
                 }
                 randomGame(frame,screenSize);
             }
@@ -357,65 +248,23 @@ public class ComputerScience extends Thread{
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("3")) {
-                        results[0] = "Correct";
-                    } else {
-                        results[0] = "Incorrect";
-                    }
+                    nonRandomConditionals("3",0);
                     showFrame(frame, screenSize, type, "Q2");
                 }
                 else if (question.equals("Q2")){
-                    if (CorrectAnswer.equals("3")){
-                        results[1] = "Correct";
-                    }else {
-                        results[1] = "Incorrect";
-                    }
+                    nonRandomConditionals("3",1);
                     showResults(frame,screenSize);
                 }
             }
             else {
                 if (type.equals("Easy")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[0][0] = "Correct";
-                        }else {
-                            randomResults[0][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[0][1] = "Correct";
-                        }else {
-                            randomResults[0][1] = "Incorrect";
-                        }
-                    }
-                }else if (type.equals("Intermediate")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[1][0] = "Correct";
-                        }else {
-                            randomResults[1][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[1][1] = "Correct";
-                        }else {
-                            randomResults[1][1] = "Incorrect";
-                        }
-                    }
-                }else {//INTENSE
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[2][0] = "Correct";
-                        }else {
-                            randomResults[2][0] = "Incorrect";
-                        }
-                    }else{
-                        if (CorrectAnswer.equals("3")){
-                            randomResults[2][1] = "Correct";
-                        }else {
-                            randomResults[2][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,0,CorrectAnswer,"3");
+                }
+                else if (type.equals("Intermediate")){
+                    randomConditionals(type,question,1,CorrectAnswer,"3");
+                }
+                else {//INTENSE
+                    randomConditionals(type,question,2,CorrectAnswer,"3");
                 }
                 randomGame(frame,screenSize);
             }
@@ -426,111 +275,35 @@ public class ComputerScience extends Thread{
             frame.repaint();
             if (!isRandom) {
                 if (question.equals("Q1")) {
-                    if (CorrectAnswer.equals("4")) {
-                        results[0] = "Correct";
-                    } else {
-                        results[0] = "Incorrect";
-                    }
+                    nonRandomConditionals("4",0);
                     showFrame(frame, screenSize, type, "Q2");
                 }
                 else if (question.equals("Q2")){
-                    if (CorrectAnswer.equals("4")){
-                        results[1] = "Correct";
-                    }else {
-                        results[1] = "Incorrect";
-                    }
+                    nonRandomConditionals("4",1);
                     showResults(frame,screenSize);
                 }
             }
             else {
                 if (type.equals("Easy")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[0][0] = "Correct";
-                        }else {
-                            randomResults[0][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[0][1] = "Correct";
-                        }else {
-                            randomResults[0][1] = "Incorrect";
-                        }
-                    }
-                }else if (type.equals("Intermediate")){
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[1][0] = "Correct";
-                        }else {
-                            randomResults[1][0] = "Incorrect";
-                        }
-                    }else {
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[1][1] = "Correct";
-                        }else {
-                            randomResults[1][1] = "Incorrect";
-                        }
-                    }
-                }else {//INTENSE
-                    if (question.equals("Q1")){
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[2][0] = "Correct";
-                        }else {
-                            randomResults[2][0] = "Incorrect";
-                        }
-                    }else{
-                        if (CorrectAnswer.equals("4")){
-                            randomResults[2][1] = "Correct";
-                        }else {
-                            randomResults[2][1] = "Incorrect";
-                        }
-                    }
+                    randomConditionals(type,question,0,CorrectAnswer,"4");
+                }
+                else if (type.equals("Intermediate")){
+                    randomConditionals(type,question,1,CorrectAnswer,"4");
+                }
+                else {//INTENSE
+                    randomConditionals(type,question,2,CorrectAnswer,"4");
                 }
                 randomGame(frame,screenSize);
             }
         });
+
+        mouseListener(new JButton(), "#38b000", "#40cb00",option1);
+        mouseListener(new JButton(), "#38b000", "#40cb00",option2);
+        mouseListener(new JButton(), "#38b000", "#40cb00",option3);
+        mouseListener(new JButton(), "#38b000", "#40cb00",option4);
         // on hover methods was learned from https://stackoverflow.com/questions/22638926/how-to-put-hover-effect-on-jbutton
-        option1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                option1.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                option1.setBackground(Color.decode("#38b000"));
-            }
-        });
-        option2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                option2.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                option2.setBackground(Color.decode("#38b000"));
-            }
-        });
-        option3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                option3.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                option3.setBackground(Color.decode("#38b000"));
-            }
-        });
-        option4.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                option4.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                option4.setBackground(Color.decode("#38b000"));
-            }
-        });
-
         returnButton.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             if (question.equals("Q2")){
                 try {
                     showFrame(frame,screenSize,type,"Q1");
@@ -545,14 +318,46 @@ public class ComputerScience extends Thread{
                 }
             }
         });
-
-        frame.add(option1);frame.add(option2);frame.add(option3);frame.add(option4);
-        frame.add(compSciTitle);frame.add(image);
-        frame.add(questionLabel); if (!isRandom) frame.add(returnButton);
-        frame.add(background);
-        frame.setVisible(true);//making the frame visible
-
+        drawComponentsOnFrame(frame, new JRadioButton[]{option1,option2,option3,option4}, new JLabel[]{compSciTitle,questionLabel, background,image},returnButton,new JButton[]{});
     }
+    public static void nonRandomConditionals(String CorrectAnswer, int num){
+        if (CorrectAnswer.equals("2")) {
+            results[num] = "Correct";
+        } else {
+            results[num] = "Incorrect";
+        }
+    } // NEW
+    public static void randomConditionals(String type, String question, int num, String CorrectAnswer,String questionNum){
+        if (question.equals("Q1")){
+            if (CorrectAnswer.equals(questionNum)){
+                randomResults[num][0] = "Correct";
+            }else {
+                randomResults[num][0] = "Incorrect";
+            }
+        }else{
+            if (CorrectAnswer.equals("2")){
+                randomResults[num][1] = "Correct";
+            }else {
+                randomResults[num][1] = "Incorrect";
+            }
+        }
+    } // NEW
+    public static void drawComponentsOnFrame(JFrame frame, JRadioButton[] buttons, JLabel[] labels, JButton returnBtn, JButton[] jButtons){
+        for (JRadioButton button: buttons){
+            frame.add(button);
+        }
+        for (JButton button: jButtons) {
+            frame.add(button);
+        }
+        if (!isRandom) frame.add(returnBtn);
+        frame.add(returnBtn);
+        for (JLabel label: labels) {
+            System.out.println(label);
+            frame.add(label);
+        }
+
+        frame.setVisible(true);
+       } // NEW
     public static void updateLeaderBoard(int score) {
         String userDataFile = "EPIC\\logins.csv"; // this file contains the login details of every password
         String usernameFinal = Login.loggedin; // we don't need to convert this into a hashcode as it will allow us to search for users in the login file
@@ -577,7 +382,7 @@ public class ComputerScience extends Thread{
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-    }
+    } // NEW
     public static void randomGame(JFrame frame,Dimension screenSize){
         isRandom = true;
         int ranDifficulty = (int)(Math.random()*3);
@@ -596,9 +401,7 @@ public class ComputerScience extends Thread{
             }
         }
         if (allTrue) {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             showResults(frame, screenSize);
         }else {
             while (!foundQuestion) {//while the program checks for a question or there is a question to ask
@@ -624,7 +427,6 @@ public class ComputerScience extends Thread{
     }
     public static int countResultForRand(){
         int count = 0;
-
         for (String[] randomResult : randomResults) {
             for (String s : randomResult) {
                 if (s.equals("Correct")) {
@@ -646,9 +448,7 @@ public class ComputerScience extends Thread{
                 }
                 System.out.println("FINISHED");
                 if (!resultsShown) {
-                    frame.getContentPane().removeAll();
-                    frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-                    frame.repaint();
+                    clearFrame(frame);
                     showResults(frame, screenSize);
                 }
             });
@@ -665,21 +465,15 @@ public class ComputerScience extends Thread{
                 }
             }
         } catch (NullPointerException ignored) {
-
         }
-
         return count;
     }
     public static void showResults(JFrame frame, Dimension screenSize) {
         //gamemode should be 0 for comp sci, 1 for comp org, 2 for discrete maths
-        JLabel background = new JLabel();
+        JLabel background = setBackground("EPIC\\images\\compSci\\comp sci results background.jpg");
         resultsShown = true;
-        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\comp sci results background.jpg"));
-        Dimension sizeBg = background.getPreferredSize();
-        background.setBounds(-130,0,sizeBg.width,sizeBg.height);
         // int type is for declaring whether the gamemode is Random, Levels or -----
         // 0 for random, 1 for levels, 2 for timed
-
         int screenWidth = (int)screenSize.getWidth();
         int screenHeight = (int)screenSize.getHeight();
         int correctAmount;//what the user got correct
@@ -717,7 +511,7 @@ public class ComputerScience extends Thread{
         correct.setBounds((screenWidth/2)-25,(screenHeight/2)-65,100,100);
         outOfText.setBounds((screenWidth/2)-290,(screenHeight/2)+50,1000,200);
 
-        frame.add(correct);frame.add(trophy);frame.add(youGotText);frame.add(outOfText);frame.add(returnButton);
+        drawComponentsOnFrame(frame,new JRadioButton[]{},new JLabel[]{correct,trophy,youGotText,outOfText},returnButton, new JButton[]{});
         if (isTimed) frame.add(timeTaken);frame.add(background);
         //if (isTimed) frame.add(outOfTime);
         //RESULTS ARE IN ARRAY -- > JUST NEED TO BE DISPLAYED 18/10/2023 DO TOMORROW
@@ -728,9 +522,7 @@ public class ComputerScience extends Thread{
         returnButton.setBorder(BorderFactory.createLineBorder(new Color (0x005D02), 5));
         returnButton.setBounds((screenWidth/8) - 90,screenHeight-(screenHeight/5),400,50);
         returnButton.addActionListener((e)-> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             randomAnswersReset();
             isRandom = false;
             isTimed = false;
@@ -743,10 +535,7 @@ public class ComputerScience extends Thread{
         // 0 for easy
         //1 for intermediate
         // 2 for intense
-        JLabel background = new JLabel();
-        background.setIcon(new ImageIcon("EPIC\\images\\compSci\\compSciBg.jpg"));
-        Dimension sizeBg = background.getPreferredSize();
-        background.setBounds(0,0,sizeBg.width,sizeBg.height);
+        JLabel background = setBackground("EPIC\\images\\compSci\\compSciBg.jpg");
         int screenWidth = (int) screenSize.getWidth();//getting screen dimensions to calculate item placements
         int screenHeight = (int) screenSize.getHeight();
 
@@ -781,17 +570,13 @@ public class ComputerScience extends Thread{
         intermediate.setBackground(Color.decode("#38b000"));
         easy.setBackground(Color.decode("#38b000"));
         intense.setBackground(Color.decode("#38b000"));
-        frame.add(easy);frame.add(intermediate);frame.add(intense);
-        frame.add(gameMode);frame.add(returnButton);frame.add(compSciTitle);
-        frame.add(background);
+        drawComponentsOnFrame(frame,new JRadioButton[]{},new JLabel[]{gameMode,compSciTitle,background},returnButton,new JButton[]{easy,intermediate,intense});
         easy.setBorder(BorderFactory.createLineBorder(new Color(1,127,2), 5));
         intermediate.setBorder(BorderFactory.createLineBorder(new Color (1,127,2), 5));
         intense.setBorder(BorderFactory.createLineBorder(new Color (1,127,2), 5));
         // ACTION LISTENERS LOOK FOR BUTTON CLICKS
         easy.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             try {
                 MainQuizGUI(frame,screenSize,0);
             } catch (Exception ex) {
@@ -799,9 +584,7 @@ public class ComputerScience extends Thread{
             }
         });
         intermediate.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             try {
                 MainQuizGUI(frame,screenSize,1);
             } catch (Exception ex) {
@@ -809,9 +592,7 @@ public class ComputerScience extends Thread{
             }
         });
         intense.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();
-            frame.repaint();
+            clearFrame(frame);
             try {
                 MainQuizGUI(frame,screenSize,2);
             } catch (Exception ex) {
@@ -819,37 +600,12 @@ public class ComputerScience extends Thread{
             }
         });
         returnButton.addActionListener(e -> {
-            frame.getContentPane().removeAll();
-            frame.revalidate();// these remove all of the elements on screen so the others can be shown and not overlap
-            frame.repaint();
+            clearFrame(frame);
             gameModeSelection(frame,screenSize);
         });
-        easy.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                easy.setBackground(Color.decode("#40cb00"));
-            }
 
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                easy.setBackground(Color.decode("#38b000"));
-            }
-        });
-        intermediate.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                intermediate.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                intermediate.setBackground(Color.decode("#38b000"));
-            }
-        });
-        intense.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                intense.setBackground(Color.decode("#40cb00"));
-            }
-
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                intense.setBackground(Color.decode("#38b000"));
-            }
-        });
+        mouseListener(easy, "#38b000", "#40cb00",new JRadioButton());
+        mouseListener(intermediate, "#38b000", "#40cb00",new JRadioButton());
+        mouseListener(intense, "#38b000", "#40cb00",new JRadioButton());
     }
 }
